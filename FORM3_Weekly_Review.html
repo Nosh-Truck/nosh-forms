@@ -1,195 +1,251 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2299.77">
-  <style type="text/css">
-    body {background-color: #f2f2f2}
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 22.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px 'Helvetica Neue'; color: #878787; -webkit-text-stroke: #878787}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff; min-height: 11.0px}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; color: #878787; -webkit-text-stroke: #878787}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px 'Helvetica Neue'; color: #c1c1c1; -webkit-text-stroke: #c1c1c1; background-color: #212121}
-    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #c1c1c1; -webkit-text-stroke: #c1c1c1; background-color: #0a0a0a}
-    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px 'Helvetica Neue'; color: #be0004; -webkit-text-stroke: #be0004}
-    p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; font: 18.0px 'Helvetica Neue'; color: #0a0a0a; -webkit-text-stroke: #0a0a0a}
-    p.p11 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #535353; -webkit-text-stroke: #535353}
-    p.p12 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #878787; -webkit-text-stroke: #878787}
-    p.p13 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #0a0a0a; -webkit-text-stroke: #0a0a0a}
-    p.p14 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #0a0a0a}
-    p.p15 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px 'Helvetica Neue'; color: #0a0a0a; -webkit-text-stroke: #0a0a0a}
-    p.p16 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #878787; -webkit-text-stroke: #878787; background-color: #e2e2e2}
-    p.p17 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 17.0px 'Helvetica Neue'; color: #0a0a0a; -webkit-text-stroke: #0a0a0a; background-color: #f2f2f2; min-height: 20.0px}
-    p.p18 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    span.s1 {font-kerning: none; background-color: #0a0a0a}
-    span.s2 {font-kerning: none}
-    span.s3 {font-kerning: none; background-color: #be0004}
-    span.s4 {font-kerning: none; color: #ffffff; -webkit-text-stroke: 0px #ffffff}
-    span.s5 {font-kerning: none; background-color: #ffffff}
-    span.s6 {font-kerning: none; color: #be0004; background-color: #ffffff; -webkit-text-stroke: 0px #be0004}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Review — NOSH</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #111; font-family: 'Helvetica Neue', sans-serif; color: #f2f2f2; min-height: 100vh; }
+  .header { background: #0a0a0a; padding: 20px 16px 16px; border-bottom: 1px solid #222; }
+  .badge { font-size: 9px; color: #be0004; letter-spacing: 1px; font-weight: 600; margin-bottom: 6px; }
+  .form-id { font-size: 10px; color: #555; margin-bottom: 4px; }
+  h1 { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .subtitle { font-size: 13px; color: #666; }
+  .who { font-size: 10px; color: #aaa; background: #1a1a1a; padding: 3px 8px; border-radius: 3px; display: inline-block; margin-top: 8px; }
+  .desc { font-size: 12px; color: #888; margin-top: 6px; line-height: 1.5; }
+  .section { padding: 0 16px; margin-top: 24px; }
+  .section-label { font-size: 9px; color: #be0004; letter-spacing: 1px; font-weight: 600; margin-bottom: 4px; }
+  .section-title { font-size: 18px; font-weight: 600; color: #f2f2f2; margin-bottom: 12px; }
+  .cat-label { font-size: 9px; color: #fff; letter-spacing: 1px; font-weight: 600; background: #0a0a0a; padding: 6px 10px; margin: 16px -16px 8px; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: 11px; color: #888; letter-spacing: 0.5px; margin-bottom: 5px; }
+  .field label span.req { color: #be0004; }
+  .hint { font-size: 10px; color: #555; margin-top: 3px; }
+  .unit-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .unit-row label { flex: 1; font-size: 14px; color: #ccc; }
+  .unit-row .unit { font-size: 11px; color: #555; min-width: 40px; text-align: right; }
+  .unit-row input { width: 90px; background: #1a1a1a; border: 1px solid #2a2a2a; color: #f2f2f2; padding: 10px; border-radius: 6px; font-size: 15px; font-family: inherit; text-align: center; -webkit-appearance: none; flex-shrink: 0; }
+  input[type="date"], input[type="text"], input[type="number"], select, textarea {
+    width: 100%; background: #1a1a1a; border: 1px solid #2a2a2a; color: #f2f2f2;
+    padding: 12px; border-radius: 6px; font-size: 15px; font-family: inherit;
+    -webkit-appearance: none; appearance: none;
+  }
+  select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' fill='none' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: #be0004; }
+  .divider { height: 1px; background: #1e1e1e; margin: 20px 0; }
+  .submit-wrap { padding: 24px 16px 40px; }
+  button[type="submit"] {
+    width: 100%; background: #be0004; color: #fff; border: none;
+    padding: 16px; border-radius: 8px; font-size: 16px; font-weight: 600;
+    font-family: inherit; cursor: pointer; letter-spacing: 0.5px;
+  }
+  button[type="submit"]:active { background: #9a0003; }
+  .success { display: none; text-align: center; padding: 40px 16px; }
+  .success h2 { color: #4caf50; font-size: 22px; margin-bottom: 8px; }
+  .success p { color: #888; font-size: 14px; }
+  .error-msg { display: none; color: #be0004; font-size: 13px; margin-top: 8px; padding: 10px; background: #1a0000; border-radius: 6px; }
+</style>
 </head>
 <body>
-<p class="p1"><span class="s1">https://script.google.com/macros/s/AKfycbyP9jMt-l1-U8uPIENgqeQW46fpZTIAgSDj3C2bPs-OJN-J8ITr913pYwt4hn5NFForhw/execNOSH</span></p>
-<p class="p2"><span class="s1">FIN-F1</span></p>
-<p class="p3"><span class="s2"></span><br></p>
-<p class="p4"><span class="s3">EVERY SUNDAY EVENING</span></p>
-<h1 style="margin: 0.0px 0.0px 6.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff"><span class="s1">Weekly Review</span></h1>
-<p class="p6"><span class="s1">Revenue · Hours · Units Sold</span></p>
-<p class="p7"><span class="s2">CONSTANTINOS ONLY</span></p>
-<p class="p8"><span class="s4">Your private weekly review.</span><span class="s2"> Pull sales data from Hiopos or Square before filling.</span></p>
-<p class="p9"><span class="s2">HEADER</span></p>
-<p class="p10"><span class="s2">Week Details</span></p>
-<p class="p11"><span class="s5">WEEK START</span><span class="s6">*</span></p>
-<p class="p12"><span class="s5">→ Finance Sheet 2 col B</span></p>
-<p class="p11"><span class="s5">WEEK #</span><span class="s6">*</span></p>
-<p class="p9"><span class="s2">REVENUE</span></p>
-<p class="p10"><span class="s2">Weekly Revenue</span></p>
-<p class="p11"><span class="s5">DINE-IN REVENUE</span></p>
-<p class="p13"><span class="s5">€</span></p>
-<p class="p12"><span class="s5">→ Finance Sheet 1 col D total</span></p>
-<p class="p11"><span class="s5">WOLT REVENUE</span></p>
-<p class="p13"><span class="s5">€</span></p>
-<p class="p12"><span class="s5">NET → col E</span></p>
-<p class="p11"><span class="s5">FOODY REVENUE</span></p>
-<p class="p13"><span class="s5">€</span></p>
-<p class="p12"><span class="s5">NET → col F</span></p>
-<p class="p11"><span class="s5">TOTAL COVERS</span></p>
-<p class="p12"><span class="s5">→ col K total</span></p>
-<p class="p11"><span class="s5">OPENING BANK BALANCE</span></p>
-<p class="p13"><span class="s5">€</span></p>
-<p class="p12"><span class="s5">→ Finance Sheet 4 C4</span></p>
-<p class="p9"><span class="s2">LABOUR</span></p>
-<p class="p10"><span class="s2">Hours This Week</span></p>
-<p class="p11"><span class="s5">UMAR HOURS</span></p>
-<p class="p12"><span class="s5">→ Ops Sheet 7 col C (yellow)</span></p>
-<p class="p11"><span class="s5">SEKENDER HOURS</span></p>
-<p class="p12"><span class="s5">→ Ops Sheet 7 col H (yellow)</span></p>
-<p class="p9"><span class="s2">UNITS</span></p>
-<p class="p10"><span class="s2">Units Sold This Week</span></p>
-<p class="p8"><span class="s2">Pull from Hiopos or Square → Sales by Product. Enter units sold for each item. → Operations Sheet 3 col B</span></p>
-<p class="p14"><span class="s2">ANGUS BEEF</span></p>
-<p class="p15"><span class="s5">Junior</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Original Smash</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Bacon Jam</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Double Classic Cheese</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Italian Truffle</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Notorious Jack</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">NOSH Special</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p14"><span class="s2">CRISPY CHICKEN</span></p>
-<p class="p15"><span class="s5">NOSH Chicken</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p14"><span class="s2">GRILL CHICKEN</span></p>
-<p class="p15"><span class="s5">Grill Chicken Classic</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Chicken Halloumi</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p14"><span class="s2">VEGGIE</span></p>
-<p class="p15"><span class="s5">Veggie Burger</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p14"><span class="s2">SALADS</span></p>
-<p class="p15"><span class="s5">Caesar Salad</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">NOSH Salad</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Sesame Strip Salad</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p14"><span class="s2">FRIES</span></p>
-<p class="p15"><span class="s5">French Fries</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Sweet Fries</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Loaded Fries</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p14"><span class="s2">SIDES</span></p>
-<p class="p15"><span class="s5">Coleslaw</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Chicken Tenders 2pc</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Chicken Tenders 4pc</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Chicken Tenders 6pc</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Nuggets 4pc</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Nuggets 8pc</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Nuggets 12pc</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Mac n Cheese 2pc</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Mac n Cheese 4pc</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Mac n Cheese 6pc</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Chilly Cheese Nuggets 4pc</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Chilly Cheese Nuggets 8pc</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Popcorn Chicken 10pc</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Popcorn Chicken 20pc</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p14"><span class="s2">COMBOS</span></p>
-<p class="p15"><span class="s5">Nosh Bites Combo</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Nosh Bites Combo Large</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Honey Tender Combo</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p15"><span class="s5">Jack Sesame Strips Combo</span></p>
-<p class="p16"><span class="s2">units</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p9"><span class="s2">NOTES</span></p>
-<p class="p10"><span class="s2">Weekly Observations</span></p>
-<p class="p11"><span class="s5">BEST PERFORMING ITEM</span></p>
-<p class="p11"><span class="s5">ISSUES OR CONCERNS</span></p>
-<p class="p11"><span class="s5">ACTION BEFORE NEXT WEEK</span></p>
-<p class="p18"><span class="s3">Submit</span></p>
+<div class="header">
+  <div class="form-id">FIN-F1</div>
+  <div class="badge">EVERY SUNDAY EVENING</div>
+  <h1>Weekly Review</h1>
+  <div class="subtitle">Revenue · Hours · Units Sold</div>
+  <div class="who">CONSTANTINOS ONLY</div>
+  <div class="desc">Your private weekly review. Pull sales data from Hiopos or Square before filling.</div>
+</div>
+
+<form id="mainForm">
+
+<div class="section">
+  <div class="section-label">HEADER</div>
+  <div class="section-title">Week Details</div>
+
+  <div class="field">
+    <label>WEEK START <span class="req">*</span></label>
+    <input type="date" name="week_start" required>
+    <div class="hint">→ Finance Sheet 2 col B</div>
+  </div>
+
+  <div class="field">
+    <label>WEEK # <span class="req">*</span></label>
+    <input type="number" name="week_number" min="1" max="52" placeholder="e.g. 14" required>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-label">REVENUE</div>
+  <div class="section-title">Weekly Revenue</div>
+
+  <div class="field">
+    <label>DINE-IN REVENUE</label>
+    <input type="number" name="dine_in_revenue" step="0.01" min="0" placeholder="€0.00">
+    <div class="hint">→ Finance Sheet 1 col D total</div>
+  </div>
+  <div class="field">
+    <label>WOLT REVENUE</label>
+    <input type="number" name="wolt_revenue" step="0.01" min="0" placeholder="€0.00">
+    <div class="hint">NET → col E</div>
+  </div>
+  <div class="field">
+    <label>FOODY REVENUE</label>
+    <input type="number" name="foody_revenue" step="0.01" min="0" placeholder="€0.00">
+    <div class="hint">NET → col F</div>
+  </div>
+  <div class="field">
+    <label>TOTAL COVERS</label>
+    <input type="number" name="total_covers" min="0" placeholder="0">
+    <div class="hint">→ col K total</div>
+  </div>
+  <div class="field">
+    <label>OPENING BANK BALANCE</label>
+    <input type="number" name="bank_open" step="0.01" placeholder="€0.00">
+    <div class="hint">→ Finance Sheet 4 C4</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-label">LABOUR</div>
+  <div class="section-title">Hours This Week</div>
+
+  <div class="field">
+    <label>UMAR HOURS</label>
+    <input type="number" name="umar_hours" step="0.5" min="0" placeholder="0">
+    <div class="hint">→ Ops Sheet 7 col C (yellow)</div>
+  </div>
+  <div class="field">
+    <label>SEKENDER HOURS</label>
+    <input type="number" name="sek_hours" step="0.5" min="0" placeholder="0">
+    <div class="hint">→ Ops Sheet 7 col H (yellow)</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-label">UNITS</div>
+  <div class="section-title">Units Sold This Week</div>
+  <div class="desc" style="margin-bottom:16px;">Pull from Hiopos or Square → Sales by Product. → Operations Sheet 3 col B</div>
+
+  <div class="cat-label">ANGUS BEEF</div>
+  <div class="unit-row"><label>Junior</label><div class="unit">units</div><input type="number" name="u_junior" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Original Smash</label><div class="unit">units</div><input type="number" name="u_original_smash" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Bacon Jam</label><div class="unit">units</div><input type="number" name="u_bacon_jam" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Double Classic Cheese</label><div class="unit">units</div><input type="number" name="u_double_classic" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Italian Truffle</label><div class="unit">units</div><input type="number" name="u_italian_truffle" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Notorious Jack</label><div class="unit">units</div><input type="number" name="u_notorious_jack" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>NOSH Special</label><div class="unit">units</div><input type="number" name="u_nosh_special" min="0" placeholder="0"></div>
+
+  <div class="cat-label">CRISPY CHICKEN</div>
+  <div class="unit-row"><label>NOSH Chicken</label><div class="unit">units</div><input type="number" name="u_nosh_chicken" min="0" placeholder="0"></div>
+
+  <div class="cat-label">GRILL CHICKEN</div>
+  <div class="unit-row"><label>Grill Chicken Classic</label><div class="unit">units</div><input type="number" name="u_grill_classic" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Chicken Halloumi</label><div class="unit">units</div><input type="number" name="u_chicken_halloumi" min="0" placeholder="0"></div>
+
+  <div class="cat-label">VEGGIE</div>
+  <div class="unit-row"><label>Veggie Burger</label><div class="unit">units</div><input type="number" name="u_veggie_burger" min="0" placeholder="0"></div>
+
+  <div class="cat-label">SALADS</div>
+  <div class="unit-row"><label>Caesar Salad</label><div class="unit">units</div><input type="number" name="u_caesar_salad" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>NOSH Salad</label><div class="unit">units</div><input type="number" name="u_nosh_salad" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Sesame Strip Salad</label><div class="unit">units</div><input type="number" name="u_sesame_strip_salad" min="0" placeholder="0"></div>
+
+  <div class="cat-label">FRIES</div>
+  <div class="unit-row"><label>French Fries</label><div class="unit">units</div><input type="number" name="u_french_fries" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Sweet Fries</label><div class="unit">units</div><input type="number" name="u_sweet_fries" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Loaded Fries</label><div class="unit">units</div><input type="number" name="u_loaded_fries" min="0" placeholder="0"></div>
+
+  <div class="cat-label">SIDES</div>
+  <div class="unit-row"><label>Coleslaw</label><div class="unit">units</div><input type="number" name="u_coleslaw" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Chicken Tenders 2pc</label><div class="unit">units</div><input type="number" name="u_tenders_2" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Chicken Tenders 4pc</label><div class="unit">units</div><input type="number" name="u_tenders_4" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Chicken Tenders 6pc</label><div class="unit">units</div><input type="number" name="u_tenders_6" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Nuggets 4pc</label><div class="unit">units</div><input type="number" name="u_nuggets_4" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Nuggets 8pc</label><div class="unit">units</div><input type="number" name="u_nuggets_8" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Nuggets 12pc</label><div class="unit">units</div><input type="number" name="u_nuggets_12" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Mac n Cheese 2pc</label><div class="unit">units</div><input type="number" name="u_mac_2" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Mac n Cheese 4pc</label><div class="unit">units</div><input type="number" name="u_mac_4" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Mac n Cheese 6pc</label><div class="unit">units</div><input type="number" name="u_mac_6" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Chilly Cheese Nuggets 4pc</label><div class="unit">units</div><input type="number" name="u_ccn_4" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Chilly Cheese Nuggets 8pc</label><div class="unit">units</div><input type="number" name="u_ccn_8" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Popcorn Chicken 10pc</label><div class="unit">units</div><input type="number" name="u_popcorn_10" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Popcorn Chicken 20pc</label><div class="unit">units</div><input type="number" name="u_popcorn_20" min="0" placeholder="0"></div>
+
+  <div class="cat-label">COMBOS</div>
+  <div class="unit-row"><label>Nosh Bites Combo</label><div class="unit">units</div><input type="number" name="u_bites_combo" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Nosh Bites Combo Large</label><div class="unit">units</div><input type="number" name="u_bites_combo_lg" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Honey Tender Combo</label><div class="unit">units</div><input type="number" name="u_honey_tender" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Jack Sesame Strips Combo</label><div class="unit">units</div><input type="number" name="u_jack_sesame" min="0" placeholder="0"></div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-label">NOTES</div>
+  <div class="section-title">Weekly Observations</div>
+  <div class="field">
+    <label>BEST PERFORMING ITEM</label>
+    <input type="text" name="best_item" placeholder="e.g. Bacon Jam — 47 sold">
+  </div>
+  <div class="field">
+    <label>ISSUES OR CONCERNS</label>
+    <textarea name="issues" rows="3" placeholder="Any issues this week…"></textarea>
+  </div>
+  <div class="field">
+    <label>ACTION BEFORE NEXT WEEK</label>
+    <textarea name="action" rows="3" placeholder="What needs to be done…"></textarea>
+  </div>
+</div>
+
+<div class="submit-wrap">
+  <div class="error-msg" id="errorMsg">Something went wrong. Please try again.</div>
+  <button type="submit">Submit</button>
+</div>
+
+</form>
+
+<div class="success" id="successMsg">
+  <h2>✓ Submitted</h2>
+  <p>Weekly review logged successfully.</p>
+</div>
+
+<script>
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyP9jMt-l1-U8uPIENgqeQW46fpZTIAgSDj3C2bPs-OJN-J8ITr913pYwt4hn5NFForhw/exec';
+
+document.getElementById('mainForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('button[type="submit"]');
+  const errMsg = document.getElementById('errorMsg');
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
+  errMsg.style.display = 'none';
+
+  const data = { _sheet: 'Weekly_Review' };
+  new FormData(this).forEach((v, k) => { data[k] = v; });
+
+  try {
+    await fetch(SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    document.getElementById('mainForm').style.display = 'none';
+    document.querySelector('.header').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  } catch (err) {
+    errMsg.style.display = 'block';
+    btn.textContent = 'Submit';
+    btn.disabled = false;
+  }
+});
+</script>
 </body>
 </html>

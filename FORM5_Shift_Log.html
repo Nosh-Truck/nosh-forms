@@ -1,114 +1,201 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2299.77">
-  <style type="text/css">
-    body {background-color: #f2f2f2}
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 22.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px 'Helvetica Neue'; color: #878787; -webkit-text-stroke: #878787}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff; min-height: 11.0px}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; color: #878787; -webkit-text-stroke: #878787}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px 'Helvetica Neue'; color: #c1c1c1; -webkit-text-stroke: #c1c1c1; background-color: #212121}
-    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #c1c1c1; -webkit-text-stroke: #c1c1c1; background-color: #0a0a0a}
-    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px 'Helvetica Neue'; color: #be0004; -webkit-text-stroke: #be0004}
-    p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; font: 18.0px 'Helvetica Neue'; color: #0a0a0a; -webkit-text-stroke: #0a0a0a}
-    p.p11 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #535353; -webkit-text-stroke: #535353}
-    p.p12 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #878787; -webkit-text-stroke: #878787}
-    p.p13 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #535353; -webkit-text-stroke: #535353; background-color: #ffffff}
-    p.p14 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #0a0a0a; -webkit-text-stroke: #0a0a0a; background-color: #ffffff}
-    p.p15 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #0a0a0a; -webkit-text-stroke: #0a0a0a; min-height: 18.0px}
-    p.p16 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px Times; color: #0a0a0a; -webkit-text-stroke: #0a0a0a; background-color: #ffffff}
-    p.p17 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #535353; -webkit-text-stroke: #535353}
-    p.p18 {margin: 0.0px 0.0px 0.0px 0.0px; font: 18.0px 'Helvetica Neue'; color: #be0004; -webkit-text-stroke: #be0004}
-    p.p19 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #141414}
-    p.p20 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px 'Helvetica Neue'; color: #be0004; -webkit-text-stroke: #be0004; background-color: #fededf}
-    p.p21 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    span.s1 {font-kerning: none; background-color: #0a0a0a}
-    span.s2 {font-kerning: none}
-    span.s3 {font-kerning: none; background-color: #be0004}
-    span.s4 {font-kerning: none; color: #ffffff; -webkit-text-stroke: 0px #ffffff}
-    span.s5 {font-kerning: none; background-color: #ffffff}
-    span.s6 {font-kerning: none; color: #be0004; background-color: #ffffff; -webkit-text-stroke: 0px #be0004}
-    span.s7 {font-kerning: none; color: #be0004; -webkit-text-stroke: 0px #be0004}
-    span.s8 {font: 16.0px Times; font-kerning: none}
-    span.s9 {font: 16.0px 'Helvetica Neue'; font-kerning: none}
-    span.s10 {font-kerning: none; background-color: #f2f2f2}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shift Log — NOSH</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #111; font-family: 'Helvetica Neue', sans-serif; color: #f2f2f2; min-height: 100vh; }
+  .header { background: #0a0a0a; padding: 20px 16px 16px; border-bottom: 1px solid #222; }
+  .badge { font-size: 9px; color: #be0004; letter-spacing: 1px; font-weight: 600; margin-bottom: 6px; }
+  .form-id { font-size: 10px; color: #555; margin-bottom: 4px; }
+  h1 { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .subtitle { font-size: 13px; color: #666; }
+  .who { font-size: 10px; color: #aaa; background: #1a1a1a; padding: 3px 8px; border-radius: 3px; display: inline-block; margin-top: 8px; }
+  .desc { font-size: 12px; color: #888; margin-top: 6px; line-height: 1.5; }
+  .section { padding: 0 16px; margin-top: 24px; }
+  .section-label { font-size: 9px; color: #be0004; letter-spacing: 1px; font-weight: 600; margin-bottom: 4px; }
+  .section-title { font-size: 18px; font-weight: 600; color: #f2f2f2; margin-bottom: 12px; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: 11px; color: #888; letter-spacing: 0.5px; margin-bottom: 5px; }
+  .field label span.req { color: #be0004; }
+  .hint { font-size: 10px; color: #555; margin-top: 3px; }
+  .hours-display { font-size: 22px; color: #be0004; font-weight: 700; margin: 8px 0; }
+  input[type="date"], input[type="time"], input[type="text"], input[type="number"], select, textarea {
+    width: 100%; background: #1a1a1a; border: 1px solid #2a2a2a; color: #f2f2f2;
+    padding: 12px; border-radius: 6px; font-size: 15px; font-family: inherit;
+    -webkit-appearance: none; appearance: none;
+  }
+  select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' fill='none' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: #be0004; }
+  .divider { height: 1px; background: #1e1e1e; margin: 20px 0; }
+  .submit-wrap { padding: 24px 16px 40px; }
+  button[type="submit"] {
+    width: 100%; background: #be0004; color: #fff; border: none;
+    padding: 16px; border-radius: 8px; font-size: 16px; font-weight: 600;
+    font-family: inherit; cursor: pointer; letter-spacing: 0.5px;
+  }
+  button[type="submit"]:active { background: #9a0003; }
+  .success { display: none; text-align: center; padding: 40px 16px; }
+  .success h2 { color: #4caf50; font-size: 22px; margin-bottom: 8px; }
+  .success p { color: #888; font-size: 14px; }
+  .error-msg { display: none; color: #be0004; font-size: 13px; margin-top: 8px; padding: 10px; background: #1a0000; border-radius: 6px; }
+</style>
 </head>
 <body>
-<p class="p1"><span class="s1">https://script.google.com/macros/s/AKfycbyP9jMt-l1-U8uPIENgqeQW46fpZTIAgSDj3C2bPs-OJN-J8ITr913pYwt4hn5NFForhw/execNOSH</span></p>
-<p class="p2"><span class="s1">OPS-F3</span></p>
-<p class="p3"><span class="s2"></span><br></p>
-<p class="p4"><span class="s3">AFTER EVERY SHIFT</span></p>
-<h1 style="margin: 0.0px 0.0px 6.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff"><span class="s1">Shift Log</span></h1>
-<p class="p6"><span class="s1">Log Umar and Sekender shifts — end of each shift</span></p>
-<p class="p7"><span class="s2">MAHOON</span></p>
-<p class="p8"><span class="s4">Log every shift for Umar and Sekender.</span><span class="s2"> Takes 30 seconds. Do it at the end of each shift.</span></p>
-<p class="p9"><span class="s2">SHIFT</span></p>
-<p class="p10"><span class="s2">Shift Details</span></p>
-<p class="p11"><span class="s5">DATE</span><span class="s6">*</span></p>
-<p class="p12"><span class="s5">→ Operations Sheet 7 Shift Log col A</span></p>
-<p class="p13"><span class="s2">DAY</span><span class="s7">*</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Select…</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Monday</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Tuesday</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Wednesday</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Thursday</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Friday</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Saturday</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Sunday</span></p>
-<p class="p15"><span class="s5"><span class="Apple-converted-space">        </span></span></p>
-<p class="p13"><span class="s2">SERVICE</span><span class="s7">*</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Select…</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Lunch</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Dinner</span></p>
-<p class="p15"><span class="s5"><span class="Apple-converted-space">        </span></span></p>
-<p class="p13"><span class="s2">STAFF MEMBER</span><span class="s7">*</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Select…</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Umar</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Sekender</span></p>
-<p class="p16"><span class="s9"><span class="Apple-converted-space">          </span></span><span class="s2">Umar &amp; Sekender</span></p>
-<p class="p15"><span class="s5"><span class="Apple-converted-space">        </span></span></p>
-<p class="p12"><span class="s5">→ col D</span></p>
-<p class="p11"><span class="s5">START TIME</span><span class="s6">*</span></p>
-<p class="p12"><span class="s5">→ col E</span></p>
-<p class="p11"><span class="s5">END TIME</span><span class="s6">*</span></p>
-<p class="p12"><span class="s5">→ col F</span></p>
-<p class="p17"><span class="s10">Hours Worked</span></p>
-<p class="p18"><span class="s10">—</span></p>
-<p class="p11"><span class="s5">NOTES</span></p>
-<p class="p12"><span class="s5">→ col — notes</span></p>
-<p class="p9"><span class="s2">WEEKLY</span></p>
-<p class="p10"><span class="s2">Weekly Totals (fill at end of week)</span></p>
-<p class="p8"><span class="s2">Fill these only at the end of each person's last shift of the week. These go into Operations Sheet 7 Weekly Summary yellow cells.</span></p>
-<p class="p11"><span class="s5">UMAR — TOTAL HOURS THIS WEEK</span></p>
-<p class="p12"><span class="s5">→ Sheet 7 Weekly Summary col C (yellow)</span></p>
-<p class="p11"><span class="s5">SEKENDER — TOTAL HOURS THIS WEEK</span></p>
-<p class="p12"><span class="s5">→ Sheet 7 Weekly Summary col H (yellow)</span></p>
-<p class="p19"><span class="s2">↗ PASTE INTO FILE — OPERATIONS SHEET 7 — SHIFT LOG</span></p>
-<p class="p20"><span class="s2">Col A</span></p>
-<p class="p17"><span class="s2">Date</span></p>
-<p class="p20"><span class="s2">Col B</span></p>
-<p class="p17"><span class="s2">Day</span></p>
-<p class="p20"><span class="s2">Col C</span></p>
-<p class="p17"><span class="s2">Service (Lunch/Dinner)</span></p>
-<p class="p20"><span class="s2">Col D</span></p>
-<p class="p17"><span class="s2">Staff member</span></p>
-<p class="p20"><span class="s2">Col E</span></p>
-<p class="p17"><span class="s2">Start time</span></p>
-<p class="p20"><span class="s2">Col F</span></p>
-<p class="p17"><span class="s2">End time</span></p>
-<p class="p20"><span class="s2">Col G</span></p>
-<p class="p17"><span class="s2">Hours worked — AUTO in file</span></p>
-<p class="p20"><span class="s2">Weekly col C ★</span></p>
-<p class="p17"><span class="s2">Umar total hours this week — yellow cell</span></p>
-<p class="p20"><span class="s2">Weekly col H ★</span></p>
-<p class="p17"><span class="s2">Sekender total hours this week — yellow cell</span></p>
-<p class="p21"><span class="s3">Submit</span></p>
+<div class="header">
+  <div class="form-id">OPS-F3</div>
+  <div class="badge">AFTER EVERY SHIFT</div>
+  <h1>Shift Log</h1>
+  <div class="subtitle">Log Umar and Sekender shifts</div>
+  <div class="who">MAHOON</div>
+  <div class="desc">Log every shift for Umar and Sekender. Takes 30 seconds. Do it at the end of each shift.</div>
+</div>
+
+<form id="mainForm">
+
+<div class="section">
+  <div class="section-label">SHIFT</div>
+  <div class="section-title">Shift Details</div>
+
+  <div class="field">
+    <label>DATE <span class="req">*</span></label>
+    <input type="date" name="shift_date" required>
+    <div class="hint">→ Operations Sheet 7 Shift Log col A</div>
+  </div>
+
+  <div class="field">
+    <label>DAY <span class="req">*</span></label>
+    <select name="shift_day" required>
+      <option value="">Select…</option>
+      <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+      <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label>SERVICE <span class="req">*</span></label>
+    <select name="service" required>
+      <option value="">Select…</option>
+      <option>Lunch</option><option>Dinner</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label>STAFF MEMBER <span class="req">*</span></label>
+    <select name="staff_member" required>
+      <option value="">Select…</option>
+      <option>Umar</option><option>Sekender</option><option>Umar &amp; Sekender</option>
+    </select>
+    <div class="hint">→ col D</div>
+  </div>
+
+  <div class="field">
+    <label>START TIME <span class="req">*</span></label>
+    <input type="time" name="start_time" required id="startTime">
+    <div class="hint">→ col E</div>
+  </div>
+
+  <div class="field">
+    <label>END TIME <span class="req">*</span></label>
+    <input type="time" name="end_time" required id="endTime">
+    <div class="hint">→ col F</div>
+  </div>
+
+  <div class="field">
+    <label>HOURS WORKED</label>
+    <div class="hours-display" id="hoursDisplay">—</div>
+    <div class="hint">Auto-calculated → col G</div>
+    <input type="hidden" name="hours_worked" id="hoursWorked">
+  </div>
+
+  <div class="field">
+    <label>NOTES</label>
+    <textarea name="notes" rows="3" placeholder="Any notes about this shift…"></textarea>
+    <div class="hint">→ col — notes</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-label">WEEKLY</div>
+  <div class="section-title">Weekly Totals (fill at end of week only)</div>
+  <div class="desc" style="margin-bottom:16px;">Fill these only at the end of each person's last shift of the week.</div>
+
+  <div class="field">
+    <label>UMAR — TOTAL HOURS THIS WEEK</label>
+    <input type="number" name="umar_week_total" step="0.5" min="0" placeholder="0">
+    <div class="hint">→ Sheet 7 Weekly Summary col C (yellow)</div>
+  </div>
+
+  <div class="field">
+    <label>SEKENDER — TOTAL HOURS THIS WEEK</label>
+    <input type="number" name="sek_week_total" step="0.5" min="0" placeholder="0">
+    <div class="hint">→ Sheet 7 Weekly Summary col H (yellow)</div>
+  </div>
+</div>
+
+<div class="submit-wrap">
+  <div class="error-msg" id="errorMsg">Something went wrong. Please try again.</div>
+  <button type="submit">Submit</button>
+</div>
+
+</form>
+
+<div class="success" id="successMsg">
+  <h2>✓ Submitted</h2>
+  <p>Shift logged successfully.</p>
+</div>
+
+<script>
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyP9jMt-l1-U8uPIENgqeQW46fpZTIAgSDj3C2bPs-OJN-J8ITr913pYwt4hn5NFForhw/exec';
+
+function calcHours() {
+  const s = document.getElementById('startTime').value;
+  const e = document.getElementById('endTime').value;
+  if (s && e) {
+    const [sh, sm] = s.split(':').map(Number);
+    const [eh, em] = e.split(':').map(Number);
+    let mins = (eh * 60 + em) - (sh * 60 + sm);
+    if (mins < 0) mins += 24 * 60;
+    const hrs = (mins / 60).toFixed(1);
+    document.getElementById('hoursDisplay').textContent = hrs + ' hrs';
+    document.getElementById('hoursWorked').value = hrs;
+  }
+}
+
+document.getElementById('startTime').addEventListener('change', calcHours);
+document.getElementById('endTime').addEventListener('change', calcHours);
+
+document.getElementById('mainForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('button[type="submit"]');
+  const errMsg = document.getElementById('errorMsg');
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
+  errMsg.style.display = 'none';
+
+  const data = { _sheet: 'Shift_Log' };
+  new FormData(this).forEach((v, k) => { data[k] = v; });
+
+  try {
+    await fetch(SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    document.getElementById('mainForm').style.display = 'none';
+    document.querySelector('.header').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  } catch (err) {
+    errMsg.style.display = 'block';
+    btn.textContent = 'Submit';
+    btn.disabled = false;
+  }
+});
+</script>
 </body>
 </html>

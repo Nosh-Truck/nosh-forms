@@ -1,219 +1,417 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2299.77">
-  <style type="text/css">
-    body {background-color: #f2f2f2}
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 22.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px 'Helvetica Neue'; color: #878787; -webkit-text-stroke: #878787}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff; min-height: 11.0px}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; color: #878787; -webkit-text-stroke: #878787}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px 'Helvetica Neue'; color: #c1c1c1; -webkit-text-stroke: #c1c1c1; background-color: #212121}
-    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #c1c1c1; -webkit-text-stroke: #c1c1c1; background-color: #0a0a0a}
-    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px 'Helvetica Neue'; color: #be0004; -webkit-text-stroke: #be0004}
-    p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; font: 18.0px 'Helvetica Neue'; color: #0a0a0a; -webkit-text-stroke: #0a0a0a}
-    p.p11 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #535353; -webkit-text-stroke: #535353; background-color: #ffffff}
-    p.p12 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #0a0a0a; -webkit-text-stroke: #0a0a0a; background-color: #ffffff}
-    p.p13 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px Times; color: #0a0a0a; -webkit-text-stroke: #0a0a0a; background-color: #ffffff}
-    p.p14 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #0a0a0a; -webkit-text-stroke: #0a0a0a; min-height: 18.0px}
-    p.p15 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #878787; -webkit-text-stroke: #878787}
-    p.p16 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #535353; -webkit-text-stroke: #535353}
-    p.p17 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #0a0a0a; -webkit-text-stroke: #0a0a0a}
-    p.p18 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #535353; -webkit-text-stroke: #535353}
-    p.p19 {margin: 0.0px 0.0px 0.0px 0.0px; font: 18.0px 'Helvetica Neue'; color: #be0004; -webkit-text-stroke: #be0004}
-    p.p20 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    span.s1 {font-kerning: none; background-color: #0a0a0a}
-    span.s2 {font-kerning: none}
-    span.s3 {font-kerning: none; background-color: #be0004}
-    span.s4 {font-kerning: none; color: #ffffff; -webkit-text-stroke: 0px #ffffff}
-    span.s5 {font-kerning: none; color: #be0004; -webkit-text-stroke: 0px #be0004}
-    span.s6 {font: 16.0px Times; font-kerning: none}
-    span.s7 {font: 16.0px 'Helvetica Neue'; font-kerning: none}
-    span.s8 {font-kerning: none; background-color: #ffffff}
-    span.s9 {font-kerning: none; color: #be0004; background-color: #ffffff; -webkit-text-stroke: 0px #be0004}
-    span.s10 {font-kerning: none; background-color: #f2f2f2}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monthly Review — NOSH</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #111; font-family: 'Helvetica Neue', sans-serif; color: #f2f2f2; min-height: 100vh; }
+  .header { background: #0a0a0a; padding: 20px 16px 16px; border-bottom: 1px solid #222; }
+  .badge { font-size: 9px; color: #be0004; letter-spacing: 1px; font-weight: 600; margin-bottom: 6px; }
+  .form-id { font-size: 10px; color: #555; margin-bottom: 4px; }
+  h1 { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .subtitle { font-size: 13px; color: #666; }
+  .who { font-size: 10px; color: #aaa; background: #1a1a1a; padding: 3px 8px; border-radius: 3px; display: inline-block; margin-top: 8px; }
+  .desc { font-size: 12px; color: #888; margin-top: 6px; line-height: 1.5; }
+  .section { padding: 0 16px; margin-top: 24px; }
+  .section-label { font-size: 9px; color: #be0004; letter-spacing: 1px; font-weight: 600; margin-bottom: 4px; }
+  .section-title { font-size: 18px; font-weight: 600; color: #f2f2f2; margin-bottom: 12px; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: 11px; color: #888; letter-spacing: 0.5px; margin-bottom: 5px; }
+  .field label span.req { color: #be0004; }
+  .hint { font-size: 10px; color: #555; margin-top: 3px; }
+  .auto-calc { font-size: 20px; color: #be0004; font-weight: 700; margin: 6px 0; }
+  input[type="date"], input[type="text"], input[type="number"], select, textarea {
+    width: 100%; background: #1a1a1a; border: 1px solid #2a2a2a; color: #f2f2f2;
+    padding: 12px; border-radius: 6px; font-size: 15px; font-family: inherit;
+    -webkit-appearance: none; appearance: none;
+  }
+  select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' fill='none' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: #be0004; }
+  .divider { height: 1px; background: #1e1e1e; margin: 20px 0; }
+  .summary-box { background: #0a0a0a; border-radius: 8px; padding: 14px 16px; margin: 12px 0; }
+  .summary-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #1a1a1a; font-size: 13px; }
+  .summary-row:last-child { border-bottom: none; }
+  .summary-row .label { color: #888; }
+  .summary-row .value { color: #f2f2f2; font-weight: 500; }
+  .summary-row.highlight .value { color: #be0004; font-size: 15px; }
+  .submit-wrap { padding: 24px 16px 40px; }
+  button[type="submit"] {
+    width: 100%; background: #be0004; color: #fff; border: none;
+    padding: 16px; border-radius: 8px; font-size: 16px; font-weight: 600;
+    font-family: inherit; cursor: pointer; letter-spacing: 0.5px;
+  }
+  button[type="submit"]:active { background: #9a0003; }
+  .success { display: none; text-align: center; padding: 40px 16px; }
+  .success h2 { color: #4caf50; font-size: 22px; margin-bottom: 8px; }
+  .success p { color: #888; font-size: 14px; }
+  .error-msg { display: none; color: #be0004; font-size: 13px; margin-top: 8px; padding: 10px; background: #1a0000; border-radius: 6px; }
+</style>
 </head>
 <body>
-<p class="p1"><span class="s1">https://script.google.com/macros/s/AKfycbyP9jMt-l1-U8uPIENgqeQW46fpZTIAgSDj3C2bPs-OJN-J8ITr913pYwt4hn5NFForhw/execNOSH</span></p>
-<p class="p2"><span class="s1">FIN-F2</span></p>
-<p class="p3"><span class="s2"></span><br></p>
-<p class="p4"><span class="s3">FIRST OF EVERY MONTH</span></p>
-<h1 style="margin: 0.0px 0.0px 6.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff"><span class="s1">Monthly Review</span></h1>
-<p class="p6"><span class="s1">P&amp;L · Labour · Fixed Costs · Cash</span></p>
-<p class="p7"><span class="s2">CONSTANTINOS ONLY</span></p>
-<p class="p8"><span class="s4">Fill on the 1st of every month.</span><span class="s2"> Have your bank statement, POS report, Wolt and Foody dashboards open. This feeds Finance Sheet 3 (P&amp;L) and Sheet 6 (Target Tracker).</span></p>
-<p class="p9"><span class="s2">PERIOD</span></p>
-<p class="p10"><span class="s2">Month Being Reported</span></p>
-<p class="p11"><span class="s2">MONTH / YEAR</span><span class="s5">*</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">Select…</span></p>
-<p class="p13"><span class="s7"><span class="Apple-converted-space">          </span></span><span class="s2">January 2025</span></p>
-<p class="p13"><span class="s7"><span class="Apple-converted-space">          </span></span><span class="s2">February 2025</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">March 2025</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">April 2025</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">May 2025</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">June 2025</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">July 2025</span></p>
-<p class="p13"><span class="s7"><span class="Apple-converted-space">          </span></span><span class="s2">August 2025</span></p>
-<p class="p13"><span class="s7"><span class="Apple-converted-space">          </span></span><span class="s2">September 2025</span></p>
-<p class="p13"><span class="s7"><span class="Apple-converted-space">          </span></span><span class="s2">October 2025</span></p>
-<p class="p13"><span class="s7"><span class="Apple-converted-space">          </span></span><span class="s2">November 2025</span></p>
-<p class="p13"><span class="s7"><span class="Apple-converted-space">          </span></span><span class="s2">December 2025</span></p>
-<p class="p13"><span class="s7"><span class="Apple-converted-space">          </span></span><span class="s2">January 2026</span></p>
-<p class="p13"><span class="s7"><span class="Apple-converted-space">          </span></span><span class="s2">February 2026</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">March 2026</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">April 2026</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">May 2026</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">June 2026</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">July 2026</span></p>
-<p class="p13"><span class="s7"><span class="Apple-converted-space">          </span></span><span class="s2">August 2026</span></p>
-<p class="p13"><span class="s7"><span class="Apple-converted-space">          </span></span><span class="s2">September 2026</span></p>
-<p class="p13"><span class="s7"><span class="Apple-converted-space">          </span></span><span class="s2">October 2026</span></p>
-<p class="p13"><span class="s7"><span class="Apple-converted-space">          </span></span><span class="s2">November 2026</span></p>
-<p class="p13"><span class="s7"><span class="Apple-converted-space">          </span></span><span class="s2">December 2026</span></p>
-<p class="p14"><span class="s8"><span class="Apple-converted-space">        </span></span></p>
-<p class="p15"><span class="s8">→ Finance Sheet 3 cell C4</span></p>
-<p class="p9"><span class="s2">SECTION 1</span></p>
-<p class="p10"><span class="s2">Revenue</span></p>
-<p class="p16"><span class="s8">DINE-IN REVENUE</span><span class="s9">*</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p15"><span class="s8">Square or Hiopos monthly total → Sheet 3 row 7 col B</span></p>
-<p class="p16"><span class="s8">WOLT REVENUE NET</span><span class="s9">*</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p15"><span class="s8">Wolt Partner monthly net payout → row 8 col B</span></p>
-<p class="p16"><span class="s8">FOODY REVENUE NET</span><span class="s9">*</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p15"><span class="s8">Foody Partner monthly net payout → row 9 col B</span></p>
-<p class="p16"><span class="s8">OTHER REVENUE</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p15"><span class="s8">Any other income → row 10 col B</span></p>
-<p class="p18"><span class="s10">Total Revenue</span></p>
-<p class="p19"><span class="s10">—</span></p>
-<p class="p9"><span class="s2">SECTION 2</span></p>
-<p class="p10"><span class="s2">Food Cost</span></p>
-<p class="p16"><span class="s8">FOOD COST %</span></p>
-<p class="p15"><span class="s8">Default 25.7 — only change if menu mix shifted → Sheet 3 row 14 col B</span></p>
-<p class="p16"><span class="s8">CASH FOOD — ANTONIS</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p15"><span class="s8">Ops Sheet 8 Food &amp; Veg monthly total → Sheet 3 row 16 col B</span></p>
-<p class="p16"><span class="s8">CASH FOOD — MAHOON URGENT</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p15"><span class="s8">Urgent items from Ops Sheet 8 → add to row 16</span></p>
-<p class="p16"><span class="s8">GAS — STELIOS</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p15"><span class="s8">Ops Sheet 8 Gas monthly total → Sheet 3 row 31 col B</span></p>
-<p class="p9"><span class="s2">SECTION 3</span></p>
-<p class="p10"><span class="s2">Labour</span></p>
-<p class="p16"><span class="s8">MAHOON GROSS SALARY</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p15"><span class="s8">Fixed €2,170 → Sheet 3 row 22 col B</span></p>
-<p class="p16"><span class="s8">UMAR GROSS WAGES</span><span class="s9">*</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p15"><span class="s8">Ops Sheet 7 Monthly Summary col C → Sheet 3 row 23 col B</span></p>
-<p class="p16"><span class="s8">SEKENDER GROSS WAGES</span><span class="s9">*</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p15"><span class="s8">Ops Sheet 7 Monthly Summary col D → Sheet 3 row 24 col B</span></p>
-<p class="p16"><span class="s8">CONSTANTINOS SALARY</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p15"><span class="s8">→ Sheet 3 row 25 col B</span></p>
-<p class="p18"><span class="s10">Total Gross Wages</span></p>
-<p class="p10"><span class="s10">—</span></p>
-<p class="p18"><span class="s10">Social Insurance 8.8%</span></p>
-<p class="p10"><span class="s10">—</span></p>
-<p class="p18"><span class="s10">Total Labour All-In</span></p>
-<p class="p19"><span class="s10">—</span></p>
-<p class="p9"><span class="s2">SECTION 4</span></p>
-<p class="p10"><span class="s2">Fixed Costs</span></p>
-<p class="p16"><span class="s8">RENT</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p15"><span class="s8">→ Sheet 3 row 30 col B</span></p>
-<p class="p16"><span class="s8">WATER</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p15"><span class="s8">Confirm actual amount → row 32 col B</span></p>
-<p class="p16"><span class="s8">INTERNET &amp; PHONE</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p15"><span class="s8">→ row 33 col B</span></p>
-<p class="p16"><span class="s8">POS INTEGRATION</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p15"><span class="s8">Captain Spec — update when changed → row 34 col B</span></p>
-<p class="p16"><span class="s8">HIOPOS</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p15"><span class="s8">Set to 0 when cancelled → row 35 col B</span></p>
-<p class="p16"><span class="s8">ACCOUNTING</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p15"><span class="s8">~€91.67/month → row 36 col B</span></p>
-<p class="p16"><span class="s8">PEST CONTROL — EUROPESS</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p15"><span class="s8">→ row 37 col B</span></p>
-<p class="p16"><span class="s8">INSURANCE</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p15"><span class="s8">Annual cost ÷ 12 → row 38 col B</span></p>
-<p class="p18"><span class="s10">Total Fixed Costs</span></p>
-<p class="p19"><span class="s10">—</span></p>
-<p class="p9"><span class="s2">RESULTS</span></p>
-<p class="p10"><span class="s2">P&amp;L Summary</span></p>
-<p class="p18"><span class="s10">Gross Profit</span></p>
-<p class="p10"><span class="s10">—</span></p>
-<p class="p18"><span class="s10">Gross Margin %</span></p>
-<p class="p10"><span class="s10">—</span></p>
-<p class="p18"><span class="s10">Operating Profit</span></p>
-<p class="p19"><span class="s10">—</span></p>
-<p class="p18"><span class="s10">vs €10,000 Goal</span></p>
-<p class="p10"><span class="s10">—</span></p>
-<p class="p18"><span class="s10">% of Goal Achieved</span></p>
-<p class="p10"><span class="s10">—</span></p>
-<p class="p9"><span class="s2">SECTION 5</span></p>
-<p class="p10"><span class="s2">Cash Position</span></p>
-<p class="p16"><span class="s8">OPENING BALANCE</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p15"><span class="s8">→ Sheet 4 cell C4</span></p>
-<p class="p16"><span class="s8">CLOSING BALANCE</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p15"><span class="s8">End of month</span></p>
-<p class="p16"><span class="s8">LARGE PAYMENTS EXPECTED NEXT 30 DAYS</span></p>
-<p class="p9"><span class="s2">SECTION 6</span></p>
-<p class="p10"><span class="s2">Key Metrics</span></p>
-<p class="p16"><span class="s8">TOTAL COVERS</span></p>
-<p class="p15"><span class="s8">→ Sheet 6 col K</span></p>
-<p class="p16"><span class="s8">AVG SPEND PER COVER</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p15"><span class="s8">→ Sheet 6 col J</span></p>
-<p class="p11"><span class="s2">BEST DAY</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">Select…</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">Monday</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">Tuesday</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">Wednesday</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">Thursday</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">Friday</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">Saturday</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">Sunday</span></p>
-<p class="p14"><span class="s8"><span class="Apple-converted-space">        </span></span></p>
-<p class="p11"><span class="s2">WORST DAY</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">Select…</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">Monday</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">Tuesday</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">Wednesday</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">Thursday</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">Friday</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">Saturday</span></p>
-<p class="p12"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s6">Sunday</span></p>
-<p class="p14"><span class="s8"><span class="Apple-converted-space">        </span></span></p>
-<p class="p16"><span class="s8">WOLT % OF REVENUE</span></p>
-<p class="p15"><span class="s8">→ Sheet 6 col L</span></p>
-<p class="p16"><span class="s8">FOODY % OF REVENUE</span></p>
-<p class="p15"><span class="s8">→ Sheet 6 col M</span></p>
-<p class="p9"><span class="s2">DECISIONS</span></p>
-<p class="p10"><span class="s2">Next Month Plan</span></p>
-<p class="p16"><span class="s8">MAIN PROBLEM THIS MONTH</span></p>
-<p class="p16"><span class="s8">ACTION TO FIX IT</span></p>
-<p class="p16"><span class="s8">REVENUE TARGET NEXT MONTH</span></p>
-<p class="p17"><span class="s8">€</span></p>
-<p class="p16"><span class="s8">FOCUS AREA</span></p>
-<p class="p20"><span class="s3">Submit</span></p>
+<div class="header">
+  <div class="form-id">FIN-F2</div>
+  <div class="badge">FIRST OF EVERY MONTH</div>
+  <h1>Monthly Review</h1>
+  <div class="subtitle">P&amp;L · Labour · Fixed Costs · Cash</div>
+  <div class="who">CONSTANTINOS ONLY</div>
+  <div class="desc">Fill on the 1st of every month. Have your bank statement, POS report, Wolt and Foody dashboards open.</div>
+</div>
+
+<form id="mainForm">
+
+<!-- PERIOD -->
+<div class="section">
+  <div class="section-label">PERIOD</div>
+  <div class="section-title">Month Being Reported</div>
+  <div class="field">
+    <label>MONTH / YEAR <span class="req">*</span></label>
+    <select name="month_year" required>
+      <option value="">Select…</option>
+      <option>January 2025</option><option>February 2025</option><option>March 2025</option>
+      <option>April 2025</option><option>May 2025</option><option>June 2025</option>
+      <option>July 2025</option><option>August 2025</option><option>September 2025</option>
+      <option>October 2025</option><option>November 2025</option><option>December 2025</option>
+      <option>January 2026</option><option>February 2026</option><option>March 2026</option>
+      <option>April 2026</option><option>May 2026</option><option>June 2026</option>
+      <option>July 2026</option><option>August 2026</option><option>September 2026</option>
+      <option>October 2026</option><option>November 2026</option><option>December 2026</option>
+    </select>
+    <div class="hint">→ Finance Sheet 3 cell C4</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 1 REVENUE -->
+<div class="section">
+  <div class="section-label">SECTION 1</div>
+  <div class="section-title">Revenue</div>
+
+  <div class="field">
+    <label>DINE-IN REVENUE <span class="req">*</span></label>
+    <input type="number" name="dine_in_revenue" id="dinein" step="0.01" min="0" placeholder="€0.00" required oninput="calcTotals()">
+    <div class="hint">Square or Hiopos monthly total → Sheet 3 row 7 col B</div>
+  </div>
+  <div class="field">
+    <label>WOLT REVENUE NET <span class="req">*</span></label>
+    <input type="number" name="wolt_revenue" id="wolt" step="0.01" min="0" placeholder="€0.00" required oninput="calcTotals()">
+    <div class="hint">Wolt Partner monthly net payout → row 8 col B</div>
+  </div>
+  <div class="field">
+    <label>FOODY REVENUE NET <span class="req">*</span></label>
+    <input type="number" name="foody_revenue" id="foody" step="0.01" min="0" placeholder="€0.00" required oninput="calcTotals()">
+    <div class="hint">Foody Partner monthly net payout → row 9 col B</div>
+  </div>
+  <div class="field">
+    <label>OTHER REVENUE</label>
+    <input type="number" name="other_revenue" id="other_rev" step="0.01" min="0" placeholder="€0.00" oninput="calcTotals()">
+    <div class="hint">Any other income → row 10 col B</div>
+  </div>
+  <div class="summary-box">
+    <div class="summary-row highlight"><span class="label">Total Revenue</span><span class="value" id="total_rev">€—</span></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 2 FOOD COST -->
+<div class="section">
+  <div class="section-label">SECTION 2</div>
+  <div class="section-title">Food Cost</div>
+
+  <div class="field">
+    <label>FOOD COST %</label>
+    <input type="number" name="food_cost_pct" id="fc_pct" step="0.1" min="0" max="100" placeholder="25.7" value="25.7" oninput="calcTotals()">
+    <div class="hint">Default 25.7 — only change if menu mix shifted → Sheet 3 row 14 col B</div>
+  </div>
+  <div class="field">
+    <label>CASH FOOD — ANTONIS</label>
+    <input type="number" name="cash_food_antonis" step="0.01" min="0" placeholder="€0.00">
+    <div class="hint">Ops Sheet 8 Food &amp; Veg monthly total → Sheet 3 row 16 col B</div>
+  </div>
+  <div class="field">
+    <label>CASH FOOD — MAHOON URGENT</label>
+    <input type="number" name="cash_food_mahoon" step="0.01" min="0" placeholder="€0.00">
+    <div class="hint">Urgent items from Ops Sheet 8 → add to row 16</div>
+  </div>
+  <div class="field">
+    <label>GAS — STELIOS</label>
+    <input type="number" name="gas_stelios" step="0.01" min="0" placeholder="€0.00">
+    <div class="hint">Ops Sheet 8 Gas monthly total → Sheet 3 row 31 col B</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 3 LABOUR -->
+<div class="section">
+  <div class="section-label">SECTION 3</div>
+  <div class="section-title">Labour</div>
+
+  <div class="field">
+    <label>MAHOON GROSS SALARY</label>
+    <input type="number" name="mahoon_salary" id="mahoon_sal" step="0.01" min="0" placeholder="€2,170.00" value="2170" oninput="calcTotals()">
+    <div class="hint">Fixed €2,170 → Sheet 3 row 22 col B</div>
+  </div>
+  <div class="field">
+    <label>UMAR GROSS WAGES <span class="req">*</span></label>
+    <input type="number" name="umar_wages" id="umar_wages" step="0.01" min="0" placeholder="€0.00" required oninput="calcTotals()">
+    <div class="hint">Ops Sheet 7 Monthly Summary col C → Sheet 3 row 23 col B</div>
+  </div>
+  <div class="field">
+    <label>SEKENDER GROSS WAGES <span class="req">*</span></label>
+    <input type="number" name="sek_wages" id="sek_wages" step="0.01" min="0" placeholder="€0.00" required oninput="calcTotals()">
+    <div class="hint">Ops Sheet 7 Monthly Summary col D → Sheet 3 row 24 col B</div>
+  </div>
+  <div class="field">
+    <label>CONSTANTINOS SALARY</label>
+    <input type="number" name="cos_salary" id="cos_sal" step="0.01" min="0" placeholder="€0.00" oninput="calcTotals()">
+    <div class="hint">→ Sheet 3 row 25 col B</div>
+  </div>
+  <div class="summary-box">
+    <div class="summary-row"><span class="label">Total Gross Wages</span><span class="value" id="total_wages">€—</span></div>
+    <div class="summary-row"><span class="label">Social Insurance 8.8%</span><span class="value" id="si_amount">€—</span></div>
+    <div class="summary-row highlight"><span class="label">Total Labour All-In</span><span class="value" id="total_labour">€—</span></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 4 FIXED COSTS -->
+<div class="section">
+  <div class="section-label">SECTION 4</div>
+  <div class="section-title">Fixed Costs</div>
+
+  <div class="field">
+    <label>RENT</label>
+    <input type="number" name="rent" id="rent" step="0.01" min="0" placeholder="€0.00" oninput="calcTotals()">
+    <div class="hint">→ Sheet 3 row 30 col B</div>
+  </div>
+  <div class="field">
+    <label>WATER</label>
+    <input type="number" name="water" id="water" step="0.01" min="0" placeholder="€0.00" oninput="calcTotals()">
+    <div class="hint">Confirm actual amount → row 32 col B</div>
+  </div>
+  <div class="field">
+    <label>INTERNET &amp; PHONE</label>
+    <input type="number" name="internet_phone" id="internet" step="0.01" min="0" placeholder="€0.00" oninput="calcTotals()">
+    <div class="hint">→ row 33 col B</div>
+  </div>
+  <div class="field">
+    <label>POS INTEGRATION</label>
+    <input type="number" name="pos_integration" id="pos" step="0.01" min="0" placeholder="€0.00" oninput="calcTotals()">
+    <div class="hint">Captain Spec → row 34 col B</div>
+  </div>
+  <div class="field">
+    <label>HIOPOS</label>
+    <input type="number" name="hiopos" id="hiopos" step="0.01" min="0" placeholder="€0.00" oninput="calcTotals()">
+    <div class="hint">Set to 0 when cancelled → row 35 col B</div>
+  </div>
+  <div class="field">
+    <label>ACCOUNTING</label>
+    <input type="number" name="accounting" id="accounting" step="0.01" min="0" placeholder="€91.67" oninput="calcTotals()">
+    <div class="hint">~€91.67/month → row 36 col B</div>
+  </div>
+  <div class="field">
+    <label>PEST CONTROL — EUROPESS</label>
+    <input type="number" name="pest_control" id="pest" step="0.01" min="0" placeholder="€0.00" oninput="calcTotals()">
+    <div class="hint">→ row 37 col B</div>
+  </div>
+  <div class="field">
+    <label>INSURANCE</label>
+    <input type="number" name="insurance" id="insurance" step="0.01" min="0" placeholder="€0.00" oninput="calcTotals()">
+    <div class="hint">Annual cost ÷ 12 → row 38 col B</div>
+  </div>
+  <div class="summary-box">
+    <div class="summary-row highlight"><span class="label">Total Fixed Costs</span><span class="value" id="total_fixed">€—</span></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- RESULTS -->
+<div class="section">
+  <div class="section-label">RESULTS</div>
+  <div class="section-title">P&amp;L Summary</div>
+  <div class="summary-box">
+    <div class="summary-row"><span class="label">Gross Profit</span><span class="value" id="gross_profit">€—</span></div>
+    <div class="summary-row"><span class="label">Gross Margin %</span><span class="value" id="gross_margin">—</span></div>
+    <div class="summary-row highlight"><span class="label">Operating Profit</span><span class="value" id="op_profit">€—</span></div>
+    <div class="summary-row"><span class="label">vs €10,000 Goal</span><span class="value" id="vs_target">—</span></div>
+    <div class="summary-row"><span class="label">% of Goal Achieved</span><span class="value" id="pct_target">—</span></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 5 CASH -->
+<div class="section">
+  <div class="section-label">SECTION 5</div>
+  <div class="section-title">Cash Position</div>
+
+  <div class="field">
+    <label>OPENING BALANCE</label>
+    <input type="number" name="bank_open" step="0.01" placeholder="€0.00">
+    <div class="hint">→ Sheet 4 cell C4</div>
+  </div>
+  <div class="field">
+    <label>CLOSING BALANCE</label>
+    <input type="number" name="bank_close" step="0.01" placeholder="€0.00">
+    <div class="hint">End of month</div>
+  </div>
+  <div class="field">
+    <label>LARGE PAYMENTS EXPECTED NEXT 30 DAYS</label>
+    <textarea name="large_payments" rows="3" placeholder="e.g. VAT payment €1,200 due 15th…"></textarea>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 6 KEY METRICS -->
+<div class="section">
+  <div class="section-label">SECTION 6</div>
+  <div class="section-title">Key Metrics</div>
+
+  <div class="field">
+    <label>TOTAL COVERS</label>
+    <input type="number" name="total_covers" min="0" placeholder="0">
+    <div class="hint">→ Sheet 6 col K</div>
+  </div>
+  <div class="field">
+    <label>AVG SPEND PER COVER</label>
+    <input type="number" name="avg_spend" step="0.01" min="0" placeholder="€0.00">
+    <div class="hint">→ Sheet 6 col J</div>
+  </div>
+  <div class="field">
+    <label>BEST DAY</label>
+    <select name="best_day">
+      <option value="">Select…</option>
+      <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+      <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>WORST DAY</label>
+    <select name="worst_day">
+      <option value="">Select…</option>
+      <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+      <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>WOLT % OF REVENUE</label>
+    <input type="number" name="wolt_pct" step="0.1" min="0" max="100" placeholder="0.0">
+    <div class="hint">→ Sheet 6 col L</div>
+  </div>
+  <div class="field">
+    <label>FOODY % OF REVENUE</label>
+    <input type="number" name="foody_pct" step="0.1" min="0" max="100" placeholder="0.0">
+    <div class="hint">→ Sheet 6 col M</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- DECISIONS -->
+<div class="section">
+  <div class="section-label">DECISIONS</div>
+  <div class="section-title">Next Month Plan</div>
+
+  <div class="field">
+    <label>MAIN PROBLEM THIS MONTH</label>
+    <textarea name="main_problem" rows="3" placeholder="What was the biggest issue…"></textarea>
+  </div>
+  <div class="field">
+    <label>ACTION TO FIX IT</label>
+    <textarea name="main_action" rows="3" placeholder="What will you do about it…"></textarea>
+  </div>
+  <div class="field">
+    <label>REVENUE TARGET NEXT MONTH</label>
+    <input type="number" name="next_target" step="0.01" min="0" placeholder="€0.00">
+  </div>
+  <div class="field">
+    <label>FOCUS AREA</label>
+    <input type="text" name="focus_area" placeholder="e.g. Delivery growth, Labour reduction…">
+  </div>
+</div>
+
+<div class="submit-wrap">
+  <div class="error-msg" id="errorMsg">Something went wrong. Please try again.</div>
+  <button type="submit">Submit</button>
+</div>
+
+</form>
+
+<div class="success" id="successMsg">
+  <h2>✓ Submitted</h2>
+  <p>Monthly review logged successfully.</p>
+</div>
+
+<script>
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyP9jMt-l1-U8uPIENgqeQW46fpZTIAgSDj3C2bPs-OJN-J8ITr913pYwt4hn5NFForhw/exec';
+
+function v(id) { return parseFloat(document.getElementById(id)?.value) || 0; }
+function fmt(n) { return '€' + n.toFixed(2); }
+
+function calcTotals() {
+  const totalRev = v('dinein') + v('wolt') + v('foody') + v('other_rev');
+  document.getElementById('total_rev').textContent = fmt(totalRev);
+
+  const totalWages = v('mahoon_sal') + v('umar_wages') + v('sek_wages') + v('cos_sal');
+  const si = totalWages * 0.088;
+  const totalLabour = totalWages + si;
+  document.getElementById('total_wages').textContent = fmt(totalWages);
+  document.getElementById('si_amount').textContent = fmt(si);
+  document.getElementById('total_labour').textContent = fmt(totalLabour);
+
+  const totalFixed = v('rent') + v('water') + v('internet') + v('pos') + v('hiopos') + v('accounting') + v('pest') + v('insurance');
+  document.getElementById('total_fixed').textContent = fmt(totalFixed);
+
+  const fcPct = v('fc_pct') / 100;
+  const foodCost = totalRev * fcPct;
+  const grossProfit = totalRev - foodCost;
+  const grossMargin = totalRev > 0 ? (grossProfit / totalRev * 100).toFixed(1) : '—';
+  const opProfit = grossProfit - totalLabour - totalFixed;
+  const goal = 10000;
+  const vsTarget = opProfit - goal;
+  const pctTarget = (opProfit / goal * 100).toFixed(1);
+
+  document.getElementById('gross_profit').textContent = fmt(grossProfit);
+  document.getElementById('gross_margin').textContent = grossMargin + '%';
+  document.getElementById('op_profit').textContent = fmt(opProfit);
+  document.getElementById('vs_target').textContent = (vsTarget >= 0 ? '+' : '') + fmt(vsTarget);
+  document.getElementById('pct_target').textContent = pctTarget + '%';
+}
+
+document.getElementById('mainForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('button[type="submit"]');
+  const errMsg = document.getElementById('errorMsg');
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
+  errMsg.style.display = 'none';
+
+  const data = { _sheet: 'Monthly_Review' };
+  new FormData(this).forEach((val, k) => { data[k] = val; });
+
+  try {
+    await fetch(SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    document.getElementById('mainForm').style.display = 'none';
+    document.querySelector('.header').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  } catch (err) {
+    errMsg.style.display = 'block';
+    btn.textContent = 'Submit';
+    btn.disabled = false;
+  }
+});
+</script>
 </body>
 </html>

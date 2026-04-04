@@ -1,283 +1,433 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2299.77">
-  <style type="text/css">
-    body {background-color: #f2f2f2}
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 22.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px 'Helvetica Neue'; color: #878787; -webkit-text-stroke: #878787}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff; min-height: 11.0px}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; color: #878787; -webkit-text-stroke: #878787}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px 'Helvetica Neue'; color: #c1c1c1; -webkit-text-stroke: #c1c1c1; background-color: #212121}
-    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #c1c1c1; -webkit-text-stroke: #c1c1c1; background-color: #0a0a0a}
-    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px 'Helvetica Neue'; color: #be0004; -webkit-text-stroke: #be0004}
-    p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; font: 18.0px 'Helvetica Neue'; color: #0a0a0a; -webkit-text-stroke: #0a0a0a}
-    p.p11 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #535353; -webkit-text-stroke: #535353}
-    p.p12 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #878787; -webkit-text-stroke: #878787}
-    p.p13 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #535353; -webkit-text-stroke: #535353; background-color: #ffffff}
-    p.p14 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #0a0a0a; -webkit-text-stroke: #0a0a0a; background-color: #ffffff}
-    p.p15 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #0a0a0a; -webkit-text-stroke: #0a0a0a; min-height: 18.0px}
-    p.p16 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px Times; color: #0a0a0a; -webkit-text-stroke: #0a0a0a; background-color: #ffffff}
-    p.p17 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #0a0a0a; -webkit-text-stroke: #0a0a0a}
-    p.p18 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px 'Helvetica Neue'; color: #878787; -webkit-text-stroke: #878787}
-    p.p19 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    span.s1 {font-kerning: none; background-color: #0a0a0a}
-    span.s2 {font-kerning: none}
-    span.s3 {font-kerning: none; background-color: #be0004}
-    span.s4 {font-kerning: none; color: #ffffff; -webkit-text-stroke: 0px #ffffff}
-    span.s5 {font-kerning: none; background-color: #ffffff}
-    span.s6 {font-kerning: none; color: #be0004; background-color: #ffffff; -webkit-text-stroke: 0px #be0004}
-    span.s7 {font-kerning: none; color: #be0004; -webkit-text-stroke: 0px #be0004}
-    span.s8 {font: 16.0px Times; font-kerning: none}
-    span.s9 {font: 16.0px 'Helvetica Neue'; font-kerning: none}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Operations — NOSH</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #111; font-family: 'Helvetica Neue', sans-serif; color: #f2f2f2; min-height: 100vh; }
+  .header { background: #0a0a0a; padding: 20px 16px 16px; border-bottom: 1px solid #222; }
+  .badge { font-size: 9px; color: #be0004; letter-spacing: 1px; font-weight: 600; margin-bottom: 6px; }
+  .form-id { font-size: 10px; color: #555; margin-bottom: 4px; }
+  h1 { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .subtitle { font-size: 13px; color: #666; }
+  .who { font-size: 10px; color: #aaa; background: #1a1a1a; padding: 3px 8px; border-radius: 3px; display: inline-block; margin-top: 8px; }
+  .desc { font-size: 12px; color: #888; margin-top: 6px; line-height: 1.5; }
+  .section { padding: 0 16px; margin-top: 24px; }
+  .section-label { font-size: 9px; color: #be0004; letter-spacing: 1px; font-weight: 600; margin-bottom: 4px; }
+  .section-title { font-size: 18px; font-weight: 600; color: #f2f2f2; margin-bottom: 12px; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: 11px; color: #888; letter-spacing: 0.5px; margin-bottom: 5px; }
+  .field label span.req { color: #be0004; }
+  .hint { font-size: 10px; color: #555; margin-top: 3px; }
+  input[type="date"], input[type="text"], input[type="number"], select, textarea {
+    width: 100%; background: #1a1a1a; border: 1px solid #2a2a2a; color: #f2f2f2;
+    padding: 12px; border-radius: 6px; font-size: 15px; font-family: inherit;
+    -webkit-appearance: none; appearance: none;
+  }
+  select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' fill='none' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: #be0004; }
+  .item-block { background: #151515; border: 1px solid #222; border-radius: 8px; padding: 14px; margin-bottom: 12px; }
+  .item-title { font-size: 11px; color: #555; letter-spacing: 1px; font-weight: 600; margin-bottom: 12px; }
+  .divider { height: 1px; background: #1e1e1e; margin: 20px 0; }
+  .submit-wrap { padding: 24px 16px 40px; }
+  button[type="submit"] {
+    width: 100%; background: #be0004; color: #fff; border: none;
+    padding: 16px; border-radius: 8px; font-size: 16px; font-weight: 600;
+    font-family: inherit; cursor: pointer; letter-spacing: 0.5px;
+  }
+  button[type="submit"]:active { background: #9a0003; }
+  .success { display: none; text-align: center; padding: 40px 16px; }
+  .success h2 { color: #4caf50; font-size: 22px; margin-bottom: 8px; }
+  .success p { color: #888; font-size: 14px; }
+  .error-msg { display: none; color: #be0004; font-size: 13px; margin-top: 8px; padding: 10px; background: #1a0000; border-radius: 6px; }
+</style>
 </head>
 <body>
-<p class="p1"><span class="s1">https://script.google.com/macros/s/AKfycbyP9jMt-l1-U8uPIENgqeQW46fpZTIAgSDj3C2bPs-OJN-J8ITr913pYwt4hn5NFForhw/execNOSH</span></p>
-<p class="p2"><span class="s1">OPS-F1</span></p>
-<p class="p3"><span class="s2"></span><br></p>
-<p class="p4"><span class="s3">FILL EVERY NIGHT AFTER CLOSE</span></p>
-<h1 style="margin: 0.0px 0.0px 6.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff"><span class="s1">Daily Operations</span></h1>
-<p class="p6"><span class="s1">Sales · Deliveries · Cash Purchases</span></p>
-<p class="p7"><span class="s2">MAHOON</span></p>
-<p class="p8"><span class="s4">Fill every night after close.</span><span class="s2"> Three sections — sales, deliveries, cash. Takes 3 minutes.</span></p>
-<p class="p9"><span class="s2">SECTION A</span></p>
-<p class="p10"><span class="s2">Daily Sales</span></p>
-<p class="p11"><span class="s5">DATE</span><span class="s6">*</span></p>
-<p class="p12"><span class="s5">→ Finance Sheet 1 col A</span></p>
-<p class="p13"><span class="s2">DAY</span><span class="s7">*</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Select…</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Monday</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Tuesday</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Wednesday</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Thursday</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Friday</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Saturday</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Sunday</span></p>
-<p class="p15"><span class="s5"><span class="Apple-converted-space">        </span></span></p>
-<p class="p13"><span class="s2">SERVICE</span><span class="s7">*</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Select…</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Lunch only</span></p>
-<p class="p16"><span class="s9"><span class="Apple-converted-space">          </span></span><span class="s2">Dinner only</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Both</span></p>
-<p class="p15"><span class="s5"><span class="Apple-converted-space">        </span></span></p>
-<p class="p11"><span class="s5">DINE-IN REVENUE</span><span class="s6">*</span></p>
-<p class="p17"><span class="s5">€</span></p>
-<p class="p12"><span class="s5">Hiopos / Square end-of-day report → col D</span></p>
-<p class="p11"><span class="s5">WOLT REVENUE</span></p>
-<p class="p17"><span class="s5">€</span></p>
-<p class="p12"><span class="s5">NET after commission → col E</span></p>
-<p class="p11"><span class="s5">FOODY REVENUE</span></p>
-<p class="p17"><span class="s5">€</span></p>
-<p class="p12"><span class="s5">NET after commission → col F</span></p>
-<p class="p11"><span class="s5">LUNCH COVERS</span></p>
-<p class="p12"><span class="s5">→ col I</span></p>
-<p class="p11"><span class="s5">DINNER COVERS</span></p>
-<p class="p12"><span class="s5">→ col J</span></p>
-<p class="p11"><span class="s5">NOTES</span></p>
-<p class="p9"><span class="s2">SECTION B</span></p>
-<p class="p10"><span class="s2">Deliveries Received</span></p>
-<p class="p8"><span class="s2">Leave blank if no delivery arrived today.</span></p>
-<p class="p18"><span class="s5">ITEM 1</span></p>
-<p class="p13"><span class="s2">SUPPLIER</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Select…</span></p>
-<p class="p16"><span class="s9"><span class="Apple-converted-space">          </span></span><span class="s2">Food Mentors</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Makro</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Pilakouris</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Atikouris</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Morepack</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Multipack</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Europess</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Other</span></p>
-<p class="p15"><span class="s5"><span class="Apple-converted-space">        </span></span></p>
-<p class="p11"><span class="s5">INGREDIENT / ITEM</span></p>
-<p class="p12"><span class="s5">→ Operations Sheet 2 col C</span></p>
-<p class="p11"><span class="s5">QTY</span></p>
-<p class="p12"><span class="s5">→ col E</span></p>
-<p class="p13"><span class="s2">UNIT</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Select…</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">kg</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">L</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">pc</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">bottle</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">pack</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">box</span></p>
-<p class="p15"><span class="s5"><span class="Apple-converted-space">        </span></span></p>
-<p class="p11"><span class="s5">UNIT COST €</span></p>
-<p class="p17"><span class="s5">€</span></p>
-<p class="p12"><span class="s5">→ col G</span></p>
-<p class="p11"><span class="s5">INVOICE #</span></p>
-<p class="p12"><span class="s5">→ col I</span></p>
-<p class="p18"><span class="s5">ITEM 2</span></p>
-<p class="p13"><span class="s2">SUPPLIER</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Select…</span></p>
-<p class="p16"><span class="s9"><span class="Apple-converted-space">          </span></span><span class="s2">Food Mentors</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Makro</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Pilakouris</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Atikouris</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Morepack</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Multipack</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Europess</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Other</span></p>
-<p class="p15"><span class="s5"><span class="Apple-converted-space">        </span></span></p>
-<p class="p11"><span class="s5">INGREDIENT / ITEM</span></p>
-<p class="p12"><span class="s5">→ Operations Sheet 2 col C</span></p>
-<p class="p11"><span class="s5">QTY</span></p>
-<p class="p12"><span class="s5">→ col E</span></p>
-<p class="p13"><span class="s2">UNIT</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Select…</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">kg</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">L</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">pc</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">bottle</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">pack</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">box</span></p>
-<p class="p15"><span class="s5"><span class="Apple-converted-space">        </span></span></p>
-<p class="p11"><span class="s5">UNIT COST €</span></p>
-<p class="p17"><span class="s5">€</span></p>
-<p class="p12"><span class="s5">→ col G</span></p>
-<p class="p11"><span class="s5">INVOICE #</span></p>
-<p class="p12"><span class="s5">→ col I</span></p>
-<p class="p18"><span class="s5">ITEM 3</span></p>
-<p class="p13"><span class="s2">SUPPLIER</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Select…</span></p>
-<p class="p16"><span class="s9"><span class="Apple-converted-space">          </span></span><span class="s2">Food Mentors</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Makro</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Pilakouris</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Atikouris</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Morepack</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Multipack</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Europess</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Other</span></p>
-<p class="p15"><span class="s5"><span class="Apple-converted-space">        </span></span></p>
-<p class="p11"><span class="s5">INGREDIENT / ITEM</span></p>
-<p class="p12"><span class="s5">→ Operations Sheet 2 col C</span></p>
-<p class="p11"><span class="s5">QTY</span></p>
-<p class="p12"><span class="s5">→ col E</span></p>
-<p class="p13"><span class="s2">UNIT</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Select…</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">kg</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">L</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">pc</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">bottle</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">pack</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">box</span></p>
-<p class="p15"><span class="s5"><span class="Apple-converted-space">        </span></span></p>
-<p class="p11"><span class="s5">UNIT COST €</span></p>
-<p class="p17"><span class="s5">€</span></p>
-<p class="p12"><span class="s5">→ col G</span></p>
-<p class="p11"><span class="s5">INVOICE #</span></p>
-<p class="p12"><span class="s5">→ col I</span></p>
-<p class="p18"><span class="s5">ITEM 4</span></p>
-<p class="p13"><span class="s2">SUPPLIER</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Select…</span></p>
-<p class="p16"><span class="s9"><span class="Apple-converted-space">          </span></span><span class="s2">Food Mentors</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Makro</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Pilakouris</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Atikouris</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Morepack</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Multipack</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Europess</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Other</span></p>
-<p class="p15"><span class="s5"><span class="Apple-converted-space">        </span></span></p>
-<p class="p11"><span class="s5">INGREDIENT / ITEM</span></p>
-<p class="p12"><span class="s5">→ Operations Sheet 2 col C</span></p>
-<p class="p11"><span class="s5">QTY</span></p>
-<p class="p12"><span class="s5">→ col E</span></p>
-<p class="p13"><span class="s2">UNIT</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Select…</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">kg</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">L</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">pc</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">bottle</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">pack</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">box</span></p>
-<p class="p15"><span class="s5"><span class="Apple-converted-space">        </span></span></p>
-<p class="p11"><span class="s5">UNIT COST €</span></p>
-<p class="p17"><span class="s5">€</span></p>
-<p class="p12"><span class="s5">→ col G</span></p>
-<p class="p11"><span class="s5">INVOICE #</span></p>
-<p class="p12"><span class="s5">→ col I</span></p>
-<p class="p9"><span class="s2">SECTION C</span></p>
-<p class="p10"><span class="s2">Cash Purchases</span></p>
-<p class="p8"><span class="s2">Leave blank if no cash was spent today.</span></p>
-<p class="p18"><span class="s5">PURCHASE 1</span></p>
-<p class="p13"><span class="s2">SUPPLIER</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Select…</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Antonis</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Stelios</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Mahoon</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Other</span></p>
-<p class="p15"><span class="s5"><span class="Apple-converted-space">        </span></span></p>
-<p class="p13"><span class="s2">CATEGORY</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Select…</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Food &amp; Veg</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Gas</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Drinks</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Cleaning</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Packaging</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Other</span></p>
-<p class="p15"><span class="s5"><span class="Apple-converted-space">        </span></span></p>
-<p class="p11"><span class="s5">DESCRIPTION</span></p>
-<p class="p12"><span class="s5">→ Operations Sheet 8 col D</span></p>
-<p class="p11"><span class="s5">AMOUNT €</span></p>
-<p class="p17"><span class="s5">€</span></p>
-<p class="p12"><span class="s5">→ col F</span></p>
-<p class="p11"><span class="s5">RECEIPT REF</span></p>
-<p class="p12"><span class="s5">→ col G</span></p>
-<p class="p18"><span class="s5">PURCHASE 2</span></p>
-<p class="p13"><span class="s2">SUPPLIER</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Select…</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Antonis</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Stelios</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Mahoon</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Other</span></p>
-<p class="p15"><span class="s5"><span class="Apple-converted-space">        </span></span></p>
-<p class="p13"><span class="s2">CATEGORY</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Select…</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Food &amp; Veg</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Gas</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Drinks</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Cleaning</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Packaging</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Other</span></p>
-<p class="p15"><span class="s5"><span class="Apple-converted-space">        </span></span></p>
-<p class="p11"><span class="s5">DESCRIPTION</span></p>
-<p class="p12"><span class="s5">→ Operations Sheet 8 col D</span></p>
-<p class="p11"><span class="s5">AMOUNT €</span></p>
-<p class="p17"><span class="s5">€</span></p>
-<p class="p12"><span class="s5">→ col F</span></p>
-<p class="p11"><span class="s5">RECEIPT REF</span></p>
-<p class="p12"><span class="s5">→ col G</span></p>
-<p class="p18"><span class="s5">PURCHASE 3</span></p>
-<p class="p13"><span class="s2">SUPPLIER</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Select…</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Antonis</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Stelios</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Mahoon</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Other</span></p>
-<p class="p15"><span class="s5"><span class="Apple-converted-space">        </span></span></p>
-<p class="p13"><span class="s2">CATEGORY</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Select…</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Food &amp; Veg</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Gas</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Drinks</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Cleaning</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Packaging</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s8">Other</span></p>
-<p class="p15"><span class="s5"><span class="Apple-converted-space">        </span></span></p>
-<p class="p11"><span class="s5">DESCRIPTION</span></p>
-<p class="p12"><span class="s5">→ Operations Sheet 8 col D</span></p>
-<p class="p11"><span class="s5">AMOUNT €</span></p>
-<p class="p17"><span class="s5">€</span></p>
-<p class="p12"><span class="s5">→ col F</span></p>
-<p class="p11"><span class="s5">RECEIPT REF</span></p>
-<p class="p12"><span class="s5">→ col G</span></p>
-<p class="p19"><span class="s3">Submit</span></p>
+<div class="header">
+  <div class="form-id">OPS-F1</div>
+  <div class="badge">FILL EVERY NIGHT AFTER CLOSE</div>
+  <h1>Daily Operations</h1>
+  <div class="subtitle">Sales · Deliveries · Cash Purchases</div>
+  <div class="who">MAHOON</div>
+  <div class="desc">Fill every night after close. Three sections — sales, deliveries, cash. Takes 3 minutes.</div>
+</div>
+
+<form id="mainForm">
+
+<!-- SECTION A -->
+<div class="section">
+  <div class="section-label">SECTION A</div>
+  <div class="section-title">Daily Sales</div>
+
+  <div class="field">
+    <label>DATE <span class="req">*</span></label>
+    <input type="date" name="date" required>
+    <div class="hint">→ Finance Sheet 1 col A</div>
+  </div>
+
+  <div class="field">
+    <label>DAY <span class="req">*</span></label>
+    <select name="day" required>
+      <option value="">Select…</option>
+      <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+      <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label>SERVICE <span class="req">*</span></label>
+    <select name="service" required>
+      <option value="">Select…</option>
+      <option>Lunch only</option><option>Dinner only</option><option>Both</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label>DINE-IN REVENUE <span class="req">*</span></label>
+    <input type="number" name="dine_in_revenue" step="0.01" min="0" placeholder="€0.00" required>
+    <div class="hint">Hiopos / Square end-of-day report → col D</div>
+  </div>
+
+  <div class="field">
+    <label>WOLT REVENUE</label>
+    <input type="number" name="wolt_revenue" step="0.01" min="0" placeholder="€0.00">
+    <div class="hint">NET after commission → col E</div>
+  </div>
+
+  <div class="field">
+    <label>FOODY REVENUE</label>
+    <input type="number" name="foody_revenue" step="0.01" min="0" placeholder="€0.00">
+    <div class="hint">NET after commission → col F</div>
+  </div>
+
+  <div class="field">
+    <label>LUNCH COVERS</label>
+    <input type="number" name="lunch_covers" min="0" placeholder="0">
+    <div class="hint">→ col I</div>
+  </div>
+
+  <div class="field">
+    <label>DINNER COVERS</label>
+    <input type="number" name="dinner_covers" min="0" placeholder="0">
+    <div class="hint">→ col J</div>
+  </div>
+
+  <div class="field">
+    <label>NOTES</label>
+    <textarea name="sales_notes" rows="3" placeholder="Any notes about today's sales…"></textarea>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION B -->
+<div class="section">
+  <div class="section-label">SECTION B</div>
+  <div class="section-title">Deliveries Received</div>
+  <div class="desc" style="margin-bottom:16px;">Leave blank if no delivery arrived today.</div>
+
+  <div class="item-block">
+    <div class="item-title">ITEM 1</div>
+    <div class="field">
+      <label>SUPPLIER</label>
+      <select name="del1_supplier">
+        <option value="">Select…</option>
+        <option>Food Mentors</option><option>Makro</option><option>Pilakouris</option>
+        <option>Atikouris</option><option>Morepack</option><option>Multipack</option>
+        <option>Europess</option><option>Other</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>INGREDIENT / ITEM</label>
+      <input type="text" name="del1_item" placeholder="e.g. Mayo 5kg">
+      <div class="hint">→ Operations Sheet 2 col C</div>
+    </div>
+    <div class="field">
+      <label>QTY</label>
+      <input type="number" name="del1_qty" step="0.01" min="0" placeholder="0">
+      <div class="hint">→ col E</div>
+    </div>
+    <div class="field">
+      <label>UNIT</label>
+      <select name="del1_unit">
+        <option value="">Select…</option>
+        <option>kg</option><option>L</option><option>pc</option>
+        <option>bottle</option><option>pack</option><option>box</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>UNIT COST €</label>
+      <input type="number" name="del1_cost" step="0.01" min="0" placeholder="€0.00">
+      <div class="hint">→ col G</div>
+    </div>
+    <div class="field">
+      <label>INVOICE #</label>
+      <input type="text" name="del1_invoice" placeholder="Invoice number">
+      <div class="hint">→ col I</div>
+    </div>
+  </div>
+
+  <div class="item-block">
+    <div class="item-title">ITEM 2</div>
+    <div class="field">
+      <label>SUPPLIER</label>
+      <select name="del2_supplier">
+        <option value="">Select…</option>
+        <option>Food Mentors</option><option>Makro</option><option>Pilakouris</option>
+        <option>Atikouris</option><option>Morepack</option><option>Multipack</option>
+        <option>Europess</option><option>Other</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>INGREDIENT / ITEM</label>
+      <input type="text" name="del2_item" placeholder="e.g. Ketchup 5.8kg">
+    </div>
+    <div class="field">
+      <label>QTY</label>
+      <input type="number" name="del2_qty" step="0.01" min="0" placeholder="0">
+    </div>
+    <div class="field">
+      <label>UNIT</label>
+      <select name="del2_unit">
+        <option value="">Select…</option>
+        <option>kg</option><option>L</option><option>pc</option>
+        <option>bottle</option><option>pack</option><option>box</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>UNIT COST €</label>
+      <input type="number" name="del2_cost" step="0.01" min="0" placeholder="€0.00">
+    </div>
+    <div class="field">
+      <label>INVOICE #</label>
+      <input type="text" name="del2_invoice" placeholder="Invoice number">
+    </div>
+  </div>
+
+  <div class="item-block">
+    <div class="item-title">ITEM 3</div>
+    <div class="field">
+      <label>SUPPLIER</label>
+      <select name="del3_supplier">
+        <option value="">Select…</option>
+        <option>Food Mentors</option><option>Makro</option><option>Pilakouris</option>
+        <option>Atikouris</option><option>Morepack</option><option>Multipack</option>
+        <option>Europess</option><option>Other</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>INGREDIENT / ITEM</label>
+      <input type="text" name="del3_item" placeholder="e.g. Buns 48pc">
+    </div>
+    <div class="field">
+      <label>QTY</label>
+      <input type="number" name="del3_qty" step="0.01" min="0" placeholder="0">
+    </div>
+    <div class="field">
+      <label>UNIT</label>
+      <select name="del3_unit">
+        <option value="">Select…</option>
+        <option>kg</option><option>L</option><option>pc</option>
+        <option>bottle</option><option>pack</option><option>box</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>UNIT COST €</label>
+      <input type="number" name="del3_cost" step="0.01" min="0" placeholder="€0.00">
+    </div>
+    <div class="field">
+      <label>INVOICE #</label>
+      <input type="text" name="del3_invoice" placeholder="Invoice number">
+    </div>
+  </div>
+
+  <div class="item-block">
+    <div class="item-title">ITEM 4</div>
+    <div class="field">
+      <label>SUPPLIER</label>
+      <select name="del4_supplier">
+        <option value="">Select…</option>
+        <option>Food Mentors</option><option>Makro</option><option>Pilakouris</option>
+        <option>Atikouris</option><option>Morepack</option><option>Multipack</option>
+        <option>Europess</option><option>Other</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>INGREDIENT / ITEM</label>
+      <input type="text" name="del4_item" placeholder="e.g. Sriracha 480g">
+    </div>
+    <div class="field">
+      <label>QTY</label>
+      <input type="number" name="del4_qty" step="0.01" min="0" placeholder="0">
+    </div>
+    <div class="field">
+      <label>UNIT</label>
+      <select name="del4_unit">
+        <option value="">Select…</option>
+        <option>kg</option><option>L</option><option>pc</option>
+        <option>bottle</option><option>pack</option><option>box</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>UNIT COST €</label>
+      <input type="number" name="del4_cost" step="0.01" min="0" placeholder="€0.00">
+    </div>
+    <div class="field">
+      <label>INVOICE #</label>
+      <input type="text" name="del4_invoice" placeholder="Invoice number">
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION C -->
+<div class="section">
+  <div class="section-label">SECTION C</div>
+  <div class="section-title">Cash Purchases</div>
+  <div class="desc" style="margin-bottom:16px;">Leave blank if no cash was spent today.</div>
+
+  <div class="item-block">
+    <div class="item-title">PURCHASE 1</div>
+    <div class="field">
+      <label>SUPPLIER</label>
+      <select name="cash1_supplier">
+        <option value="">Select…</option>
+        <option>Antonis</option><option>Stelios</option><option>Mahoon</option><option>Other</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>CATEGORY</label>
+      <select name="cash1_category">
+        <option value="">Select…</option>
+        <option>Food &amp; Veg</option><option>Gas</option><option>Drinks</option>
+        <option>Cleaning</option><option>Packaging</option><option>Other</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>DESCRIPTION</label>
+      <input type="text" name="cash1_desc" placeholder="What was purchased">
+      <div class="hint">→ Operations Sheet 8 col D</div>
+    </div>
+    <div class="field">
+      <label>AMOUNT €</label>
+      <input type="number" name="cash1_amount" step="0.01" min="0" placeholder="€0.00">
+      <div class="hint">→ col F</div>
+    </div>
+    <div class="field">
+      <label>RECEIPT REF</label>
+      <input type="text" name="cash1_receipt" placeholder="Receipt reference">
+      <div class="hint">→ col G</div>
+    </div>
+  </div>
+
+  <div class="item-block">
+    <div class="item-title">PURCHASE 2</div>
+    <div class="field">
+      <label>SUPPLIER</label>
+      <select name="cash2_supplier">
+        <option value="">Select…</option>
+        <option>Antonis</option><option>Stelios</option><option>Mahoon</option><option>Other</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>CATEGORY</label>
+      <select name="cash2_category">
+        <option value="">Select…</option>
+        <option>Food &amp; Veg</option><option>Gas</option><option>Drinks</option>
+        <option>Cleaning</option><option>Packaging</option><option>Other</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>DESCRIPTION</label>
+      <input type="text" name="cash2_desc" placeholder="What was purchased">
+    </div>
+    <div class="field">
+      <label>AMOUNT €</label>
+      <input type="number" name="cash2_amount" step="0.01" min="0" placeholder="€0.00">
+    </div>
+    <div class="field">
+      <label>RECEIPT REF</label>
+      <input type="text" name="cash2_receipt" placeholder="Receipt reference">
+    </div>
+  </div>
+
+  <div class="item-block">
+    <div class="item-title">PURCHASE 3</div>
+    <div class="field">
+      <label>SUPPLIER</label>
+      <select name="cash3_supplier">
+        <option value="">Select…</option>
+        <option>Antonis</option><option>Stelios</option><option>Mahoon</option><option>Other</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>CATEGORY</label>
+      <select name="cash3_category">
+        <option value="">Select…</option>
+        <option>Food &amp; Veg</option><option>Gas</option><option>Drinks</option>
+        <option>Cleaning</option><option>Packaging</option><option>Other</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>DESCRIPTION</label>
+      <input type="text" name="cash3_desc" placeholder="What was purchased">
+    </div>
+    <div class="field">
+      <label>AMOUNT €</label>
+      <input type="number" name="cash3_amount" step="0.01" min="0" placeholder="€0.00">
+    </div>
+    <div class="field">
+      <label>RECEIPT REF</label>
+      <input type="text" name="cash3_receipt" placeholder="Receipt reference">
+    </div>
+  </div>
+</div>
+
+<div class="submit-wrap">
+  <div class="error-msg" id="errorMsg">Something went wrong. Please try again.</div>
+  <button type="submit">Submit</button>
+</div>
+
+</form>
+
+<div class="success" id="successMsg">
+  <h2>✓ Submitted</h2>
+  <p>Daily Operations logged successfully.</p>
+</div>
+
+<script>
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyP9jMt-l1-U8uPIENgqeQW46fpZTIAgSDj3C2bPs-OJN-J8ITr913pYwt4hn5NFForhw/exec';
+
+document.getElementById('mainForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('button[type="submit"]');
+  const errMsg = document.getElementById('errorMsg');
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
+  errMsg.style.display = 'none';
+
+  const data = { _sheet: 'Daily_Operations' };
+  new FormData(this).forEach((v, k) => { data[k] = v; });
+
+  try {
+    await fetch(SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    document.getElementById('mainForm').style.display = 'none';
+    document.querySelector('.header').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  } catch (err) {
+    errMsg.style.display = 'block';
+    btn.textContent = 'Submit';
+    btn.disabled = false;
+  }
+});
+</script>
 </body>
 </html>
