@@ -629,7 +629,7 @@ body {
 </div>
 
 <script>
-const SHEET_URL  = 'https://script.google.com/macros/s/AKfycbyP9jMt-l1-U8uPIENgqeQW46fpZTIAgSDj3C2bPs-OJN-J8ITr913pYwt4hn5NFForhw/exec';
+const SHEET_URL  = 'YOUR_APPS_SCRIPT_URL_HERE';
 const SHEET_NAME = 'Shift_Log';
 
 
@@ -678,7 +678,7 @@ async function handleSubmit() {
   data._timestamp = new Date().toISOString();
 
   try {
-    if (SHEET_URL === 'https://script.google.com/macros/s/AKfycbyP9jMt-l1-U8uPIENgqeQW46fpZTIAgSDj3C2bPs-OJN-J8ITr913pYwt4hn5NFForhw/exec') {
+    if (SHEET_URL === 'YOUR_APPS_SCRIPT_URL_HERE') {
       showSuccess(); return;
     }
     const params = new URLSearchParams();
