@@ -801,7 +801,7 @@ body {
 </div>
 
 <script>
-const SHEET_URL  = 'YOUR_APPS_SCRIPT_URL_HERE';
+const SHEET_URL  = 'https://script.google.com/macros/s/AKfycbyIVMONTeGtW2FQphNuCRIRkydiwT4BgiX1SzCrCCkoRZlBSOldgTby9xXmbOKglRS_cA/exec';
 const SHEET_NAME = 'Monthly_Review';
 
 
@@ -895,9 +895,6 @@ async function handleSubmit() {
   data._timestamp = new Date().toISOString();
 
   try {
-    if (SHEET_URL === 'YOUR_APPS_SCRIPT_URL_HERE') {
-      showSuccess(); return;
-    }
     const params = new URLSearchParams();
     params.append('data', JSON.stringify(data));
     await fetch(SHEET_URL, {
