@@ -2,873 +2,220 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="theme-color" content="#0A0A0A">
-<title>NOSH — Weekly Review</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Review — NOSH</title>
 <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --black:   #0A0A0A;
-  --grey-90: #1A1A1A;
-  --grey-80: #2C2C2C;
-  --grey-60: #666666;
-  --grey-40: #999999;
-  --grey-20: #CCCCCC;
-  --grey-10: #E8E8E8;
-  --grey-05: #F5F5F5;
-  --white:   #FFFFFF;
-  --red:     #CC0000;
-  --red-dk:  #990000;
-  --red-lt:  #FFE5E5;
-  --red-mid: #FF3333;
-}
-
-html { -webkit-text-size-adjust: 100%; }
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background: var(--grey-05);
-  color: var(--black);
-  min-height: 100vh;
-  padding-bottom: 60px;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ── TOP BAR ── */
-.top-bar {
-  background: var(--black);
-  position: sticky;
-  top: 0;
-  z-index: 200;
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 56px;
-  border-bottom: 2px solid var(--red);
-}
-.top-bar .logo { color: white; display: flex; align-items: center; }
-.top-bar .logo svg { width: 56px; height: auto; }
-.top-bar .form-id {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  color: var(--grey-40);
-  text-transform: uppercase;
-}
-
-/* ── HERO ── */
-.hero {
-  background: var(--black);
-  padding: 28px 20px 32px;
-  border-bottom: 1px solid var(--grey-80);
-}
-.hero .freq-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--red);
-  color: white;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 4px 12px;
-  border-radius: 100px;
-  margin-bottom: 14px;
-}
-.hero h1 {
-  font-size: 28px;
-  font-weight: 900;
-  color: var(--white);
-  line-height: 1.1;
-  letter-spacing: -0.5px;
-  margin-bottom: 6px;
-}
-.hero .subtitle {
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--grey-40);
-  line-height: 1.5;
-}
-.hero .who-badge {
-  display: inline-block;
-  margin-top: 14px;
-  background: var(--grey-80);
-  border: 1px solid var(--grey-60);
-  color: var(--grey-20);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 5px 12px;
-  border-radius: 6px;
-}
-
-/* ── CONTAINER ── */
-.container { max-width: 560px; margin: 0 auto; padding: 0 16px; }
-
-/* ── SECTION ── */
-.section {
-  margin-top: 32px;
-}
-.section-label {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 8px;
-  padding-left: 2px;
-}
-.section-title {
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--black);
-  letter-spacing: -0.3px;
-  margin-bottom: 16px;
-  padding-left: 2px;
-}
-
-/* ── CARD ── */
-.card {
-  background: var(--white);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.05);
-}
-.card + .card { margin-top: 12px; }
-
-/* ── FIELD ── */
-.field {
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--grey-10);
-  position: relative;
-}
-.field:last-child { border-bottom: none; }
-
-.field label {
-  display: block;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: var(--grey-60);
-  margin-bottom: 6px;
-}
-.field .req { color: var(--red); margin-left: 2px; }
-
-.field input,
-.field select,
-.field textarea {
-  width: 100%;
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--black);
-  background: transparent;
-  border: none;
-  outline: none;
-  -webkit-appearance: none;
-  appearance: none;
-  padding: 0;
-  line-height: 1.4;
-}
-.field textarea {
-  min-height: 72px;
-  resize: none;
-  font-size: 15px;
-  font-weight: 400;
-}
-.field input::placeholder,
-.field textarea::placeholder { color: var(--grey-20); font-weight: 400; }
-.field select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0 center; padding-right: 20px; }
-
-.field .hint {
-  font-size: 11px;
-  font-weight: 400;
-  color: var(--grey-40);
-  margin-top: 4px;
-  line-height: 1.4;
-}
-
-/* ── NUMBER FIELD ── */
-.field.number input {
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  color: var(--black);
-}
-.field.number .currency {
-  position: absolute;
-  left: 20px;
-  bottom: 19px;
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--grey-20);
-  pointer-events: none;
-}
-.field.number input { padding-left: 20px; }
-
-/* ── COMPUTED FIELD ── */
-.field.computed { background: var(--grey-05); }
-.field.computed label { color: var(--grey-40); }
-.field.computed .computed-val {
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--black);
-  letter-spacing: -0.5px;
-}
-.field.computed.positive .computed-val { color: var(--red); }
-
-/* ── ROW ── */
-.field-row {
-  display: grid;
-  gap: 0;
-}
-.field-row.two { grid-template-columns: 1fr 1fr; }
-.field-row.three { grid-template-columns: 1fr 1fr 1fr; }
-.field-row > .field { border-right: 1px solid var(--grey-10); }
-.field-row > .field:last-child { border-right: none; }
-
-/* ── COUNT ITEM ── */
-.count-item {
-  display: grid;
-  grid-template-columns: 1fr auto 80px;
-  align-items: center;
-  padding: 13px 20px;
-  border-bottom: 1px solid var(--grey-10);
-  gap: 12px;
-}
-.count-item:last-child { border-bottom: none; }
-.count-item .ci-name {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--black);
-}
-.count-item .ci-unit {
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--grey-40);
-  background: var(--grey-10);
-  padding: 3px 8px;
-  border-radius: 100px;
-  white-space: nowrap;
-}
-.count-item input {
-  width: 80px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 17px;
-  font-weight: 700;
-  text-align: center;
-  background: var(--grey-05);
-  border: 1.5px solid var(--grey-10);
-  border-radius: 10px;
-  padding: 8px 6px;
-  color: var(--black);
-  -webkit-appearance: none;
-  outline: none;
-}
-.count-item input:focus { border-color: var(--red); background: white; }
-
-/* ── CAT HEADER ── */
-.cat-header {
-  background: var(--black);
-  color: var(--white);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  padding: 9px 20px;
-}
-
-/* ── DELIVERY ITEM ── */
-.delivery-block {
-  border-bottom: 1px solid var(--grey-10);
-}
-.delivery-block:last-child { border-bottom: none; }
-.delivery-num {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--grey-40);
-  padding: 14px 20px 0;
-}
-
-/* ── INFO BANNER ── */
-.info-banner {
-  background: var(--black);
-  color: var(--grey-20);
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.6;
-  padding: 16px 20px;
-  border-radius: 12px;
-  margin-top: 20px;
-  border-left: 3px solid var(--red);
-}
-.info-banner strong { color: white; font-weight: 700; }
-
-.warn-banner {
-  background: var(--red-lt);
-  color: var(--red-dk);
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.6;
-  padding: 12px 16px;
-  border-radius: 10px;
-  margin: 0 0 0;
-  border-left: 3px solid var(--red);
-}
-
-/* ── SUBMIT ── */
-.submit-wrap {
-  padding: 32px 0 8px;
-}
-.submit-btn {
-  width: 100%;
-  background: var(--red);
-  color: white;
-  border: none;
-  border-radius: 14px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  padding: 18px;
-  cursor: pointer;
-  transition: background 0.15s, transform 0.1s;
-  -webkit-tap-highlight-color: transparent;
-}
-.submit-btn:active { background: var(--red-dk); transform: scale(0.98); }
-.submit-btn:disabled { background: var(--grey-20); color: var(--grey-40); cursor: not-allowed; }
-
-/* ── SUCCESS ── */
-.success-screen {
-  display: none;
-  padding: 80px 20px;
-  text-align: center;
-}
-.success-screen .s-icon {
-  width: 72px;
-  height: 72px;
-  background: var(--black);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 24px;
-}
-.success-screen .s-icon svg { width: 32px; height: 32px; }
-.success-screen h2 {
-  font-size: 24px;
-  font-weight: 900;
-  color: var(--black);
-  margin-bottom: 8px;
-}
-.success-screen p {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--grey-60);
-  line-height: 1.6;
-}
-.success-screen .reset-btn {
-  margin-top: 32px;
-  display: inline-block;
-  background: var(--black);
-  color: white;
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 14px 32px;
-  border-radius: 100px;
-  border: none;
-  cursor: pointer;
-  letter-spacing: 0.3px;
-}
-
-/* ── PASTE GUIDE ── */
-.paste-guide {
-  margin-top: 8px;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid var(--grey-10);
-}
-.paste-guide-header {
-  background: var(--grey-90);
-  color: white;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 10px 16px;
-}
-.paste-row {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 12px;
-  padding: 10px 16px;
-  border-bottom: 1px solid var(--grey-10);
-  align-items: start;
-}
-.paste-row:last-child { border-bottom: none; }
-.paste-col-ref {
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--red);
-  background: var(--red-lt);
-  padding: 2px 8px;
-  border-radius: 4px;
-  white-space: nowrap;
-  letter-spacing: 0.3px;
-}
-.paste-col-desc {
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--grey-60);
-  line-height: 1.5;
-}
-
-/* ── AUTO FIELD ── */
-.auto-field {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 20px;
-  background: var(--grey-05);
-  border-bottom: 1px solid var(--grey-10);
-}
-.auto-field:last-child { border-bottom: none; }
-.auto-field .af-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--grey-60);
-}
-.auto-field .af-val {
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--black);
-  letter-spacing: -0.3px;
-}
-.auto-field .af-val.red { color: var(--red); }
-
-.freq-pill { background: #1A1A1A; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #111; font-family: 'Helvetica Neue', sans-serif; color: #f2f2f2; min-height: 100vh; }
+.header { background: #0a0a0a; padding: 20px 16px 16px; border-bottom: 2px solid #be0004; }
+.badge { font-size: 9px; color: #be0004; letter-spacing: 2px; font-weight: 700; margin-bottom: 6px; }
+.form-id { font-size: 10px; color: #555; margin-bottom: 4px; }
+h1 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.subtitle { font-size: 13px; color: #666; }
+.who { font-size: 10px; color: #aaa; background: #1a1a1a; padding: 3px 10px; border-radius: 3px; display: inline-block; margin-top: 8px; }
+.desc { font-size: 12px; color: #777; margin-top: 8px; line-height: 1.5; }
+.section { padding: 0 16px; margin-top: 24px; }
+.section-label { font-size: 9px; color: #be0004; letter-spacing: 2px; font-weight: 700; margin-bottom: 4px; }
+.section-title { font-size: 18px; font-weight: 600; color: #f2f2f2; margin-bottom: 14px; }
+.cat { font-size: 9px; color: #fff; letter-spacing: 2px; font-weight: 700; background: #0a0a0a; padding: 8px 16px; margin: 16px -16px 10px; }
+.field { margin-bottom: 16px; }
+.field label { display: block; font-size: 11px; color: #777; letter-spacing: 0.5px; margin-bottom: 6px; text-transform: uppercase; }
+.req { color: #be0004; }
+.hint { font-size: 10px; color: #444; margin-top: 4px; }
+.unit-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; border-bottom: 1px solid #1a1a1a; padding-bottom: 10px; }
+.unit-row label { flex: 1; font-size: 14px; color: #ccc; }
+.unit-row input { width: 80px; background: #1a1a1a; border: 1px solid #2a2a2a; color: #f2f2f2; padding: 10px 8px; border-radius: 6px; font-size: 15px; font-family: inherit; text-align: center; -webkit-appearance: none; flex-shrink: 0; }
+input[type="date"] { -webkit-appearance: none; min-height: 48px; }
+input.full, select, textarea { width: 100%; background: #1a1a1a; border: 1px solid #2a2a2a; color: #f2f2f2; padding: 13px 12px; border-radius: 8px; font-size: 16px; font-family: inherit; -webkit-appearance: none; appearance: none; }
+select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' fill='none' stroke-width='2'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: #be0004; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.divider { height: 1px; background: #1e1e1e; margin: 24px 0; }
+.submit-wrap { padding: 24px 16px 50px; }
+button[type="submit"] { width: 100%; background: #be0004; color: #fff; border: none; padding: 18px; border-radius: 10px; font-size: 17px; font-weight: 700; font-family: inherit; cursor: pointer; }
+button:disabled { background: #555; }
+.success { display: none; text-align: center; padding: 60px 16px; }
+.success h2 { color: #4caf50; font-size: 24px; margin-bottom: 8px; }
+.success p { color: #888; font-size: 15px; }
+.err { display: none; color: #be0004; font-size: 13px; margin-top: 10px; padding: 12px; background: #1a0000; border-radius: 8px; }
 </style>
 </head>
 <body>
-
-<div class="top-bar">
-  <div class="logo">
-    <span style="font-family:'Poppins',Arial Black,sans-serif;font-size:22px;font-weight:900;color:white;letter-spacing:-1px;">NOSH</span>
-  </div>
-  <span class="form-id">FIN-F1</span>
-</div>
-
-<div class="hero">
-  <div class="freq-pill">
-    <svg width="6" height="6" viewBox="0 0 6 6"><circle cx="3" cy="3" r="3" fill="white"/></svg>
-    Every Sunday Evening
-  </div>
+<div id="formArea">
+<div class="header">
+  <div class="form-id">FIN-F1</div>
+  <div class="badge">EVERY SUNDAY EVENING</div>
   <h1>Weekly Review</h1>
-  <p class="subtitle">Revenue · Hours · Units Sold</p>
-  <span class="who-badge">Constantinos Only</span>
+  <div class="subtitle">Revenue · Hours · Units Sold</div>
+  <div class="who">CONSTANTINOS ONLY</div>
+  <div class="desc">Pull sales data from Hiopos or Square before filling.</div>
 </div>
-
-<div class="container">
-  <div id="formArea">
-    <form id="mainForm" onsubmit="return false;">
-      <div class="info-banner"><strong>Your private weekly review.</strong> Pull sales data from Hiopos or Square before filling.</div>
-    <div class="section">
-      <div class="section-label">Header</div>
-      <div class="section-title">Week Details</div>      <div class="card">
-      <div class="field-row two">
-
-        <div class="field">
-          <label>Week Start<span class="req">*</span></label>
-          <input type="text" placeholder="DD/MM/YYYY" inputmode="numeric" id="week_start" placeholder="" required>
-          <div class="hint">→ Finance Sheet 2 col B</div>
-        </div>
-
-        <div class="field">
-          <label>Week #<span class="req">*</span></label>
-          <input type="number" id="week_num" placeholder="0" required>
-          
-        </div>
-      </div>      </div>    </div>
-    <div class="section">
-      <div class="section-label">Revenue</div>
-      <div class="section-title">Weekly Revenue</div>      <div class="card">
-        <div class="field" class="number">
-          <label>Dine-In Revenue</label>
-          <span class="currency">€</span><input type="number" id="w_dinein" placeholder="0.00" >
-          <div class="hint">→ Finance Sheet 1 col D total</div>
-        </div>
-      <div class="field-row two">
-
-        <div class="field" class="number">
-          <label>Wolt Revenue</label>
-          <span class="currency">€</span><input type="number" id="w_wolt" placeholder="0.00" >
-          <div class="hint">NET → col E</div>
-        </div>
-
-        <div class="field" class="number">
-          <label>Foody Revenue</label>
-          <span class="currency">€</span><input type="number" id="w_foody" placeholder="0.00" >
-          <div class="hint">NET → col F</div>
-        </div>
-      </div>
-      <div class="field-row two">
-
-        <div class="field">
-          <label>Total Covers</label>
-          <input type="number" id="w_covers" placeholder="0" >
-          <div class="hint">→ col K total</div>
-        </div>
-
-        <div class="field" class="number">
-          <label>Opening Bank Balance</label>
-          <span class="currency">€</span><input type="number" id="w_bank" placeholder="0.00" >
-          <div class="hint">→ Finance Sheet 4 C4</div>
-        </div>
-      </div>      </div>    </div>
-    <div class="section">
-      <div class="section-label">Labour</div>
-      <div class="section-title">Hours This Week</div>      <div class="card">
-      <div class="field-row two">
-
-        <div class="field">
-          <label>Umar Hours</label>
-          <input type="number" id="umar_hrs" placeholder="0.0" >
-          <div class="hint">→ Ops Sheet 7 col C (yellow)</div>
-        </div>
-
-        <div class="field">
-          <label>Sekender Hours</label>
-          <input type="number" id="sek_hrs" placeholder="0.0" >
-          <div class="hint">→ Ops Sheet 7 col H (yellow)</div>
-        </div>
-      </div>      </div>    </div>
-    <div class="section">
-      <div class="section-label">Units</div>
-      <div class="section-title">Units Sold This Week</div>      <div class="info-banner">Pull from Hiopos or Square → Sales by Product. Enter units sold for each item. → Operations Sheet 3 col B</div>      <div class="card">        <div class="cat-header">Angus Beef</div>
-        <div class="count-item">
-          <span class="ci-name">Junior</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Junior" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Original Smash</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Original_Smash" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Bacon Jam</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Bacon_Jam" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Double Classic Cheese</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Double_Classic_Cheese" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Italian Truffle</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Italian_Truffle" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Notorious Jack</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Notorious_Jack" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">NOSH Special</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_NOSH_Special" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>        <div class="cat-header">Crispy Chicken</div>
-        <div class="count-item">
-          <span class="ci-name">NOSH Chicken</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_NOSH_Chicken" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>        <div class="cat-header">Grill Chicken</div>
-        <div class="count-item">
-          <span class="ci-name">Grill Chicken Classic</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Grill_Chicken_Classic" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Chicken Halloumi</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Chicken_Halloumi" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>        <div class="cat-header">Veggie</div>
-        <div class="count-item">
-          <span class="ci-name">Veggie Burger</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Veggie_Burger" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>        <div class="cat-header">Salads</div>
-        <div class="count-item">
-          <span class="ci-name">Caesar Salad</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Caesar_Salad" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">NOSH Salad</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_NOSH_Salad" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Sesame Strip Salad</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Sesame_Strip_Salad" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>        <div class="cat-header">Fries</div>
-        <div class="count-item">
-          <span class="ci-name">French Fries</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_French_Fries" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Sweet Fries</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Sweet_Fries" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Loaded Fries</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Loaded_Fries" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>        <div class="cat-header">Sides</div>
-        <div class="count-item">
-          <span class="ci-name">Coleslaw</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Coleslaw" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Chicken Tenders 2pc</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Chicken_Tenders_2pc" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Chicken Tenders 4pc</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Chicken_Tenders_4pc" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Chicken Tenders 6pc</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Chicken_Tenders_6pc" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Nuggets 4pc</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Nuggets_4pc" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Nuggets 8pc</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Nuggets_8pc" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Nuggets 12pc</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Nuggets_12pc" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Mac n Cheese 2pc</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Mac_n_Cheese_2pc" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Mac n Cheese 4pc</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Mac_n_Cheese_4pc" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Mac n Cheese 6pc</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Mac_n_Cheese_6pc" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Chilly Cheese Nuggets 4pc</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Chilly_Cheese_Nuggets_4pc" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Chilly Cheese Nuggets 8pc</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Chilly_Cheese_Nuggets_8pc" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Popcorn Chicken 10pc</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Popcorn_Chicken_10pc" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Popcorn Chicken 20pc</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Popcorn_Chicken_20pc" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>        <div class="cat-header">Combos</div>
-        <div class="count-item">
-          <span class="ci-name">Nosh Bites Combo</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Nosh_Bites_Combo" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Nosh Bites Combo Large</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Nosh_Bites_Combo_Large" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Honey Tender Combo</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Honey_Tender_Combo" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>
-        <div class="count-item">
-          <span class="ci-name">Jack Sesame Strips Combo</span>
-          <span class="ci-unit">units</span>
-          <input type="number" id="mu_Jack_Sesame_Strips_Combo" min="0" step="1" inputmode="numeric" placeholder="0">
-        </div>      </div>    </div>
-    <div class="section">
-      <div class="section-label">Notes</div>
-      <div class="section-title">Weekly Observations</div>      <div class="card">
-        <div class="field">
-          <label>Best Performing Item</label>
-          <input type="text" id="best_item" placeholder="" >
-          
-        </div>
-        <div class="field">
-          <label>Issues or Concerns</label>
-          <textarea id="w_notes" placeholder="e.g. slow Tuesday lunch / ingredient ran out" rows="3" ></textarea>
-          
-        </div>
-        <div class="field">
-          <label>Action Before Next Week</label>
-          <textarea id="w_action" placeholder="e.g. order more halloumi / check Foody payout" rows="3" ></textarea>
-          
-        </div>      </div>    </div>
-    </form>
-    <div class="submit-wrap">
-      <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">Submit</button>
+<form id="mainForm">
+<div class="section">
+  <div class="section-label">HEADER</div>
+  <div class="section-title">Week Details</div>
+  <div class="row2">
+    <div class="field">
+      <label>Week Start <span class="req">*</span></label>
+      <input type="date" id="week_start" class="full" required>
+    </div>
+    <div class="field">
+      <label>Week # <span class="req">*</span></label>
+      <input type="number" id="week_number" class="full" min="1" max="52" placeholder="14" required>
     </div>
   </div>
-
-  <div class="success-screen" id="successScreen">
-    <div class="s-icon">
-      <svg viewBox="0 0 32 32" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
-        <path d="M6 16l7 7 13-13"/>
-      </svg>
+</div>
+<div class="divider"></div>
+<div class="section">
+  <div class="section-label">REVENUE</div>
+  <div class="section-title">Weekly Revenue</div>
+  <div class="field">
+    <label>Dine-In Revenue €</label>
+    <input type="number" id="dinein" class="full" step="0.01" min="0" placeholder="0.00">
+    <div class="hint">→ Finance Sheet 1 col D total</div>
+  </div>
+  <div class="row2">
+    <div class="field">
+      <label>Wolt Revenue €</label>
+      <input type="number" id="wolt" class="full" step="0.01" min="0" placeholder="0.00">
+      <div class="hint">NET → col E</div>
     </div>
-    <h2>Submitted</h2>
-    <p>Data received.<br>Constantinos will be notified.</p>
-    <button class="reset-btn" onclick="resetForm()">Submit Another</button>
+    <div class="field">
+      <label>Foody Revenue €</label>
+      <input type="number" id="foody" class="full" step="0.01" min="0" placeholder="0.00">
+      <div class="hint">NET → col F</div>
+    </div>
+  </div>
+  <div class="row2">
+    <div class="field">
+      <label>Total Covers</label>
+      <input type="number" id="covers" class="full" min="0" placeholder="0">
+    </div>
+    <div class="field">
+      <label>Opening Bank Balance €</label>
+      <input type="number" id="bank_balance" class="full" step="0.01" placeholder="0.00">
+    </div>
   </div>
 </div>
+<div class="divider"></div>
+<div class="section">
+  <div class="section-label">LABOUR</div>
+  <div class="section-title">Hours This Week</div>
+  <div class="row2">
+    <div class="field">
+      <label>Umar Hours</label>
+      <input type="number" id="umar_hrs" class="full" step="0.5" min="0" placeholder="0">
+    </div>
+    <div class="field">
+      <label>Sekender Hours</label>
+      <input type="number" id="sek_hrs" class="full" step="0.5" min="0" placeholder="0">
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+<div class="section">
+  <div class="section-label">UNITS</div>
+  <div class="section-title">Units Sold This Week</div>
+  <div class="desc" style="margin-bottom:16px;color:#666;">Pull from Hiopos or Square → Sales by Product.</div>
 
+  <div class="cat">ANGUS BEEF</div>
+  <div class="unit-row"><label>Junior</label><input type="number" data-menu="Junior" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Original Smash</label><input type="number" data-menu="Original Smash" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Bacon Jam</label><input type="number" data-menu="Bacon Jam" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Double Classic Cheese</label><input type="number" data-menu="Double Classic Cheese" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Italian Truffle</label><input type="number" data-menu="Italian Truffle" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Notorious Jack</label><input type="number" data-menu="Notorious Jack" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>NOSH Special</label><input type="number" data-menu="NOSH Special" min="0" placeholder="0"></div>
+
+  <div class="cat">CRISPY CHICKEN</div>
+  <div class="unit-row"><label>NOSH Chicken</label><input type="number" data-menu="NOSH Chicken" min="0" placeholder="0"></div>
+
+  <div class="cat">GRILL CHICKEN</div>
+  <div class="unit-row"><label>Grill Chicken Classic</label><input type="number" data-menu="Grill Chicken Classic" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Chicken Halloumi</label><input type="number" data-menu="Chicken Halloumi" min="0" placeholder="0"></div>
+
+  <div class="cat">VEGGIE</div>
+  <div class="unit-row"><label>Veggie Burger</label><input type="number" data-menu="Veggie Burger" min="0" placeholder="0"></div>
+
+  <div class="cat">SALADS</div>
+  <div class="unit-row"><label>Caesar Salad</label><input type="number" data-menu="Caesar Salad" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>NOSH Salad</label><input type="number" data-menu="NOSH Salad" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Sesame Strip Salad</label><input type="number" data-menu="Sesame Strip Salad" min="0" placeholder="0"></div>
+
+  <div class="cat">FRIES</div>
+  <div class="unit-row"><label>French Fries</label><input type="number" data-menu="French Fries" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Sweet Fries</label><input type="number" data-menu="Sweet Fries" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Loaded Fries</label><input type="number" data-menu="Loaded Fries" min="0" placeholder="0"></div>
+
+  <div class="cat">SIDES</div>
+  <div class="unit-row"><label>Coleslaw</label><input type="number" data-menu="Coleslaw" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Chicken Tenders 2pc</label><input type="number" data-menu="Chicken Tenders 2pc" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Chicken Tenders 4pc</label><input type="number" data-menu="Chicken Tenders 4pc" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Chicken Tenders 6pc</label><input type="number" data-menu="Chicken Tenders 6pc" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Nuggets 4pc</label><input type="number" data-menu="Nuggets 4pc" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Nuggets 8pc</label><input type="number" data-menu="Nuggets 8pc" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Nuggets 12pc</label><input type="number" data-menu="Nuggets 12pc" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Mac n Cheese 2pc</label><input type="number" data-menu="Mac n Cheese 2pc" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Mac n Cheese 4pc</label><input type="number" data-menu="Mac n Cheese 4pc" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Mac n Cheese 6pc</label><input type="number" data-menu="Mac n Cheese 6pc" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Chilly Cheese Nuggets 4pc</label><input type="number" data-menu="Chilly Cheese Nuggets 4pc" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Chilly Cheese Nuggets 8pc</label><input type="number" data-menu="Chilly Cheese Nuggets 8pc" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Popcorn Chicken 10pc</label><input type="number" data-menu="Popcorn Chicken 10pc" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Popcorn Chicken 20pc</label><input type="number" data-menu="Popcorn Chicken 20pc" min="0" placeholder="0"></div>
+
+  <div class="cat">COMBOS</div>
+  <div class="unit-row"><label>Nosh Bites Combo</label><input type="number" data-menu="Nosh Bites Combo" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Nosh Bites Combo Large</label><input type="number" data-menu="Nosh Bites Combo Large" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Honey Tender Combo</label><input type="number" data-menu="Honey Tender Combo" min="0" placeholder="0"></div>
+  <div class="unit-row"><label>Jack Sesame Strips Combo</label><input type="number" data-menu="Jack Sesame Strips Combo" min="0" placeholder="0"></div>
+</div>
+<div class="divider"></div>
+<div class="section">
+  <div class="section-label">NOTES</div>
+  <div class="section-title">Weekly Observations</div>
+  <div class="field">
+    <label>Best Performing Item</label>
+    <input type="text" id="best_item" class="full" placeholder="e.g. Bacon Jam — 47 sold">
+  </div>
+  <div class="field">
+    <label>Issues or Concerns</label>
+    <textarea id="notes" rows="3" placeholder="Any issues this week…"></textarea>
+  </div>
+  <div class="field">
+    <label>Action Before Next Week</label>
+    <textarea id="action" rows="3" placeholder="What needs to be done…"></textarea>
+  </div>
+</div>
+<div class="submit-wrap">
+  <div class="err" id="errMsg">Something went wrong. Please try again.</div>
+  <button type="submit" id="submitBtn">Submit</button>
+</div>
+</form>
+</div>
+<div class="success" id="successMsg">
+  <h2>✓ Submitted</h2>
+  <p>Weekly review logged successfully.</p>
+</div>
 <script>
-const SHEET_URL  = 'https://script.google.com/macros/s/AKfycbyIVMONTeGtW2FQphNuCRIRkydiwT4BgiX1SzCrCCkoRZlBSOldgTby9xXmbOKglRS_cA/exec';
-const SHEET_NAME = 'Weekly_Review';
-
-
-function collectData() {
-  if (!document.getElementById('week_start').value) { alert('Please enter the week start date.'); return null; }
-  const menuUnits = {};
-  menuUnits["Junior"] = parseInt(document.getElementById("mu_Junior")?.value)||0;
-  menuUnits["Original Smash"] = parseInt(document.getElementById("mu_Original_Smash")?.value)||0;
-  menuUnits["Bacon Jam"] = parseInt(document.getElementById("mu_Bacon_Jam")?.value)||0;
-  menuUnits["Double Classic Cheese"] = parseInt(document.getElementById("mu_Double_Classic_Cheese")?.value)||0;
-  menuUnits["Italian Truffle"] = parseInt(document.getElementById("mu_Italian_Truffle")?.value)||0;
-  menuUnits["Notorious Jack"] = parseInt(document.getElementById("mu_Notorious_Jack")?.value)||0;
-  menuUnits["NOSH Special"] = parseInt(document.getElementById("mu_NOSH_Special")?.value)||0;
-  menuUnits["NOSH Chicken"] = parseInt(document.getElementById("mu_NOSH_Chicken")?.value)||0;
-  menuUnits["Grill Chicken Classic"] = parseInt(document.getElementById("mu_Grill_Chicken_Classic")?.value)||0;
-  menuUnits["Chicken Halloumi"] = parseInt(document.getElementById("mu_Chicken_Halloumi")?.value)||0;
-  menuUnits["Veggie Burger"] = parseInt(document.getElementById("mu_Veggie_Burger")?.value)||0;
-  menuUnits["Caesar Salad"] = parseInt(document.getElementById("mu_Caesar_Salad")?.value)||0;
-  menuUnits["NOSH Salad"] = parseInt(document.getElementById("mu_NOSH_Salad")?.value)||0;
-  menuUnits["Sesame Strip Salad"] = parseInt(document.getElementById("mu_Sesame_Strip_Salad")?.value)||0;
-  menuUnits["French Fries"] = parseInt(document.getElementById("mu_French_Fries")?.value)||0;
-  menuUnits["Sweet Fries"] = parseInt(document.getElementById("mu_Sweet_Fries")?.value)||0;
-  menuUnits["Loaded Fries"] = parseInt(document.getElementById("mu_Loaded_Fries")?.value)||0;
-  menuUnits["Coleslaw"] = parseInt(document.getElementById("mu_Coleslaw")?.value)||0;
-  menuUnits["Chicken Tenders 2pc"] = parseInt(document.getElementById("mu_Chicken_Tenders_2pc")?.value)||0;
-  menuUnits["Chicken Tenders 4pc"] = parseInt(document.getElementById("mu_Chicken_Tenders_4pc")?.value)||0;
-  menuUnits["Chicken Tenders 6pc"] = parseInt(document.getElementById("mu_Chicken_Tenders_6pc")?.value)||0;
-  menuUnits["Nuggets 4pc"] = parseInt(document.getElementById("mu_Nuggets_4pc")?.value)||0;
-  menuUnits["Nuggets 8pc"] = parseInt(document.getElementById("mu_Nuggets_8pc")?.value)||0;
-  menuUnits["Nuggets 12pc"] = parseInt(document.getElementById("mu_Nuggets_12pc")?.value)||0;
-  menuUnits["Mac n Cheese 2pc"] = parseInt(document.getElementById("mu_Mac_n_Cheese_2pc")?.value)||0;
-  menuUnits["Mac n Cheese 4pc"] = parseInt(document.getElementById("mu_Mac_n_Cheese_4pc")?.value)||0;
-  menuUnits["Mac n Cheese 6pc"] = parseInt(document.getElementById("mu_Mac_n_Cheese_6pc")?.value)||0;
-  menuUnits["Chilly Cheese Nuggets 4pc"] = parseInt(document.getElementById("mu_Chilly_Cheese_Nuggets_4pc")?.value)||0;
-  menuUnits["Chilly Cheese Nuggets 8pc"] = parseInt(document.getElementById("mu_Chilly_Cheese_Nuggets_8pc")?.value)||0;
-  menuUnits["Popcorn Chicken 10pc"] = parseInt(document.getElementById("mu_Popcorn_Chicken_10pc")?.value)||0;
-  menuUnits["Popcorn Chicken 20pc"] = parseInt(document.getElementById("mu_Popcorn_Chicken_20pc")?.value)||0;
-  menuUnits["Nosh Bites Combo"] = parseInt(document.getElementById("mu_Nosh_Bites_Combo")?.value)||0;
-  menuUnits["Nosh Bites Combo Large"] = parseInt(document.getElementById("mu_Nosh_Bites_Combo_Large")?.value)||0;
-  menuUnits["Honey Tender Combo"] = parseInt(document.getElementById("mu_Honey_Tender_Combo")?.value)||0;
-  menuUnits["Jack Sesame Strips Combo"] = parseInt(document.getElementById("mu_Jack_Sesame_Strips_Combo")?.value)||0;
-
-  return {
-    week_start:   document.getElementById('week_start').value,
-    week_number:  document.getElementById('week_num').value,
-    dinein:       parseFloat(document.getElementById('w_dinein').value)||0,
-    wolt:         parseFloat(document.getElementById('w_wolt').value)||0,
-    foody:        parseFloat(document.getElementById('w_foody').value)||0,
-    covers:       parseInt(document.getElementById('w_covers').value)||0,
-    bank_balance: parseFloat(document.getElementById('w_bank').value)||0,
-    umar_hrs:     parseFloat(document.getElementById('umar_hrs').value)||0,
-    sek_hrs:      parseFloat(document.getElementById('sek_hrs').value)||0,
-    menu_units:   menuUnits,
-    best_item:    document.getElementById('best_item').value,
-    notes:        document.getElementById('w_notes').value,
-    action:       document.getElementById('w_action').value,
-  };
-}
-
-
-async function handleSubmit() {
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyIVMONTeGtW2FQphNuCRIRkydiwT4BgiX1SzCrCCkoRZlBSOldgTby9xXmbOKglRS_cA/exec';
+document.getElementById('mainForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
   const btn = document.getElementById('submitBtn');
-  btn.disabled = true;
-  btn.textContent = 'Sending…';
-
-  const data = collectData();
-  if (!data) { btn.disabled = false; btn.textContent = 'Submit'; return; }
-  data._sheet = SHEET_NAME;
-  data._timestamp = new Date().toISOString();
-
+  const err = document.getElementById('errMsg');
+  err.style.display = 'none'; btn.textContent = 'Submitting…'; btn.disabled = true;
+  const menu_units = {};
+  document.querySelectorAll('[data-menu]').forEach(function(inp) {
+    if (inp.value && Number(inp.value) > 0) menu_units[inp.getAttribute('data-menu')] = inp.value;
+  });
+  const data = { _sheet: 'Weekly_Review', _timestamp: new Date().toISOString(), week_start: document.getElementById('week_start').value, week_number: document.getElementById('week_number').value, dinein: document.getElementById('dinein').value || '0', wolt: document.getElementById('wolt').value || '0', foody: document.getElementById('foody').value || '0', covers: document.getElementById('covers').value || '0', bank_balance: document.getElementById('bank_balance').value || '0', umar_hrs: document.getElementById('umar_hrs').value || '0', sek_hrs: document.getElementById('sek_hrs').value || '0', best_item: document.getElementById('best_item').value, notes: document.getElementById('notes').value, action: document.getElementById('action').value, menu_units: menu_units };
   try {
-    const params = new URLSearchParams();
-    params.append('data', JSON.stringify(data));
-    await fetch(SHEET_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: params
-    });
-    showSuccess();
-  } catch(e) {
-    alert('Connection error. Please try again.');
-    btn.disabled = false; btn.textContent = 'Submit';
-  }
-}
-
-function showSuccess() {
-  document.getElementById('formArea').style.display = 'none';
-  document.getElementById('successScreen').style.display = 'block';
-  window.scrollTo(0, 0);
-}
-
-function resetForm() {
-  document.getElementById('successScreen').style.display = 'none';
-  document.getElementById('formArea').style.display = 'block';
-  document.getElementById('mainForm').reset();
-  if (typeof onReset === 'function') onReset();
-  window.scrollTo(0, 0);
-}
+    const p = new URLSearchParams(); p.append('data', JSON.stringify(data));
+    await fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body: p });
+    document.getElementById('formArea').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+    window.scrollTo(0,0);
+  } catch(ex) { err.style.display = 'block'; btn.textContent = 'Submit'; btn.disabled = false; }
+});
 </script>
 </body>
 </html>

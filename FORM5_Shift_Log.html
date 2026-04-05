@@ -2,709 +2,162 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="theme-color" content="#0A0A0A">
-<title>NOSH — Shift Log</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shift Log — NOSH</title>
 <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --black:   #0A0A0A;
-  --grey-90: #1A1A1A;
-  --grey-80: #2C2C2C;
-  --grey-60: #666666;
-  --grey-40: #999999;
-  --grey-20: #CCCCCC;
-  --grey-10: #E8E8E8;
-  --grey-05: #F5F5F5;
-  --white:   #FFFFFF;
-  --red:     #CC0000;
-  --red-dk:  #990000;
-  --red-lt:  #FFE5E5;
-  --red-mid: #FF3333;
-}
-
-html { -webkit-text-size-adjust: 100%; }
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background: var(--grey-05);
-  color: var(--black);
-  min-height: 100vh;
-  padding-bottom: 60px;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ── TOP BAR ── */
-.top-bar {
-  background: var(--black);
-  position: sticky;
-  top: 0;
-  z-index: 200;
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 56px;
-  border-bottom: 2px solid var(--red);
-}
-.top-bar .logo { color: white; display: flex; align-items: center; }
-.top-bar .logo svg { width: 56px; height: auto; }
-.top-bar .form-id {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  color: var(--grey-40);
-  text-transform: uppercase;
-}
-
-/* ── HERO ── */
-.hero {
-  background: var(--black);
-  padding: 28px 20px 32px;
-  border-bottom: 1px solid var(--grey-80);
-}
-.hero .freq-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--red);
-  color: white;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 4px 12px;
-  border-radius: 100px;
-  margin-bottom: 14px;
-}
-.hero h1 {
-  font-size: 28px;
-  font-weight: 900;
-  color: var(--white);
-  line-height: 1.1;
-  letter-spacing: -0.5px;
-  margin-bottom: 6px;
-}
-.hero .subtitle {
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--grey-40);
-  line-height: 1.5;
-}
-.hero .who-badge {
-  display: inline-block;
-  margin-top: 14px;
-  background: var(--grey-80);
-  border: 1px solid var(--grey-60);
-  color: var(--grey-20);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 5px 12px;
-  border-radius: 6px;
-}
-
-/* ── CONTAINER ── */
-.container { max-width: 560px; margin: 0 auto; padding: 0 16px; }
-
-/* ── SECTION ── */
-.section {
-  margin-top: 32px;
-}
-.section-label {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 8px;
-  padding-left: 2px;
-}
-.section-title {
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--black);
-  letter-spacing: -0.3px;
-  margin-bottom: 16px;
-  padding-left: 2px;
-}
-
-/* ── CARD ── */
-.card {
-  background: var(--white);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.05);
-}
-.card + .card { margin-top: 12px; }
-
-/* ── FIELD ── */
-.field {
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--grey-10);
-  position: relative;
-}
-.field:last-child { border-bottom: none; }
-
-.field label {
-  display: block;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: var(--grey-60);
-  margin-bottom: 6px;
-}
-.field .req { color: var(--red); margin-left: 2px; }
-
-.field input,
-.field select,
-.field textarea {
-  width: 100%;
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--black);
-  background: transparent;
-  border: none;
-  outline: none;
-  -webkit-appearance: none;
-  appearance: none;
-  padding: 0;
-  line-height: 1.4;
-}
-.field textarea {
-  min-height: 72px;
-  resize: none;
-  font-size: 15px;
-  font-weight: 400;
-}
-.field input::placeholder,
-.field textarea::placeholder { color: var(--grey-20); font-weight: 400; }
-.field select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0 center; padding-right: 20px; }
-
-.field .hint {
-  font-size: 11px;
-  font-weight: 400;
-  color: var(--grey-40);
-  margin-top: 4px;
-  line-height: 1.4;
-}
-
-/* ── NUMBER FIELD ── */
-.field.number input {
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  color: var(--black);
-}
-.field.number .currency {
-  position: absolute;
-  left: 20px;
-  bottom: 19px;
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--grey-20);
-  pointer-events: none;
-}
-.field.number input { padding-left: 20px; }
-
-/* ── COMPUTED FIELD ── */
-.field.computed { background: var(--grey-05); }
-.field.computed label { color: var(--grey-40); }
-.field.computed .computed-val {
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--black);
-  letter-spacing: -0.5px;
-}
-.field.computed.positive .computed-val { color: var(--red); }
-
-/* ── ROW ── */
-.field-row {
-  display: grid;
-  gap: 0;
-}
-.field-row.two { grid-template-columns: 1fr 1fr; }
-.field-row.three { grid-template-columns: 1fr 1fr 1fr; }
-.field-row > .field { border-right: 1px solid var(--grey-10); }
-.field-row > .field:last-child { border-right: none; }
-
-/* ── COUNT ITEM ── */
-.count-item {
-  display: grid;
-  grid-template-columns: 1fr auto 80px;
-  align-items: center;
-  padding: 13px 20px;
-  border-bottom: 1px solid var(--grey-10);
-  gap: 12px;
-}
-.count-item:last-child { border-bottom: none; }
-.count-item .ci-name {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--black);
-}
-.count-item .ci-unit {
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--grey-40);
-  background: var(--grey-10);
-  padding: 3px 8px;
-  border-radius: 100px;
-  white-space: nowrap;
-}
-.count-item input {
-  width: 80px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 17px;
-  font-weight: 700;
-  text-align: center;
-  background: var(--grey-05);
-  border: 1.5px solid var(--grey-10);
-  border-radius: 10px;
-  padding: 8px 6px;
-  color: var(--black);
-  -webkit-appearance: none;
-  outline: none;
-}
-.count-item input:focus { border-color: var(--red); background: white; }
-
-/* ── CAT HEADER ── */
-.cat-header {
-  background: var(--black);
-  color: var(--white);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  padding: 9px 20px;
-}
-
-/* ── DELIVERY ITEM ── */
-.delivery-block {
-  border-bottom: 1px solid var(--grey-10);
-}
-.delivery-block:last-child { border-bottom: none; }
-.delivery-num {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--grey-40);
-  padding: 14px 20px 0;
-}
-
-/* ── INFO BANNER ── */
-.info-banner {
-  background: var(--black);
-  color: var(--grey-20);
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.6;
-  padding: 16px 20px;
-  border-radius: 12px;
-  margin-top: 20px;
-  border-left: 3px solid var(--red);
-}
-.info-banner strong { color: white; font-weight: 700; }
-
-.warn-banner {
-  background: var(--red-lt);
-  color: var(--red-dk);
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.6;
-  padding: 12px 16px;
-  border-radius: 10px;
-  margin: 0 0 0;
-  border-left: 3px solid var(--red);
-}
-
-/* ── SUBMIT ── */
-.submit-wrap {
-  padding: 32px 0 8px;
-}
-.submit-btn {
-  width: 100%;
-  background: var(--red);
-  color: white;
-  border: none;
-  border-radius: 14px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  padding: 18px;
-  cursor: pointer;
-  transition: background 0.15s, transform 0.1s;
-  -webkit-tap-highlight-color: transparent;
-}
-.submit-btn:active { background: var(--red-dk); transform: scale(0.98); }
-.submit-btn:disabled { background: var(--grey-20); color: var(--grey-40); cursor: not-allowed; }
-
-/* ── SUCCESS ── */
-.success-screen {
-  display: none;
-  padding: 80px 20px;
-  text-align: center;
-}
-.success-screen .s-icon {
-  width: 72px;
-  height: 72px;
-  background: var(--black);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 24px;
-}
-.success-screen .s-icon svg { width: 32px; height: 32px; }
-.success-screen h2 {
-  font-size: 24px;
-  font-weight: 900;
-  color: var(--black);
-  margin-bottom: 8px;
-}
-.success-screen p {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--grey-60);
-  line-height: 1.6;
-}
-.success-screen .reset-btn {
-  margin-top: 32px;
-  display: inline-block;
-  background: var(--black);
-  color: white;
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 14px 32px;
-  border-radius: 100px;
-  border: none;
-  cursor: pointer;
-  letter-spacing: 0.3px;
-}
-
-/* ── PASTE GUIDE ── */
-.paste-guide {
-  margin-top: 8px;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid var(--grey-10);
-}
-.paste-guide-header {
-  background: var(--grey-90);
-  color: white;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 10px 16px;
-}
-.paste-row {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 12px;
-  padding: 10px 16px;
-  border-bottom: 1px solid var(--grey-10);
-  align-items: start;
-}
-.paste-row:last-child { border-bottom: none; }
-.paste-col-ref {
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--red);
-  background: var(--red-lt);
-  padding: 2px 8px;
-  border-radius: 4px;
-  white-space: nowrap;
-  letter-spacing: 0.3px;
-}
-.paste-col-desc {
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--grey-60);
-  line-height: 1.5;
-}
-
-/* ── AUTO FIELD ── */
-.auto-field {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 20px;
-  background: var(--grey-05);
-  border-bottom: 1px solid var(--grey-10);
-}
-.auto-field:last-child { border-bottom: none; }
-.auto-field .af-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--grey-60);
-}
-.auto-field .af-val {
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--black);
-  letter-spacing: -0.3px;
-}
-.auto-field .af-val.red { color: var(--red); }
-
-.freq-pill { background: #CC0000; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #111; font-family: 'Helvetica Neue', sans-serif; color: #f2f2f2; min-height: 100vh; }
+.header { background: #0a0a0a; padding: 20px 16px 16px; border-bottom: 2px solid #be0004; }
+.badge { font-size: 9px; color: #be0004; letter-spacing: 2px; font-weight: 700; margin-bottom: 6px; }
+.form-id { font-size: 10px; color: #555; margin-bottom: 4px; }
+h1 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.subtitle { font-size: 13px; color: #666; }
+.who { font-size: 10px; color: #aaa; background: #1a1a1a; padding: 3px 10px; border-radius: 3px; display: inline-block; margin-top: 8px; }
+.desc { font-size: 12px; color: #777; margin-top: 8px; line-height: 1.5; }
+.section { padding: 0 16px; margin-top: 24px; }
+.section-label { font-size: 9px; color: #be0004; letter-spacing: 2px; font-weight: 700; margin-bottom: 4px; }
+.section-title { font-size: 18px; font-weight: 600; color: #f2f2f2; margin-bottom: 14px; }
+.field { margin-bottom: 16px; }
+.field label { display: block; font-size: 11px; color: #777; letter-spacing: 0.5px; margin-bottom: 6px; text-transform: uppercase; }
+.req { color: #be0004; }
+.hint { font-size: 10px; color: #444; margin-top: 4px; }
+.hours-display { font-size: 28px; color: #be0004; font-weight: 700; padding: 10px 0; }
+input, select, textarea { width: 100%; background: #1a1a1a; border: 1px solid #2a2a2a; color: #f2f2f2; padding: 13px 12px; border-radius: 8px; font-size: 16px; font-family: inherit; -webkit-appearance: none; appearance: none; }
+input[type="date"], input[type="time"] { -webkit-appearance: none; min-height: 48px; }
+select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' fill='none' stroke-width='2'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: #be0004; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.divider { height: 1px; background: #1e1e1e; margin: 24px 0; }
+.submit-wrap { padding: 24px 16px 50px; }
+button[type="submit"] { width: 100%; background: #be0004; color: #fff; border: none; padding: 18px; border-radius: 10px; font-size: 17px; font-weight: 700; font-family: inherit; cursor: pointer; }
+button:disabled { background: #555; }
+.success { display: none; text-align: center; padding: 60px 16px; }
+.success h2 { color: #4caf50; font-size: 24px; margin-bottom: 8px; }
+.success p { color: #888; font-size: 15px; }
+.err { display: none; color: #be0004; font-size: 13px; margin-top: 10px; padding: 12px; background: #1a0000; border-radius: 8px; }
 </style>
 </head>
 <body>
-
-<div class="top-bar">
-  <div class="logo">
-    <span style="font-family:'Poppins',Arial Black,sans-serif;font-size:22px;font-weight:900;color:white;letter-spacing:-1px;">NOSH</span>
-  </div>
-  <span class="form-id">OPS-F3</span>
-</div>
-
-<div class="hero">
-  <div class="freq-pill">
-    <svg width="6" height="6" viewBox="0 0 6 6"><circle cx="3" cy="3" r="3" fill="white"/></svg>
-    After Every Shift
-  </div>
+<div id="formArea">
+<div class="header">
+  <div class="form-id">OPS-F3</div>
+  <div class="badge">AFTER EVERY SHIFT</div>
   <h1>Shift Log</h1>
-  <p class="subtitle">Log Umar and Sekender shifts — end of each shift</p>
-  <span class="who-badge">Mahoon</span>
+  <div class="subtitle">Log Umar and Sekender shifts</div>
+  <div class="who">MAHOON</div>
+  <div class="desc">Log every shift. Takes 30 seconds. Do it at the end of each shift.</div>
 </div>
-
-<div class="container">
-  <div id="formArea">
-    <form id="mainForm" onsubmit="return false;">
-      <div class="info-banner"><strong>Log every shift for Umar and Sekender.</strong> Takes 30 seconds. Do it at the end of each shift.</div>
-    <div class="section">
-      <div class="section-label">Shift</div>
-      <div class="section-title">Shift Details</div>      <div class="card">
-        <div class="field">
-          <label>Date<span class="req">*</span></label>
-          <input type="text" placeholder="DD/MM/YYYY" inputmode="numeric" id="shift_date" placeholder="" required>
-          <div class="hint">→ Operations Sheet 7 Shift Log col A</div>
-        </div>
-      <div class="field-row two">
-
-        <div class="field">
-          <label>Day<span class="req">*</span></label>
-          <select id="shift_day" required>
-          <option value="">Select…</option>
-          <option value="Monday">Monday</option>
-          <option value="Tuesday">Tuesday</option>
-          <option value="Wednesday">Wednesday</option>
-          <option value="Thursday">Thursday</option>
-          <option value="Friday">Friday</option>
-          <option value="Saturday">Saturday</option>
-          <option value="Sunday">Sunday</option>
-        </select>
-          
-        </div>
-
-        <div class="field">
-          <label>Service<span class="req">*</span></label>
-          <select id="shift_service" required>
-          <option value="">Select…</option>
-          <option value="Lunch">Lunch</option>
-          <option value="Dinner">Dinner</option>
-        </select>
-          
-        </div>
-      </div>
-        <div class="field">
-          <label>Staff Member<span class="req">*</span></label>
-          <select id="staff_member" required>
-          <option value="">Select…</option>
-          <option value="Umar">Umar</option>
-          <option value="Sekender">Sekender</option>
-          <option value="Umar & Sekender">Umar & Sekender</option>
-        </select>
-          <div class="hint">→ col D</div>
-        </div>
-      <div class="field-row two">
-
-        <div class="field">
-          <label>Start Time<span class="req">*</span></label>
-          <input type="time" id="start_time" placeholder="" required>
-          <div class="hint">→ col E</div>
-        </div>
-
-        <div class="field">
-          <label>End Time<span class="req">*</span></label>
-          <input type="time" id="end_time" placeholder="" required>
-          <div class="hint">→ col F</div>
-        </div>
-      </div>
-        <div class="auto-field">
-          <span class="af-label">Hours Worked</span>
-          <span class="af-val red" id="disp_hours">—</span>
-        </div>
-        <div class="field">
-          <label>Notes</label>
-          <input type="text" id="shift_notes" placeholder="Leave blank if nothing unusual" >
-          <div class="hint">→ col — notes</div>
-        </div>      </div>    </div>
-    <div class="section">
-      <div class="section-label">Weekly</div>
-      <div class="section-title">Weekly Totals (fill at end of week)</div>      <div class="info-banner">Fill these only at the end of each person's last shift of the week. These go into Operations Sheet 7 Weekly Summary yellow cells.</div>      <div class="card">
-      <div class="field-row two">
-
-        <div class="field">
-          <label>Umar — Total Hours This Week</label>
-          <input type="number" id="umar_week_total" placeholder="0.0" >
-          <div class="hint">→ Sheet 7 Weekly Summary col C (yellow)</div>
-        </div>
-
-        <div class="field">
-          <label>Sekender — Total Hours This Week</label>
-          <input type="number" id="sek_week_total" placeholder="0.0" >
-          <div class="hint">→ Sheet 7 Weekly Summary col H (yellow)</div>
-        </div>
-      </div>      </div>    </div>
-      <div class="paste-guide">
-        <div class="paste-guide-header">↗ Paste into file — Operations Sheet 7 — Shift Log</div>
-        
-          <div class="paste-row">
-            <span class="paste-col-ref">Col A</span>
-            <span class="paste-col-desc">Date</span>
-          </div>
-          <div class="paste-row">
-            <span class="paste-col-ref">Col B</span>
-            <span class="paste-col-desc">Day</span>
-          </div>
-          <div class="paste-row">
-            <span class="paste-col-ref">Col C</span>
-            <span class="paste-col-desc">Service (Lunch/Dinner)</span>
-          </div>
-          <div class="paste-row">
-            <span class="paste-col-ref">Col D</span>
-            <span class="paste-col-desc">Staff member</span>
-          </div>
-          <div class="paste-row">
-            <span class="paste-col-ref">Col E</span>
-            <span class="paste-col-desc">Start time</span>
-          </div>
-          <div class="paste-row">
-            <span class="paste-col-ref">Col F</span>
-            <span class="paste-col-desc">End time</span>
-          </div>
-          <div class="paste-row">
-            <span class="paste-col-ref">Col G</span>
-            <span class="paste-col-desc">Hours worked — AUTO in file</span>
-          </div>
-          <div class="paste-row">
-            <span class="paste-col-ref">Weekly col C ★</span>
-            <span class="paste-col-desc">Umar total hours this week — yellow cell</span>
-          </div>
-          <div class="paste-row">
-            <span class="paste-col-ref">Weekly col H ★</span>
-            <span class="paste-col-desc">Sekender total hours this week — yellow cell</span>
-          </div>
-      </div>
-    </form>
-    <div class="submit-wrap">
-      <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">Submit</button>
+<form id="mainForm">
+<div class="section">
+  <div class="section-label">SHIFT</div>
+  <div class="section-title">Shift Details</div>
+  <div class="field">
+    <label>Date <span class="req">*</span></label>
+    <input type="date" id="shift_date" required>
+  </div>
+  <div class="row2">
+    <div class="field">
+      <label>Day <span class="req">*</span></label>
+      <select id="shift_day" required>
+        <option value="">Select…</option>
+        <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+        <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Service <span class="req">*</span></label>
+      <select id="service" required>
+        <option value="">Select…</option>
+        <option>Lunch</option><option>Dinner</option>
+      </select>
     </div>
   </div>
-
-  <div class="success-screen" id="successScreen">
-    <div class="s-icon">
-      <svg viewBox="0 0 32 32" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
-        <path d="M6 16l7 7 13-13"/>
-      </svg>
+  <div class="field">
+    <label>Staff Member <span class="req">*</span></label>
+    <select id="staff_member" required>
+      <option value="">Select…</option>
+      <option>Umar</option><option>Sekender</option><option>Umar &amp; Sekender</option>
+    </select>
+  </div>
+  <div class="row2">
+    <div class="field">
+      <label>Start Time <span class="req">*</span></label>
+      <input type="time" id="start_time" required>
     </div>
-    <h2>Submitted</h2>
-    <p>Data received.<br>Constantinos will be notified.</p>
-    <button class="reset-btn" onclick="resetForm()">Submit Another</button>
+    <div class="field">
+      <label>End Time <span class="req">*</span></label>
+      <input type="time" id="end_time" required>
+    </div>
+  </div>
+  <div class="field">
+    <label>Hours Worked</label>
+    <div class="hours-display" id="hoursDisplay">—</div>
+    <input type="hidden" id="hours_worked">
+    <div class="hint">Auto-calculated</div>
+  </div>
+  <div class="field">
+    <label>Notes</label>
+    <textarea id="notes" rows="3" placeholder="Any notes about this shift…"></textarea>
   </div>
 </div>
-
+<div class="divider"></div>
+<div class="section">
+  <div class="section-label">WEEKLY</div>
+  <div class="section-title">Weekly Totals — fill at end of week only</div>
+  <div class="row2">
+    <div class="field">
+      <label>Umar Total Hours This Week</label>
+      <input type="number" id="umar_week_total" step="0.5" min="0" placeholder="0">
+      <div class="hint">→ Sheet 7 Weekly Summary col C</div>
+    </div>
+    <div class="field">
+      <label>Sekender Total Hours This Week</label>
+      <input type="number" id="sek_week_total" step="0.5" min="0" placeholder="0">
+      <div class="hint">→ Sheet 7 Weekly Summary col H</div>
+    </div>
+  </div>
+</div>
+<div class="submit-wrap">
+  <div class="err" id="errMsg">Something went wrong. Please try again.</div>
+  <button type="submit" id="submitBtn">Submit</button>
+</div>
+</form>
+</div>
+<div class="success" id="successMsg">
+  <h2>✓ Submitted</h2>
+  <p>Shift logged successfully.</p>
+</div>
 <script>
-const SHEET_URL  = 'https://script.google.com/macros/s/AKfycbyIVMONTeGtW2FQphNuCRIRkydiwT4BgiX1SzCrCCkoRZlBSOldgTby9xXmbOKglRS_cA/exec';
-const SHEET_NAME = 'Shift_Log';
-
-
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyIVMONTeGtW2FQphNuCRIRkydiwT4BgiX1SzCrCCkoRZlBSOldgTby9xXmbOKglRS_cA/exec';
 function calcHours() {
   const s = document.getElementById('start_time').value;
   const e = document.getElementById('end_time').value;
-  const el = document.getElementById('disp_hours');
-  if (!s || !e) { if(el) el.textContent = '—'; return; }
-  const [sh,sm] = s.split(':').map(Number);
-  const [eh,em] = e.split(':').map(Number);
-  let mins = (eh*60+em)-(sh*60+sm);
-  if (mins<0) mins+=1440;
-  const hrs = (mins/60).toFixed(2);
-  if(el) el.textContent = hrs + ' hrs';
-}
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('start_time').addEventListener('change', calcHours);
-  document.getElementById('end_time').addEventListener('change', calcHours);
-});
-function collectData() {
-  const s = id => document.getElementById(id)?.value||'';
-  const n = id => parseFloat(document.getElementById(id)?.value)||0;
-  if (!s('shift_date')||!s('shift_day')||!s('shift_service')||!s('staff_member')||!s('start_time')||!s('end_time')) {
-    alert('Please fill all required fields.'); return null;
+  if (s && e) {
+    const [sh,sm] = s.split(':').map(Number);
+    const [eh,em] = e.split(':').map(Number);
+    let mins = (eh*60+em)-(sh*60+sm);
+    if (mins < 0) mins += 24*60;
+    const hrs = (mins/60).toFixed(1);
+    document.getElementById('hoursDisplay').textContent = hrs + ' hrs';
+    document.getElementById('hours_worked').value = hrs;
   }
-  const [sh,sm] = s('start_time').split(':').map(Number);
-  const [eh,em] = s('end_time').split(':').map(Number);
-  let mins=(eh*60+em)-(sh*60+sm); if(mins<0)mins+=1440;
-  return {
-    shift_date:s('shift_date'), shift_day:s('shift_day'), service:s('shift_service'),
-    staff_member:s('staff_member'), start_time:s('start_time'), end_time:s('end_time'),
-    hours_worked:+(mins/60).toFixed(2), notes:s('shift_notes'),
-    umar_week_total:n('umar_week_total'), sek_week_total:n('sek_week_total'),
-  };
 }
-
-
-async function handleSubmit() {
+document.getElementById('start_time').addEventListener('change', calcHours);
+document.getElementById('end_time').addEventListener('change', calcHours);
+document.getElementById('mainForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
   const btn = document.getElementById('submitBtn');
-  btn.disabled = true;
-  btn.textContent = 'Sending…';
-
-  const data = collectData();
-  if (!data) { btn.disabled = false; btn.textContent = 'Submit'; return; }
-  data._sheet = SHEET_NAME;
-  data._timestamp = new Date().toISOString();
-
+  const err = document.getElementById('errMsg');
+  err.style.display = 'none'; btn.textContent = 'Submitting…'; btn.disabled = true;
+  const data = { _sheet: 'Shift_Log', _timestamp: new Date().toISOString(), shift_date: document.getElementById('shift_date').value, shift_day: document.getElementById('shift_day').value, service: document.getElementById('service').value, staff_member: document.getElementById('staff_member').value, start_time: document.getElementById('start_time').value, end_time: document.getElementById('end_time').value, hours_worked: document.getElementById('hours_worked').value, notes: document.getElementById('notes').value, umar_week_total: document.getElementById('umar_week_total').value || '', sek_week_total: document.getElementById('sek_week_total').value || '' };
   try {
-    const params = new URLSearchParams();
-    params.append('data', JSON.stringify(data));
-    await fetch(SHEET_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: params
-    });
-    showSuccess();
-  } catch(e) {
-    alert('Connection error. Please try again.');
-    btn.disabled = false; btn.textContent = 'Submit';
-  }
-}
-
-function showSuccess() {
-  document.getElementById('formArea').style.display = 'none';
-  document.getElementById('successScreen').style.display = 'block';
-  window.scrollTo(0, 0);
-}
-
-function resetForm() {
-  document.getElementById('successScreen').style.display = 'none';
-  document.getElementById('formArea').style.display = 'block';
-  document.getElementById('mainForm').reset();
-  if (typeof onReset === 'function') onReset();
-  window.scrollTo(0, 0);
-}
+    const p = new URLSearchParams(); p.append('data', JSON.stringify(data));
+    await fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body: p });
+    document.getElementById('formArea').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+    window.scrollTo(0,0);
+  } catch(ex) { err.style.display = 'block'; btn.textContent = 'Submit'; btn.disabled = false; }
+});
 </script>
 </body>
 </html>
