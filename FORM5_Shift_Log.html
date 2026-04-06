@@ -2,162 +2,520 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shift Log — NOSH</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="theme-color" content="#0A0A0A">
+<title>NOSH — Daily Shift Log</title>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: #111; font-family: 'Helvetica Neue', sans-serif; color: #f2f2f2; min-height: 100vh; }
-.header { background: #0a0a0a; padding: 20px 16px 16px; border-bottom: 2px solid #be0004; }
-.badge { font-size: 9px; color: #be0004; letter-spacing: 2px; font-weight: 700; margin-bottom: 6px; }
-.form-id { font-size: 10px; color: #555; margin-bottom: 4px; }
-h1 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 4px; }
-.subtitle { font-size: 13px; color: #666; }
-.who { font-size: 10px; color: #aaa; background: #1a1a1a; padding: 3px 10px; border-radius: 3px; display: inline-block; margin-top: 8px; }
-.desc { font-size: 12px; color: #777; margin-top: 8px; line-height: 1.5; }
-.section { padding: 0 16px; margin-top: 24px; }
-.section-label { font-size: 9px; color: #be0004; letter-spacing: 2px; font-weight: 700; margin-bottom: 4px; }
-.section-title { font-size: 18px; font-weight: 600; color: #f2f2f2; margin-bottom: 14px; }
-.field { margin-bottom: 16px; }
-.field label { display: block; font-size: 11px; color: #777; letter-spacing: 0.5px; margin-bottom: 6px; text-transform: uppercase; }
-.req { color: #be0004; }
-.hint { font-size: 10px; color: #444; margin-top: 4px; }
-.hours-display { font-size: 28px; color: #be0004; font-weight: 700; padding: 10px 0; }
-input, select, textarea { width: 100%; background: #1a1a1a; border: 1px solid #2a2a2a; color: #f2f2f2; padding: 13px 12px; border-radius: 8px; font-size: 16px; font-family: inherit; -webkit-appearance: none; appearance: none; }
-input[type="date"], input[type="time"] { -webkit-appearance: none; min-height: 48px; }
-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' fill='none' stroke-width='2'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
-input:focus, select:focus, textarea:focus { outline: none; border-color: #be0004; }
-.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.divider { height: 1px; background: #1e1e1e; margin: 24px 0; }
-.submit-wrap { padding: 24px 16px 50px; }
-button[type="submit"] { width: 100%; background: #be0004; color: #fff; border: none; padding: 18px; border-radius: 10px; font-size: 17px; font-weight: 700; font-family: inherit; cursor: pointer; }
-button:disabled { background: #555; }
-.success { display: none; text-align: center; padding: 60px 16px; }
-.success h2 { color: #4caf50; font-size: 24px; margin-bottom: 8px; }
-.success p { color: #888; font-size: 15px; }
-.err { display: none; color: #be0004; font-size: 13px; margin-top: 10px; padding: 12px; background: #1a0000; border-radius: 8px; }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --black:#0A0A0A;--grey-90:#1A1A1A;--grey-80:#2C2C2C;
+  --grey-60:#666666;--grey-40:#999999;--grey-20:#CCCCCC;
+  --grey-10:#E8E8E8;--grey-05:#F5F5F5;--white:#FFFFFF;
+  --red:#CC0000;--red-dk:#990000;--red-lt:#FFE5E5;--red-mid:#FF3333;
+}
+html{-webkit-text-size-adjust:100%;}
+body{font-family:'Poppins',sans-serif;background:var(--grey-05);color:var(--black);min-height:100vh;padding-bottom:60px;-webkit-font-smoothing:antialiased;}
+
+/* TOP BAR */
+.top-bar{background:var(--black);position:sticky;top:0;z-index:200;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px;border-bottom:2px solid var(--red);}
+.top-bar .logo{color:white;}
+.top-bar .form-id{font-size:10px;font-weight:600;letter-spacing:2px;color:var(--grey-40);text-transform:uppercase;}
+
+/* HERO */
+.hero{background:var(--black);padding:28px 20px 32px;border-bottom:1px solid var(--grey-80);}
+.hero .freq-pill{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:white;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:14px;}
+.hero h1{font-size:28px;font-weight:900;color:var(--white);line-height:1.1;letter-spacing:-0.5px;margin-bottom:6px;}
+.hero .subtitle{font-size:13px;font-weight:400;color:var(--grey-40);line-height:1.5;}
+.hero .who-badge{display:inline-block;margin-top:14px;background:var(--grey-80);border:1px solid var(--grey-60);color:var(--grey-20);font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;border-radius:6px;}
+
+/* CONTAINER */
+.container{max-width:560px;margin:0 auto;padding:0 16px;}
+
+/* SECTION */
+.section{margin-top:32px;}
+.section-label{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:8px;padding-left:2px;}
+.section-title{font-size:18px;font-weight:800;color:var(--black);letter-spacing:-0.3px;margin-bottom:16px;padding-left:2px;}
+
+/* CARD */
+.card{background:var(--white);border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08),0 0 0 1px rgba(0,0,0,0.05);}
+
+/* STAFF CARD */
+.staff-card{background:var(--white);border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08),0 0 0 1px rgba(0,0,0,0.05);margin-bottom:12px;}
+.staff-card-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--grey-10);}
+.staff-card-header.absent-mode{background:var(--grey-05);}
+.staff-name{font-size:16px;font-weight:800;color:var(--black);letter-spacing:-0.3px;}
+.staff-role{font-size:10px;font-weight:600;color:var(--grey-40);letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
+
+/* TOGGLE */
+.toggle-wrap{display:flex;align-items:center;gap:10px;}
+.toggle-label{font-size:12px;font-weight:600;color:var(--grey-60);}
+.toggle{position:relative;width:52px;height:28px;flex-shrink:0;}
+.toggle input{opacity:0;width:0;height:0;}
+.toggle-slider{position:absolute;inset:0;background:var(--grey-20);border-radius:100px;transition:background 0.2s;cursor:pointer;}
+.toggle-slider:before{content:'';position:absolute;width:20px;height:20px;left:4px;top:4px;background:white;border-radius:50%;transition:transform 0.2s;box-shadow:0 1px 3px rgba(0,0,0,0.2);}
+.toggle input:checked + .toggle-slider{background:var(--red);}
+.toggle input:checked + .toggle-slider:before{transform:translateX(24px);}
+
+/* STAFF BODY */
+.staff-body{display:none;}
+.staff-body.open{display:block;}
+.absent-banner{padding:14px 20px;background:var(--grey-05);border-top:1px solid var(--grey-10);font-size:13px;font-weight:500;color:var(--grey-40);text-align:center;font-style:italic;}
+
+/* SHIFT BLOCK */
+.shift-block{border-top:1px solid var(--grey-10);}
+.shift-block-header{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:var(--grey-05);}
+.shift-block-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey-60);}
+.shift-check-wrap{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--grey-60);cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.shift-chk{width:22px;height:22px;border:2px solid var(--grey-20);border-radius:6px;display:flex;align-items:center;justify-content:center;background:white;transition:all 0.15s;flex-shrink:0;}
+.shift-chk.on{background:var(--red);border-color:var(--red);}
+.shift-chk.on::after{content:'';width:10px;height:6px;border-left:2.5px solid white;border-bottom:2.5px solid white;transform:rotate(-45deg) translateY(-1px);}
+.shift-fields{display:none;}
+.shift-fields.open{display:block;}
+
+/* FIELD */
+.field{padding:16px 20px;border-bottom:1px solid var(--grey-10);position:relative;}
+.field:last-child{border-bottom:none;}
+.field label{display:block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--grey-60);margin-bottom:6px;}
+.field .req{color:var(--red);margin-left:2px;}
+.field input,.field select,.field textarea{width:100%;font-family:'Poppins',sans-serif;font-size:16px;font-weight:500;color:var(--black);background:transparent;border:none;outline:none;-webkit-appearance:none;appearance:none;padding:0;line-height:1.4;}
+.field textarea{min-height:72px;resize:none;font-size:15px;font-weight:400;}
+.field input::placeholder,.field textarea::placeholder{color:var(--grey-20);font-weight:400;}
+.field-row{display:grid;gap:0;}
+.field-row.two{grid-template-columns:1fr 1fr;}
+.field-row>div{border-right:1px solid var(--grey-10);}
+.field-row>div:last-child{border-right:none;}
+
+/* AUTO DISPLAY */
+.auto-field{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:var(--grey-05);border-bottom:1px solid var(--grey-10);}
+.auto-field .af-label{font-size:12px;font-weight:600;color:var(--grey-60);}
+.auto-field .af-val{font-size:18px;font-weight:800;color:var(--black);letter-spacing:-0.3px;}
+.af-val.live{color:var(--red);}
+
+/* TOTAL BAR */
+.total-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--black);}
+.total-bar .tb-l{font-size:11px;font-weight:700;color:var(--grey-40);letter-spacing:1px;text-transform:uppercase;}
+.total-bar .tb-v{font-size:20px;font-weight:900;color:var(--white);letter-spacing:-0.5px;}
+.total-bar .tb-v.live{color:var(--red-mid);}
+
+/* INFO BANNER */
+.info-banner{background:var(--black);color:var(--grey-20);font-size:12px;font-weight:400;line-height:1.6;padding:16px 20px;border-radius:12px;margin-top:20px;border-left:3px solid var(--red);}
+.info-banner strong{color:white;font-weight:700;}
+
+/* SUBMIT */
+.submit-wrap{padding:32px 0 8px;}
+.submit-btn{width:100%;background:var(--red);color:white;border:none;border-radius:14px;font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;letter-spacing:0.3px;padding:18px;cursor:pointer;transition:background 0.15s,transform 0.1s;-webkit-tap-highlight-color:transparent;}
+.submit-btn:active{background:var(--red-dk);transform:scale(0.98);}
+.submit-btn:disabled{background:var(--grey-20);color:var(--grey-40);cursor:not-allowed;}
+
+/* SUCCESS */
+.success-screen{display:none;padding:80px 20px;text-align:center;}
+.success-screen .s-icon{width:72px;height:72px;background:var(--black);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;}
+.success-screen .s-icon svg{width:32px;height:32px;}
+.success-screen h2{font-size:24px;font-weight:900;color:var(--black);margin-bottom:8px;}
+.success-screen p{font-size:14px;font-weight:400;color:var(--grey-60);line-height:1.6;}
+.success-screen .reset-btn{margin-top:32px;display:inline-block;background:var(--black);color:white;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;padding:14px 32px;border-radius:100px;border:none;cursor:pointer;}
 </style>
 </head>
 <body>
-<div id="formArea">
-<div class="header">
-  <div class="form-id">OPS-F3</div>
-  <div class="badge">AFTER EVERY SHIFT</div>
+
+<div class="top-bar">
+  <div class="logo">
+    <span style="font-family:'Poppins',sans-serif;font-size:22px;font-weight:900;color:white;letter-spacing:-1px;">NOSH</span>
+  </div>
+  <span class="form-id">OPS-F5</span>
+</div>
+
+<div class="hero">
+  <div class="freq-pill">
+    <svg width="6" height="6" viewBox="0 0 6 6"><circle cx="3" cy="3" r="3" fill="white"/></svg>
+    Daily — After Last Shift
+  </div>
   <h1>Shift Log</h1>
-  <div class="subtitle">Log Umar and Sekender shifts</div>
-  <div class="who">MAHOON</div>
-  <div class="desc">Log every shift. Takes 30 seconds. Do it at the end of each shift.</div>
+  <p class="subtitle">One submission per day — all staff in one form</p>
+  <span class="who-badge">Mahoon</span>
 </div>
-<form id="mainForm">
+
+<div class="container">
+<div id="formArea">
+
+<!-- DATE -->
 <div class="section">
-  <div class="section-label">SHIFT</div>
-  <div class="section-title">Shift Details</div>
-  <div class="field">
-    <label>Date <span class="req">*</span></label>
-    <input type="date" id="shift_date" required>
-  </div>
-  <div class="row2">
+  <div class="section-label">Date</div>
+  <div class="section-title">Today</div>
+  <div class="card">
     <div class="field">
-      <label>Day <span class="req">*</span></label>
-      <select id="shift_day" required>
-        <option value="">Select…</option>
-        <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
-        <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
-      </select>
+      <label>Date<span class="req">*</span></label>
+      <input type="date" id="shift_date" required>
+      <div style="font-size:11px;color:var(--grey-40);margin-top:4px;">Auto-filled — change only if logging a past day</div>
     </div>
-    <div class="field">
-      <label>Service <span class="req">*</span></label>
-      <select id="service" required>
-        <option value="">Select…</option>
-        <option>Lunch</option><option>Dinner</option>
-      </select>
-    </div>
-  </div>
-  <div class="field">
-    <label>Staff Member <span class="req">*</span></label>
-    <select id="staff_member" required>
-      <option value="">Select…</option>
-      <option>Umar</option><option>Sekender</option><option>Umar &amp; Sekender</option>
-    </select>
-  </div>
-  <div class="row2">
-    <div class="field">
-      <label>Start Time <span class="req">*</span></label>
-      <input type="time" id="start_time" required>
-    </div>
-    <div class="field">
-      <label>End Time <span class="req">*</span></label>
-      <input type="time" id="end_time" required>
-    </div>
-  </div>
-  <div class="field">
-    <label>Hours Worked</label>
-    <div class="hours-display" id="hoursDisplay">—</div>
-    <input type="hidden" id="hours_worked">
-    <div class="hint">Auto-calculated</div>
-  </div>
-  <div class="field">
-    <label>Notes</label>
-    <textarea id="notes" rows="3" placeholder="Any notes about this shift…"></textarea>
   </div>
 </div>
-<div class="divider"></div>
+
+<!-- UMAR -->
 <div class="section">
-  <div class="section-label">WEEKLY</div>
-  <div class="section-title">Weekly Totals — fill at end of week only</div>
-  <div class="row2">
-    <div class="field">
-      <label>Umar Total Hours This Week</label>
-      <input type="number" id="umar_week_total" step="0.5" min="0" placeholder="0">
-      <div class="hint">→ Sheet 7 Weekly Summary col C</div>
+  <div class="section-label">Staff 1</div>
+  <div class="section-title">Umar</div>
+  <div class="staff-card">
+    <div class="staff-card-header" id="umar_hdr">
+      <div>
+        <div class="staff-name">Umar</div>
+        <div class="staff-role">Cook · €5.50/hr · OT €8.25/hr above 48h</div>
+      </div>
+      <div class="toggle-wrap">
+        <span class="toggle-label" id="umar_lbl">Worked</span>
+        <label class="toggle">
+          <input type="checkbox" id="umar_worked" checked onchange="toggleWorked('umar')">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
     </div>
+    <div class="staff-body open" id="umar_body">
+      <!-- Lunch -->
+      <div class="shift-block">
+        <div class="shift-block-header">
+          <span class="shift-block-label">Lunch Shift</span>
+          <div class="shift-check-wrap" onclick="toggleShift('umar','lunch')">
+            <div class="shift-chk" id="umar_lunch_chk"></div>
+            <span id="umar_lunch_lbl">Did not work lunch</span>
+          </div>
+        </div>
+        <div class="shift-fields" id="umar_lunch_fields">
+          <div class="field-row two">
+            <div class="field"><label>Start</label><input type="time" id="umar_lunch_start" onchange="calcHours('umar')"></div>
+            <div class="field"><label>End</label><input type="time" id="umar_lunch_end" onchange="calcHours('umar')"></div>
+          </div>
+          <div class="auto-field"><span class="af-label">Lunch hours</span><span class="af-val" id="umar_lunch_disp">—</span></div>
+        </div>
+      </div>
+      <!-- Dinner -->
+      <div class="shift-block">
+        <div class="shift-block-header">
+          <span class="shift-block-label">Dinner Shift</span>
+          <div class="shift-check-wrap" onclick="toggleShift('umar','dinner')">
+            <div class="shift-chk" id="umar_dinner_chk"></div>
+            <span id="umar_dinner_lbl">Did not work dinner</span>
+          </div>
+        </div>
+        <div class="shift-fields" id="umar_dinner_fields">
+          <div class="field-row two">
+            <div class="field"><label>Start</label><input type="time" id="umar_dinner_start" onchange="calcHours('umar')"></div>
+            <div class="field"><label>End</label><input type="time" id="umar_dinner_end" onchange="calcHours('umar')"></div>
+          </div>
+          <div class="auto-field"><span class="af-label">Dinner hours</span><span class="af-val" id="umar_dinner_disp">—</span></div>
+        </div>
+      </div>
+      <div class="total-bar"><span class="tb-l">Total Today</span><span class="tb-v" id="umar_total">0 hrs</span></div>
+    </div>
+    <div class="absent-banner" id="umar_absent" style="display:none;">Did not work today — recorded as absent</div>
+  </div>
+</div>
+
+<!-- SEKENDER -->
+<div class="section">
+  <div class="section-label">Staff 2</div>
+  <div class="section-title">Sekender</div>
+  <div class="staff-card">
+    <div class="staff-card-header" id="sek_hdr">
+      <div>
+        <div class="staff-name">Sekender</div>
+        <div class="staff-role">Cashier · €5.50/hr · OT €8.25/hr above 48h</div>
+      </div>
+      <div class="toggle-wrap">
+        <span class="toggle-label" id="sek_lbl">Worked</span>
+        <label class="toggle">
+          <input type="checkbox" id="sek_worked" checked onchange="toggleWorked('sek')">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>
+    <div class="staff-body open" id="sek_body">
+      <div class="shift-block">
+        <div class="shift-block-header">
+          <span class="shift-block-label">Lunch Shift</span>
+          <div class="shift-check-wrap" onclick="toggleShift('sek','lunch')">
+            <div class="shift-chk" id="sek_lunch_chk"></div>
+            <span id="sek_lunch_lbl">Did not work lunch</span>
+          </div>
+        </div>
+        <div class="shift-fields" id="sek_lunch_fields">
+          <div class="field-row two">
+            <div class="field"><label>Start</label><input type="time" id="sek_lunch_start" onchange="calcHours('sek')"></div>
+            <div class="field"><label>End</label><input type="time" id="sek_lunch_end" onchange="calcHours('sek')"></div>
+          </div>
+          <div class="auto-field"><span class="af-label">Lunch hours</span><span class="af-val" id="sek_lunch_disp">—</span></div>
+        </div>
+      </div>
+      <div class="shift-block">
+        <div class="shift-block-header">
+          <span class="shift-block-label">Dinner Shift</span>
+          <div class="shift-check-wrap" onclick="toggleShift('sek','dinner')">
+            <div class="shift-chk" id="sek_dinner_chk"></div>
+            <span id="sek_dinner_lbl">Did not work dinner</span>
+          </div>
+        </div>
+        <div class="shift-fields" id="sek_dinner_fields">
+          <div class="field-row two">
+            <div class="field"><label>Start</label><input type="time" id="sek_dinner_start" onchange="calcHours('sek')"></div>
+            <div class="field"><label>End</label><input type="time" id="sek_dinner_end" onchange="calcHours('sek')"></div>
+          </div>
+          <div class="auto-field"><span class="af-label">Dinner hours</span><span class="af-val" id="sek_dinner_disp">—</span></div>
+        </div>
+      </div>
+      <div class="total-bar"><span class="tb-l">Total Today</span><span class="tb-v" id="sek_total">0 hrs</span></div>
+    </div>
+    <div class="absent-banner" id="sek_absent" style="display:none;">Did not work today — recorded as absent</div>
+  </div>
+</div>
+
+<!-- POBI -->
+<div class="section">
+  <div class="section-label">Staff 3</div>
+  <div class="section-title">Pobi</div>
+  <div class="staff-card">
+    <div class="staff-card-header" id="pobi_hdr">
+      <div>
+        <div class="staff-name">Pobi</div>
+        <div class="staff-role">Staff · €5.50/hr · OT €8.25/hr above 48h</div>
+      </div>
+      <div class="toggle-wrap">
+        <span class="toggle-label" id="pobi_lbl">Worked</span>
+        <label class="toggle">
+          <input type="checkbox" id="pobi_worked" checked onchange="toggleWorked('pobi')">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>
+    <div class="staff-body open" id="pobi_body">
+      <div class="shift-block">
+        <div class="shift-block-header">
+          <span class="shift-block-label">Lunch Shift</span>
+          <div class="shift-check-wrap" onclick="toggleShift('pobi','lunch')">
+            <div class="shift-chk" id="pobi_lunch_chk"></div>
+            <span id="pobi_lunch_lbl">Did not work lunch</span>
+          </div>
+        </div>
+        <div class="shift-fields" id="pobi_lunch_fields">
+          <div class="field-row two">
+            <div class="field"><label>Start</label><input type="time" id="pobi_lunch_start" onchange="calcHours('pobi')"></div>
+            <div class="field"><label>End</label><input type="time" id="pobi_lunch_end" onchange="calcHours('pobi')"></div>
+          </div>
+          <div class="auto-field"><span class="af-label">Lunch hours</span><span class="af-val" id="pobi_lunch_disp">—</span></div>
+        </div>
+      </div>
+      <div class="shift-block">
+        <div class="shift-block-header">
+          <span class="shift-block-label">Dinner Shift</span>
+          <div class="shift-check-wrap" onclick="toggleShift('pobi','dinner')">
+            <div class="shift-chk" id="pobi_dinner_chk"></div>
+            <span id="pobi_dinner_lbl">Did not work dinner</span>
+          </div>
+        </div>
+        <div class="shift-fields" id="pobi_dinner_fields">
+          <div class="field-row two">
+            <div class="field"><label>Start</label><input type="time" id="pobi_dinner_start" onchange="calcHours('pobi')"></div>
+            <div class="field"><label>End</label><input type="time" id="pobi_dinner_end" onchange="calcHours('pobi')"></div>
+          </div>
+          <div class="auto-field"><span class="af-label">Dinner hours</span><span class="af-val" id="pobi_dinner_disp">—</span></div>
+        </div>
+      </div>
+      <div class="total-bar"><span class="tb-l">Total Today</span><span class="tb-v" id="pobi_total">0 hrs</span></div>
+    </div>
+    <div class="absent-banner" id="pobi_absent" style="display:none;">Did not work today — recorded as absent</div>
+  </div>
+</div>
+
+<!-- NOTES -->
+<div class="section">
+  <div class="section-label">Notes</div>
+  <div class="section-title">Anything Unusual?</div>
+  <div class="card">
     <div class="field">
-      <label>Sekender Total Hours This Week</label>
-      <input type="number" id="sek_week_total" step="0.5" min="0" placeholder="0">
-      <div class="hint">→ Sheet 7 Weekly Summary col H</div>
+      <label>Notes</label>
+      <textarea id="shift_notes" placeholder="e.g. Umar left early / Sekender late start / equipment issue" rows="2"></textarea>
     </div>
   </div>
 </div>
+
+<div class="info-banner">
+  <strong>Submit once per day</strong> — after the last shift ends. Toggle OFF anyone who didn't work. Only tick lunch/dinner for shifts actually worked.
+</div>
+
 <div class="submit-wrap">
-  <div class="err" id="errMsg">Something went wrong. Please try again.</div>
-  <button type="submit" id="submitBtn">Submit</button>
+  <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">Submit Shift Log</button>
 </div>
-</form>
+
+</div><!-- /formArea -->
+
+<div class="success-screen" id="successScreen">
+  <div class="s-icon">
+    <svg viewBox="0 0 32 32" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M6 16l7 7 13-13"/></svg>
+  </div>
+  <h2>Submitted</h2>
+  <p>Shift log recorded.<br>Constantinos will review on Monday.</p>
+  <button class="reset-btn" onclick="resetForm()">Submit Another Day</button>
 </div>
-<div class="success" id="successMsg">
-  <h2>✓ Submitted</h2>
-  <p>Shift logged successfully.</p>
-</div>
+
+</div><!-- /container -->
+
 <script>
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyIVMONTeGtW2FQphNuCRIRkydiwT4BgiX1SzCrCCkoRZlBSOldgTby9xXmbOKglRS_cA/exec';
-function calcHours() {
-  const s = document.getElementById('start_time').value;
-  const e = document.getElementById('end_time').value;
-  if (s && e) {
-    const [sh,sm] = s.split(':').map(Number);
-    const [eh,em] = e.split(':').map(Number);
-    let mins = (eh*60+em)-(sh*60+sm);
-    if (mins < 0) mins += 24*60;
-    const hrs = (mins/60).toFixed(1);
-    document.getElementById('hoursDisplay').textContent = hrs + ' hrs';
-    document.getElementById('hours_worked').value = hrs;
+const SHEET_URL  = 'YOUR_APPS_SCRIPT_URL_HERE';
+const SHEET_NAME = 'Shift_Log';
+
+// Auto-fill today's date
+document.addEventListener('DOMContentLoaded', function() {
+  const t = new Date();
+  const d = t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'-'+String(t.getDate()).padStart(2,'0');
+  document.getElementById('shift_date').value = d;
+});
+
+// Toggle worked / absent
+function toggleWorked(p) {
+  const worked = document.getElementById(p+'_worked').checked;
+  document.getElementById(p+'_body').style.display   = worked ? '' : 'none';
+  document.getElementById(p+'_absent').style.display = worked ? 'none' : '';
+  document.getElementById(p+'_lbl').textContent      = worked ? 'Worked' : 'Absent';
+  document.getElementById(p+'_hdr').classList.toggle('absent-mode', !worked);
+  if (!worked) {
+    ['lunch','dinner'].forEach(s => {
+      const chk = document.getElementById(p+'_'+s+'_chk');
+      if (chk && chk.classList.contains('on')) toggleShift(p, s);
+    });
+    calcHours(p);
   }
 }
-document.getElementById('start_time').addEventListener('change', calcHours);
-document.getElementById('end_time').addEventListener('change', calcHours);
-document.getElementById('mainForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
+
+// Toggle lunch / dinner shift
+function toggleShift(p, s) {
+  const chk    = document.getElementById(p+'_'+s+'_chk');
+  const fields = document.getElementById(p+'_'+s+'_fields');
+  const lbl    = document.getElementById(p+'_'+s+'_lbl');
+  const isOn   = chk.classList.toggle('on');
+  fields.classList.toggle('open', isOn);
+  lbl.textContent = isOn ? 'Worked '+s : 'Did not work '+s;
+  if (!isOn) {
+    ['start','end'].forEach(se => {
+      const el = document.getElementById(p+'_'+s+'_'+se);
+      if (el) el.value = '';
+    });
+    calcHours(p);
+  }
+}
+
+// Calculate hours from time inputs
+function hrs(startId, endId) {
+  const s = document.getElementById(startId)?.value;
+  const e = document.getElementById(endId)?.value;
+  if (!s || !e) return 0;
+  const [sh,sm] = s.split(':').map(Number);
+  const [eh,em] = e.split(':').map(Number);
+  let m = (eh*60+em)-(sh*60+sm);
+  if (m<0) m+=1440;
+  return parseFloat((m/60).toFixed(2));
+}
+
+function calcHours(p) {
+  const lOn = document.getElementById(p+'_lunch_chk').classList.contains('on');
+  const dOn = document.getElementById(p+'_dinner_chk').classList.contains('on');
+  const lh  = lOn ? hrs(p+'_lunch_start',  p+'_lunch_end')  : 0;
+  const dh  = dOn ? hrs(p+'_dinner_start', p+'_dinner_end') : 0;
+  const tot = parseFloat((lh+dh).toFixed(2));
+
+  const ld = document.getElementById(p+'_lunch_disp');
+  const dd = document.getElementById(p+'_dinner_disp');
+  const td = document.getElementById(p+'_total');
+
+  if (ld) { ld.textContent = lh>0 ? lh+' hrs' : '—'; ld.className = 'af-val'+(lh>0?' live':''); }
+  if (dd) { dd.textContent = dh>0 ? dh+' hrs' : '—'; dd.className = 'af-val'+(dh>0?' live':''); }
+  if (td) { td.textContent = tot>0 ? tot+' hrs' : '0 hrs'; td.className = 'tb-v'+(tot>0?' live':''); }
+}
+
+// Collect all data
+function collectData() {
+  const date = document.getElementById('shift_date').value;
+  if (!date) { alert('Please set the date.'); return null; }
+
+  function person(p) {
+    const worked   = document.getElementById(p+'_worked').checked;
+    const lOn      = worked && document.getElementById(p+'_lunch_chk').classList.contains('on');
+    const dOn      = worked && document.getElementById(p+'_dinner_chk').classList.contains('on');
+    const lh       = lOn ? hrs(p+'_lunch_start',  p+'_lunch_end')  : 0;
+    const dh       = dOn ? hrs(p+'_dinner_start', p+'_dinner_end') : 0;
+    return {
+      worked,
+      lunch_worked:  lOn,
+      lunch_start:   lOn ? document.getElementById(p+'_lunch_start').value  : '',
+      lunch_end:     lOn ? document.getElementById(p+'_lunch_end').value    : '',
+      lunch_hrs:     lh,
+      dinner_worked: dOn,
+      dinner_start:  dOn ? document.getElementById(p+'_dinner_start').value : '',
+      dinner_end:    dOn ? document.getElementById(p+'_dinner_end').value   : '',
+      dinner_hrs:    dh,
+      total_hrs:     parseFloat((lh+dh).toFixed(2)),
+    };
+  }
+
+  return {
+    date,
+    notes:    document.getElementById('shift_notes').value || '',
+    umar:     person('umar'),
+    sekender: person('sek'),
+    pobi:     person('pobi'),
+  };
+}
+
+// Submit
+async function handleSubmit() {
   const btn = document.getElementById('submitBtn');
-  const err = document.getElementById('errMsg');
-  err.style.display = 'none'; btn.textContent = 'Submitting…'; btn.disabled = true;
-  const data = { _sheet: 'Shift_Log', _timestamp: new Date().toISOString(), shift_date: document.getElementById('shift_date').value, shift_day: document.getElementById('shift_day').value, service: document.getElementById('service').value, staff_member: document.getElementById('staff_member').value, start_time: document.getElementById('start_time').value, end_time: document.getElementById('end_time').value, hours_worked: document.getElementById('hours_worked').value, notes: document.getElementById('notes').value, umar_week_total: document.getElementById('umar_week_total').value || '', sek_week_total: document.getElementById('sek_week_total').value || '' };
+  btn.disabled = true; btn.textContent = 'Sending…';
+
+  const data = collectData();
+  if (!data) { btn.disabled=false; btn.textContent='Submit Shift Log'; return; }
+  data._sheet     = SHEET_NAME;
+  data._timestamp = new Date().toISOString();
+
   try {
-    const p = new URLSearchParams(); p.append('data', JSON.stringify(data));
-    await fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body: p });
-    document.getElementById('formArea').style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
-    window.scrollTo(0,0);
-  } catch(ex) { err.style.display = 'block'; btn.textContent = 'Submit'; btn.disabled = false; }
-});
+    if (SHEET_URL === 'YOUR_APPS_SCRIPT_URL_HERE') { showSuccess(); return; }
+    const params = new URLSearchParams();
+    params.append('data', JSON.stringify(data));
+    await fetch(SHEET_URL, { method:'POST', mode:'no-cors', body:params });
+    showSuccess();
+  } catch(e) {
+    alert('Connection error. Please try again.');
+    btn.disabled=false; btn.textContent='Submit Shift Log';
+  }
+}
+
+function showSuccess() {
+  document.getElementById('formArea').style.display = 'none';
+  document.getElementById('successScreen').style.display = 'block';
+  window.scrollTo(0,0);
+}
+
+function resetForm() {
+  document.getElementById('successScreen').style.display = 'none';
+  document.getElementById('formArea').style.display = 'block';
+  // Reset date to today
+  const t = new Date();
+  document.getElementById('shift_date').value = t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'-'+String(t.getDate()).padStart(2,'0');
+  // Reset all staff
+  ['umar','sek','pobi'].forEach(p => {
+    document.getElementById(p+'_worked').checked = true;
+    ['lunch','dinner'].forEach(s => {
+      const chk = document.getElementById(p+'_'+s+'_chk');
+      if (chk && chk.classList.contains('on')) toggleShift(p,s);
+    });
+    document.getElementById(p+'_body').style.display   = '';
+    document.getElementById(p+'_absent').style.display = 'none';
+    document.getElementById(p+'_lbl').textContent      = 'Worked';
+    document.getElementById(p+'_hdr').classList.remove('absent-mode');
+    calcHours(p);
+  });
+  document.getElementById('shift_notes').value = '';
+  window.scrollTo(0,0);
+}
 </script>
 </body>
 </html>
