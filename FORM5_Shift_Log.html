@@ -80,7 +80,9 @@ body{font-family:'Poppins',sans-serif;background:var(--grey-05);color:var(--blac
 .field:last-child{border-bottom:none;}
 .field label{display:block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--grey-60);margin-bottom:6px;}
 .field .req{color:var(--red);margin-left:2px;}
-.field input,.field select,.field textarea{width:100%;font-family:'Poppins',sans-serif;font-size:16px;font-weight:500;color:var(--black);background:transparent;border:none;outline:none;-webkit-appearance:none;appearance:none;padding:0;line-height:1.4;}
+.field input,.field textarea{width:100%;font-family:'Poppins',sans-serif;font-size:16px;font-weight:500;color:var(--black);background:transparent;border:none;outline:none;padding:0;line-height:1.4;}
+.field select{width:100%;font-family:'Poppins',sans-serif;font-size:16px;font-weight:500;color:var(--black);background:transparent;border:none;outline:none;-webkit-appearance:none;appearance:none;padding:0;line-height:1.4;}
+.field input[type="time"]{min-height:40px;cursor:pointer;font-size:18px;}
 .field textarea{min-height:72px;resize:none;font-size:15px;font-weight:400;}
 .field input::placeholder,.field textarea::placeholder{color:var(--grey-20);font-weight:400;}
 .field-row{display:grid;gap:0;}
@@ -184,8 +186,8 @@ body{font-family:'Poppins',sans-serif;background:var(--grey-05);color:var(--blac
         </div>
         <div class="shift-fields" id="umar_lunch_fields">
           <div class="field-row two">
-            <div class="field"><label>Start</label><input type="time" id="umar_lunch_start" onchange="calcHours('umar')"></div>
-            <div class="field"><label>End</label><input type="time" id="umar_lunch_end" onchange="calcHours('umar')"></div>
+            <div class="field"><label>Start Time</label><input type="time" id="umar_lunch_start" onchange="calcHours('umar')" style="background:var(--grey-05);border-radius:8px;padding:8px;"></div>
+            <div class="field"><label>End Time</label><input type="time" id="umar_lunch_end" onchange="calcHours('umar')" style="background:var(--grey-05);border-radius:8px;padding:8px;"></div>
           </div>
           <div class="auto-field"><span class="af-label">Lunch hours</span><span class="af-val" id="umar_lunch_disp">—</span></div>
         </div>
@@ -201,8 +203,8 @@ body{font-family:'Poppins',sans-serif;background:var(--grey-05);color:var(--blac
         </div>
         <div class="shift-fields" id="umar_dinner_fields">
           <div class="field-row two">
-            <div class="field"><label>Start</label><input type="time" id="umar_dinner_start" onchange="calcHours('umar')"></div>
-            <div class="field"><label>End</label><input type="time" id="umar_dinner_end" onchange="calcHours('umar')"></div>
+            <div class="field"><label>Start Time</label><input type="time" id="umar_dinner_start" onchange="calcHours('umar')" style="background:var(--grey-05);border-radius:8px;padding:8px;"></div>
+            <div class="field"><label>End Time</label><input type="time" id="umar_dinner_end" onchange="calcHours('umar')" style="background:var(--grey-05);border-radius:8px;padding:8px;"></div>
           </div>
           <div class="auto-field"><span class="af-label">Dinner hours</span><span class="af-val" id="umar_dinner_disp">—</span></div>
         </div>
@@ -242,8 +244,8 @@ body{font-family:'Poppins',sans-serif;background:var(--grey-05);color:var(--blac
         </div>
         <div class="shift-fields" id="sek_lunch_fields">
           <div class="field-row two">
-            <div class="field"><label>Start</label><input type="time" id="sek_lunch_start" onchange="calcHours('sek')"></div>
-            <div class="field"><label>End</label><input type="time" id="sek_lunch_end" onchange="calcHours('sek')"></div>
+            <div class="field"><label>Start Time</label><input type="time" id="sek_lunch_start" onchange="calcHours('sek')" style="background:var(--grey-05);border-radius:8px;padding:8px;"></div>
+            <div class="field"><label>End Time</label><input type="time" id="sek_lunch_end" onchange="calcHours('sek')" style="background:var(--grey-05);border-radius:8px;padding:8px;"></div>
           </div>
           <div class="auto-field"><span class="af-label">Lunch hours</span><span class="af-val" id="sek_lunch_disp">—</span></div>
         </div>
@@ -258,8 +260,8 @@ body{font-family:'Poppins',sans-serif;background:var(--grey-05);color:var(--blac
         </div>
         <div class="shift-fields" id="sek_dinner_fields">
           <div class="field-row two">
-            <div class="field"><label>Start</label><input type="time" id="sek_dinner_start" onchange="calcHours('sek')"></div>
-            <div class="field"><label>End</label><input type="time" id="sek_dinner_end" onchange="calcHours('sek')"></div>
+            <div class="field"><label>Start Time</label><input type="time" id="sek_dinner_start" onchange="calcHours('sek')" style="background:var(--grey-05);border-radius:8px;padding:8px;"></div>
+            <div class="field"><label>End Time</label><input type="time" id="sek_dinner_end" onchange="calcHours('sek')" style="background:var(--grey-05);border-radius:8px;padding:8px;"></div>
           </div>
           <div class="auto-field"><span class="af-label">Dinner hours</span><span class="af-val" id="sek_dinner_disp">—</span></div>
         </div>
@@ -299,8 +301,8 @@ body{font-family:'Poppins',sans-serif;background:var(--grey-05);color:var(--blac
         </div>
         <div class="shift-fields" id="pobi_lunch_fields">
           <div class="field-row two">
-            <div class="field"><label>Start</label><input type="time" id="pobi_lunch_start" onchange="calcHours('pobi')"></div>
-            <div class="field"><label>End</label><input type="time" id="pobi_lunch_end" onchange="calcHours('pobi')"></div>
+            <div class="field"><label>Start Time</label><input type="time" id="pobi_lunch_start" onchange="calcHours('pobi')" style="background:var(--grey-05);border-radius:8px;padding:8px;"></div>
+            <div class="field"><label>End Time</label><input type="time" id="pobi_lunch_end" onchange="calcHours('pobi')" style="background:var(--grey-05);border-radius:8px;padding:8px;"></div>
           </div>
           <div class="auto-field"><span class="af-label">Lunch hours</span><span class="af-val" id="pobi_lunch_disp">—</span></div>
         </div>
@@ -315,8 +317,8 @@ body{font-family:'Poppins',sans-serif;background:var(--grey-05);color:var(--blac
         </div>
         <div class="shift-fields" id="pobi_dinner_fields">
           <div class="field-row two">
-            <div class="field"><label>Start</label><input type="time" id="pobi_dinner_start" onchange="calcHours('pobi')"></div>
-            <div class="field"><label>End</label><input type="time" id="pobi_dinner_end" onchange="calcHours('pobi')"></div>
+            <div class="field"><label>Start Time</label><input type="time" id="pobi_dinner_start" onchange="calcHours('pobi')" style="background:var(--grey-05);border-radius:8px;padding:8px;"></div>
+            <div class="field"><label>End Time</label><input type="time" id="pobi_dinner_end" onchange="calcHours('pobi')" style="background:var(--grey-05);border-radius:8px;padding:8px;"></div>
           </div>
           <div class="auto-field"><span class="af-label">Dinner hours</span><span class="af-val" id="pobi_dinner_disp">—</span></div>
         </div>
