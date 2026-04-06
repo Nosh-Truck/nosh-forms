@@ -69,24 +69,25 @@ body{font-family:'Poppins',sans-serif;background:var(--grey-05);color:var(--blac
 .remove-btn{background:none;border:none;color:var(--grey-60);font-size:20px;cursor:pointer;padding:0;line-height:1;-webkit-tap-highlight-color:transparent;}
 
 /* ITEM ROW */
-.item-row{display:grid;grid-template-columns:1fr auto auto auto;gap:0;border-bottom:1px solid var(--grey-10);align-items:stretch;position:relative;}
+.item-row{border-bottom:1px solid var(--grey-10);position:relative;}
 .item-row:last-of-type{border-bottom:none;}
-.item-row .ac-wrap{padding:12px 12px 12px 20px;border-right:1px solid var(--grey-10);position:relative;min-width:0;}
-.item-row .ac-wrap input{font-family:'Poppins',sans-serif;font-size:14px;font-weight:500;color:var(--black);background:transparent;border:none;outline:none;width:100%;padding:0;}
+.item-row .ac-wrap{padding:14px 20px 10px;position:relative;border-bottom:1px solid var(--grey-10);}
+.item-row .ac-wrap input{font-family:'Poppins',sans-serif;font-size:16px;font-weight:500;color:var(--black);background:transparent;border:none;outline:none;width:100%;padding:0;min-height:28px;}
 .item-row .ac-wrap input::placeholder{color:var(--grey-20);}
-.item-row .unit-cell{padding:12px 8px;border-right:1px solid var(--grey-10);display:flex;align-items:center;font-size:11px;font-weight:700;color:var(--grey-40);white-space:nowrap;min-width:40px;text-align:center;}
-.item-row .qty-cell{padding:12px 8px;border-right:1px solid var(--grey-10);display:flex;align-items:center;min-width:60px;}
-.item-row .qty-cell input{font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--black);border:none;outline:none;background:transparent;width:100%;text-align:center;padding:0;}
-.item-row .qty-cell input::placeholder{color:var(--grey-20);font-size:12px;}
-.item-row .cost-cell{padding:12px 8px 12px 6px;display:flex;align-items:center;min-width:72px;gap:2px;}
+.item-row-bottom{display:grid;grid-template-columns:auto 1fr 1fr;gap:0;}
+.item-row .unit-cell{padding:12px 14px;border-right:1px solid var(--grey-10);display:flex;align-items:center;font-size:11px;font-weight:700;color:var(--grey-40);white-space:nowrap;min-width:52px;justify-content:center;}
+.item-row .qty-cell{padding:10px 12px;border-right:1px solid var(--grey-10);display:flex;align-items:center;flex-direction:column;gap:2px;}
+.item-row .qty-cell .cell-label{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--grey-40);}
+.item-row .qty-cell input{font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;color:var(--black);border:none;outline:none;background:transparent;width:100%;text-align:center;padding:0;}
+.item-row .qty-cell input::placeholder{color:var(--grey-20);font-size:13px;font-weight:400;}
+.item-row .cost-cell{padding:10px 12px;display:flex;align-items:center;flex-direction:column;gap:2px;}
+.item-row .cost-cell .cell-label{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--grey-40);}
+.item-row .cost-cell .cost-inner{display:flex;align-items:center;gap:2px;width:100%;justify-content:center;}
 .item-row .cost-cell .csym{font-size:11px;color:var(--grey-40);font-weight:600;}
-.item-row .cost-cell input{font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--black);border:none;outline:none;background:transparent;width:100%;padding:0;}
-.item-row .cost-cell input::placeholder{color:var(--grey-20);font-size:12px;}
+.item-row .cost-cell input{font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;color:var(--black);border:none;outline:none;background:transparent;width:100%;padding:0;text-align:center;}
+.item-row .cost-cell input::placeholder{color:var(--grey-20);font-size:13px;font-weight:400;}
 
-/* ITEM HEADERS */
-.item-headers{display:grid;grid-template-columns:1fr auto auto auto;border-bottom:1px solid var(--grey-10);background:var(--grey-05);}
-.item-headers span{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-40);padding:8px 12px;}
-.item-headers span:first-child{padding-left:20px;}
+/* item-headers removed — layout now uses cell-label inside each cell */
 
 /* AUTOCOMPLETE DROPDOWN */
 .ac-dropdown{position:absolute;top:100%;left:0;right:0;background:white;border-radius:0 0 12px 12px;box-shadow:0 8px 24px rgba(0,0,0,0.15);z-index:100;max-height:220px;overflow-y:auto;display:none;}
@@ -334,6 +335,15 @@ function buildDropdown(inputEl, unitEl) {
       opt.className = 'ac-option';
       opt.innerHTML = item.n + '<span class="ac-unit">'+item.u+'</span>';
       opt.addEventListener('mousedown', function(e) { e.preventDefault(); });
+      opt.addEventListener('touchstart', function(e) { e.preventDefault(); }, {passive:false});
+      opt.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        inputEl.value = item.n;
+        if (unitEl) unitEl.textContent = item.u || '—';
+        dd.classList.remove('open');
+        dd.innerHTML = '';
+        inputEl.blur();
+      });
       opt.addEventListener('click', function() {
         inputEl.value = item.n;
         if (unitEl) unitEl.textContent = item.u || '—';
@@ -347,7 +357,7 @@ function buildDropdown(inputEl, unitEl) {
   });
 
   inputEl.addEventListener('blur', function() {
-    setTimeout(() => { dd.classList.remove('open'); }, 150);
+    setTimeout(() => { dd.classList.remove('open'); }, 300);
   });
 
   inputEl.addEventListener('focus', function() {
@@ -386,12 +396,7 @@ function addSupplierBlock() {
       <label>Invoice #</label>
       <input type="text" id="${id}_inv" placeholder="Optional — from the delivery note">
     </div>
-    <div class="item-headers">
-      <span>Ingredient / Item</span>
-      <span style="min-width:40px;text-align:center;">Unit</span>
-      <span style="min-width:60px;text-align:center;">Qty</span>
-      <span style="min-width:72px;">€/unit</span>
-    </div>
+
     <div id="${id}_items"></div>
     <button class="add-item-btn" onclick="addItem('${id}')">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#CC0000"/><path d="M8 4v8M4 8h8" stroke="#CC0000" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -415,15 +420,18 @@ function addItem(blockId) {
   row.id = rowId;
   row.innerHTML = `
     <div class="ac-wrap">
-      <input type="text" placeholder="Type to search ingredient…" id="${rowId}_name" autocomplete="off">
+      <input type="text" placeholder="Type ingredient name…" id="${rowId}_name" autocomplete="off" inputmode="text">
     </div>
-    <div class="unit-cell" id="${rowId}_unit">—</div>
-    <div class="qty-cell">
-      <input type="number" id="${rowId}_qty" placeholder="Qty" step="0.01" min="0">
-    </div>
-    <div class="cost-cell">
-      <span class="csym">€</span>
-      <input type="number" id="${rowId}_cost" placeholder="0.00" step="0.01" min="0">
+    <div class="item-row-bottom">
+      <div class="unit-cell" id="${rowId}_unit">—</div>
+      <div class="qty-cell">
+        <span class="cell-label">Qty</span>
+        <input type="number" id="${rowId}_qty" placeholder="0" step="0.01" min="0" inputmode="decimal">
+      </div>
+      <div class="cost-cell">
+        <span class="cell-label">€/unit</span>
+        <div class="cost-inner"><span class="csym">€</span><input type="number" id="${rowId}_cost" placeholder="0.00" step="0.01" min="0" inputmode="decimal"></div>
+      </div>
     </div>
   `;
   container.appendChild(row);
