@@ -2,208 +2,606 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Operations — NOSH</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="theme-color" content="#0A0A0A">
+<title>NOSH — Daily Operations</title>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: #111; font-family: 'Helvetica Neue', sans-serif; color: #f2f2f2; min-height: 100vh; }
-.header { background: #0a0a0a; padding: 20px 16px 16px; border-bottom: 2px solid #be0004; }
-.badge { font-size: 9px; color: #be0004; letter-spacing: 2px; font-weight: 700; margin-bottom: 6px; }
-.form-id { font-size: 10px; color: #555; margin-bottom: 4px; }
-h1 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 4px; }
-.subtitle { font-size: 13px; color: #666; }
-.who { font-size: 10px; color: #aaa; background: #1a1a1a; padding: 3px 10px; border-radius: 3px; display: inline-block; margin-top: 8px; }
-.desc { font-size: 12px; color: #777; margin-top: 8px; line-height: 1.5; }
-.section { padding: 0 16px; margin-top: 24px; }
-.section-label { font-size: 9px; color: #be0004; letter-spacing: 2px; font-weight: 700; margin-bottom: 4px; }
-.section-title { font-size: 18px; font-weight: 600; color: #f2f2f2; margin-bottom: 14px; }
-.field { margin-bottom: 16px; }
-.field label { display: block; font-size: 11px; color: #777; letter-spacing: 0.5px; margin-bottom: 6px; text-transform: uppercase; }
-.req { color: #be0004; }
-.hint { font-size: 10px; color: #444; margin-top: 4px; }
-input, select, textarea { width: 100%; background: #1a1a1a; border: 1px solid #2a2a2a; color: #f2f2f2; padding: 13px 12px; border-radius: 8px; font-size: 16px; font-family: inherit; -webkit-appearance: none; appearance: none; }
-input[type="date"] { -webkit-appearance: none; min-height: 48px; }
-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' fill='none' stroke-width='2'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
-input:focus, select:focus, textarea:focus { outline: none; border-color: #be0004; }
-.item-block { background: #151515; border: 1px solid #222; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
-.item-title { font-size: 10px; color: #be0004; letter-spacing: 2px; font-weight: 700; margin-bottom: 14px; }
-.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.divider { height: 1px; background: #1e1e1e; margin: 24px 0; }
-.submit-wrap { padding: 24px 16px 50px; }
-button[type="submit"] { width: 100%; background: #be0004; color: #fff; border: none; padding: 18px; border-radius: 10px; font-size: 17px; font-weight: 700; font-family: inherit; cursor: pointer; }
-button:disabled { background: #555; }
-.success { display: none; text-align: center; padding: 60px 16px; }
-.success h2 { color: #4caf50; font-size: 24px; margin-bottom: 8px; }
-.success p { color: #888; font-size: 15px; }
-.err { display: none; color: #be0004; font-size: 13px; margin-top: 10px; padding: 12px; background: #1a0000; border-radius: 8px; }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --black:#0A0A0A;--grey-90:#1A1A1A;--grey-80:#2C2C2C;
+  --grey-60:#666666;--grey-40:#999999;--grey-20:#CCCCCC;
+  --grey-10:#E8E8E8;--grey-05:#F5F5F5;--white:#FFFFFF;
+  --red:#CC0000;--red-dk:#990000;--red-lt:#FFE5E5;--red-mid:#FF3333;
+}
+html{-webkit-text-size-adjust:100%;}
+body{font-family:'Poppins',sans-serif;background:var(--grey-05);color:var(--black);min-height:100vh;padding-bottom:60px;-webkit-font-smoothing:antialiased;}
+.top-bar{background:var(--black);position:sticky;top:0;z-index:200;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px;border-bottom:2px solid var(--red);}
+.top-bar .form-id{font-size:10px;font-weight:600;letter-spacing:2px;color:var(--grey-40);text-transform:uppercase;}
+.hero{background:var(--black);padding:28px 20px 32px;border-bottom:1px solid var(--grey-80);}
+.hero .freq-pill{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:white;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:14px;}
+.hero h1{font-size:28px;font-weight:900;color:var(--white);line-height:1.1;letter-spacing:-0.5px;margin-bottom:6px;}
+.hero .subtitle{font-size:13px;font-weight:400;color:var(--grey-40);line-height:1.5;}
+.hero .who-badge{display:inline-block;margin-top:14px;background:var(--grey-80);border:1px solid var(--grey-60);color:var(--grey-20);font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;border-radius:6px;}
+.container{max-width:560px;margin:0 auto;padding:0 16px;}
+.section{margin-top:32px;}
+.section-label{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:8px;padding-left:2px;}
+.section-title{font-size:18px;font-weight:800;color:var(--black);letter-spacing:-0.3px;margin-bottom:16px;padding-left:2px;}
+.card{background:var(--white);border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08),0 0 0 1px rgba(0,0,0,0.05);}
+.card+.card{margin-top:12px;}
+.field{padding:16px 20px;border-bottom:1px solid var(--grey-10);position:relative;}
+.field:last-child{border-bottom:none;}
+.field label{display:block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--grey-60);margin-bottom:6px;}
+.field .req{color:var(--red);margin-left:2px;}
+.field input,.field select,.field textarea{width:100%;font-family:'Poppins',sans-serif;font-size:16px;font-weight:500;color:var(--black);background:transparent;border:none;outline:none;-webkit-appearance:none;appearance:none;padding:0;line-height:1.4;}
+.field textarea{min-height:64px;resize:none;font-size:15px;font-weight:400;}
+.field input::placeholder,.field textarea::placeholder{color:var(--grey-20);font-weight:400;}
+.field select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0 center;padding-right:20px;}
+.field .hint{font-size:11px;font-weight:400;color:var(--grey-40);margin-top:4px;line-height:1.4;}
+.field-row{display:grid;gap:0;}
+.field-row.two{grid-template-columns:1fr 1fr;}
+.field-row.three{grid-template-columns:2fr 1fr 1fr;}
+.field-row>div{border-right:1px solid var(--grey-10);}
+.field-row>div:last-child{border-right:none;}
+.currency{position:absolute;left:20px;bottom:19px;font-size:16px;font-weight:500;color:var(--grey-40);pointer-events:none;}
+.field.has-currency input{padding-left:16px;}
+.info-banner{background:var(--black);color:var(--grey-20);font-size:12px;font-weight:400;line-height:1.6;padding:16px 20px;border-radius:12px;margin-top:20px;border-left:3px solid var(--red);}
+.info-banner strong{color:white;font-weight:700;}
+
+/* TOGGLE YES/NO */
+.yn-wrap{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;background:var(--white);border-radius:16px;box-shadow:0 1px 3px rgba(0,0,0,0.08),0 0 0 1px rgba(0,0,0,0.05);}
+.yn-label{font-size:15px;font-weight:700;color:var(--black);}
+.yn-sub{font-size:11px;font-weight:400;color:var(--grey-40);margin-top:2px;}
+.toggle{position:relative;width:52px;height:28px;flex-shrink:0;}
+.toggle input{opacity:0;width:0;height:0;}
+.toggle-slider{position:absolute;inset:0;background:var(--grey-20);border-radius:100px;transition:background 0.2s;cursor:pointer;}
+.toggle-slider:before{content:'';position:absolute;width:20px;height:20px;left:4px;top:4px;background:white;border-radius:50%;transition:transform 0.2s;box-shadow:0 1px 3px rgba(0,0,0,0.2);}
+.toggle input:checked+.toggle-slider{background:var(--red);}
+.toggle input:checked+.toggle-slider:before{transform:translateX(24px);}
+
+/* SUPPLIER BLOCK */
+.supplier-block{background:var(--white);border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08),0 0 0 1px rgba(0,0,0,0.05);margin-top:12px;}
+.block-header{background:var(--black);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;}
+.block-header-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey-40);}
+.block-header-name{font-size:14px;font-weight:800;color:var(--white);}
+.remove-btn{background:none;border:none;color:var(--grey-60);font-size:20px;cursor:pointer;padding:0;line-height:1;-webkit-tap-highlight-color:transparent;}
+
+/* ITEM ROW */
+.item-row{display:grid;grid-template-columns:1fr auto auto auto;gap:0;border-bottom:1px solid var(--grey-10);align-items:stretch;position:relative;}
+.item-row:last-of-type{border-bottom:none;}
+.item-row .ac-wrap{padding:12px 12px 12px 20px;border-right:1px solid var(--grey-10);position:relative;min-width:0;}
+.item-row .ac-wrap input{font-family:'Poppins',sans-serif;font-size:14px;font-weight:500;color:var(--black);background:transparent;border:none;outline:none;width:100%;padding:0;}
+.item-row .ac-wrap input::placeholder{color:var(--grey-20);}
+.item-row .unit-cell{padding:12px 8px;border-right:1px solid var(--grey-10);display:flex;align-items:center;font-size:11px;font-weight:700;color:var(--grey-40);white-space:nowrap;min-width:40px;text-align:center;}
+.item-row .qty-cell{padding:12px 8px;border-right:1px solid var(--grey-10);display:flex;align-items:center;min-width:60px;}
+.item-row .qty-cell input{font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--black);border:none;outline:none;background:transparent;width:100%;text-align:center;padding:0;}
+.item-row .qty-cell input::placeholder{color:var(--grey-20);font-size:12px;}
+.item-row .cost-cell{padding:12px 8px 12px 6px;display:flex;align-items:center;min-width:72px;gap:2px;}
+.item-row .cost-cell .csym{font-size:11px;color:var(--grey-40);font-weight:600;}
+.item-row .cost-cell input{font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--black);border:none;outline:none;background:transparent;width:100%;padding:0;}
+.item-row .cost-cell input::placeholder{color:var(--grey-20);font-size:12px;}
+
+/* ITEM HEADERS */
+.item-headers{display:grid;grid-template-columns:1fr auto auto auto;border-bottom:1px solid var(--grey-10);background:var(--grey-05);}
+.item-headers span{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-40);padding:8px 12px;}
+.item-headers span:first-child{padding-left:20px;}
+
+/* AUTOCOMPLETE DROPDOWN */
+.ac-dropdown{position:absolute;top:100%;left:0;right:0;background:white;border-radius:0 0 12px 12px;box-shadow:0 8px 24px rgba(0,0,0,0.15);z-index:100;max-height:220px;overflow-y:auto;display:none;}
+.ac-dropdown.open{display:block;}
+.ac-option{padding:11px 16px;font-size:13px;font-weight:500;color:var(--black);cursor:pointer;border-bottom:1px solid var(--grey-10);}
+.ac-option:last-child{border-bottom:none;}
+.ac-option:active,.ac-option.focused{background:var(--red-lt);color:var(--red);}
+.ac-option .ac-unit{font-size:10px;color:var(--grey-40);margin-left:6px;}
+
+/* ADD BUTTONS */
+.add-item-btn{display:flex;align-items:center;gap:8px;width:100%;background:var(--grey-05);border:none;border-top:1px solid var(--grey-10);padding:14px 20px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--red);cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.add-item-btn svg{flex-shrink:0;}
+.add-block-btn{display:flex;align-items:center;gap:10px;width:100%;background:transparent;border:2px dashed var(--grey-20);border-radius:14px;padding:16px 20px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;color:var(--grey-60);cursor:pointer;margin-top:12px;-webkit-tap-highlight-color:transparent;}
+
+/* CASH BLOCK */
+.cash-block{background:var(--white);border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08),0 0 0 1px rgba(0,0,0,0.05);margin-top:12px;}
+.cash-block .block-header{background:var(--grey-90);}
+
+/* SUBMIT */
+.submit-wrap{padding:32px 0 8px;}
+.submit-btn{width:100%;background:var(--red);color:white;border:none;border-radius:14px;font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;letter-spacing:0.3px;padding:18px;cursor:pointer;transition:background 0.15s,transform 0.1s;-webkit-tap-highlight-color:transparent;}
+.submit-btn:active{background:var(--red-dk);transform:scale(0.98);}
+.submit-btn:disabled{background:var(--grey-20);color:var(--grey-40);cursor:not-allowed;}
+.success-screen{display:none;padding:80px 20px;text-align:center;}
+.success-screen .s-icon{width:72px;height:72px;background:var(--black);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;}
+.success-screen .s-icon svg{width:32px;height:32px;}
+.success-screen h2{font-size:24px;font-weight:900;color:var(--black);margin-bottom:8px;}
+.success-screen p{font-size:14px;color:var(--grey-60);line-height:1.6;}
+.success-screen .reset-btn{margin-top:32px;display:inline-block;background:var(--black);color:white;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;padding:14px 32px;border-radius:100px;border:none;cursor:pointer;}
 </style>
 </head>
 <body>
-<div id="formArea">
-<div class="header">
-  <div class="form-id">OPS-F1</div>
-  <div class="badge">FILL EVERY NIGHT AFTER CLOSE</div>
+
+<div class="top-bar">
+  <div style="font-family:'Poppins',sans-serif;font-size:22px;font-weight:900;color:white;letter-spacing:-1px;">NOSH</div>
+  <span class="form-id">OPS-F1</span>
+</div>
+
+<div class="hero">
+  <div class="freq-pill">
+    <svg width="6" height="6" viewBox="0 0 6 6"><circle cx="3" cy="3" r="3" fill="white"/></svg>
+    Every Night After Close
+  </div>
   <h1>Daily Operations</h1>
-  <div class="subtitle">Sales · Deliveries · Cash Purchases</div>
-  <div class="who">MAHOON</div>
-  <div class="desc">Fill every night after close. Three sections — sales, deliveries, cash. Takes 3 minutes.</div>
+  <p class="subtitle">Sales · Deliveries · Cash Purchases</p>
+  <span class="who-badge">Mahoon</span>
 </div>
-<form id="mainForm">
+
+<div class="container">
+<div id="formArea">
+
+<!-- ═══ SECTION A — SALES ════════════════════════════════ -->
 <div class="section">
-  <div class="section-label">SECTION A</div>
+  <div class="section-label">Section A</div>
   <div class="section-title">Daily Sales</div>
-  <div class="field">
-    <label>Date <span class="req">*</span></label>
-    <input type="date" id="date" required>
-  </div>
-  <div class="row2">
-    <div class="field">
-      <label>Day <span class="req">*</span></label>
-      <select id="day" required>
-        <option value="">Select…</option>
-        <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
-        <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
-      </select>
+  <div class="card">
+    <div class="field-row two">
+      <div class="field">
+        <label>Date<span class="req">*</span></label>
+        <input type="date" id="date" required>
+        <div class="hint">Auto-filled — change if logging past day</div>
+      </div>
+      <div class="field">
+        <label>Service<span class="req">*</span></label>
+        <select id="service" required>
+          <option value="">Select…</option>
+          <option>Lunch only</option><option>Dinner only</option><option>Both</option>
+        </select>
+      </div>
+    </div>
+    <div class="field has-currency">
+      <label>Dine-In Revenue<span class="req">*</span></label>
+      <span class="currency">€</span>
+      <input type="number" id="dinein" placeholder="0.00" step="0.01" required>
+      <div class="hint">Card + cash total from Hiopos end-of-day report</div>
+    </div>
+    <div class="field-row two">
+      <div class="field">
+        <label>Lunch Covers</label>
+        <input type="number" id="lunchcov" placeholder="0">
+        <div class="hint">From Hiopos</div>
+      </div>
+      <div class="field">
+        <label>Dinner Covers</label>
+        <input type="number" id="dinnercov" placeholder="0">
+        <div class="hint">From Hiopos</div>
+      </div>
     </div>
     <div class="field">
-      <label>Service <span class="req">*</span></label>
-      <select id="service" required>
-        <option value="">Select…</option>
-        <option>Lunch only</option><option>Dinner only</option><option>Both</option>
-      </select>
+      <label>Notes</label>
+      <textarea id="salesnotes" placeholder="e.g. public holiday / short staff / equipment issue" rows="2"></textarea>
     </div>
-  </div>
-  <div class="field">
-    <label>Dine-In Revenue € <span class="req">*</span></label>
-    <input type="number" id="dinein" step="0.01" min="0" placeholder="0.00" required>
-    <div class="hint">Hiopos / Square end-of-day report</div>
-  </div>
-  <div class="row2">
-    <div class="field">
-      <label>Wolt Revenue €</label>
-      <input type="number" id="wolt" step="0.01" min="0" placeholder="0.00">
-      <div class="hint">NET after commission</div>
-    </div>
-    <div class="field">
-      <label>Foody Revenue €</label>
-      <input type="number" id="foody" step="0.01" min="0" placeholder="0.00">
-      <div class="hint">NET after commission</div>
-    </div>
-  </div>
-  <div class="row2">
-    <div class="field">
-      <label>Lunch Covers</label>
-      <input type="number" id="lunchcov" min="0" placeholder="0">
-    </div>
-    <div class="field">
-      <label>Dinner Covers</label>
-      <input type="number" id="dinnercov" min="0" placeholder="0">
-    </div>
-  </div>
-  <div class="field">
-    <label>Notes</label>
-    <textarea id="salesnotes" rows="3" placeholder="Any notes about today…"></textarea>
   </div>
 </div>
-<div class="divider"></div>
+
+<!-- ═══ SECTION B — DELIVERIES ══════════════════════════ -->
 <div class="section">
-  <div class="section-label">SECTION B</div>
+  <div class="section-label">Section B</div>
   <div class="section-title">Deliveries Received</div>
-  <div class="desc" style="margin-bottom:16px;color:#666;">Leave blank if no delivery today.</div>
-  <div id="delContainer">
-    <div class="item-block">
-      <div class="item-title">ITEM 1</div>
-      <div class="field"><label>Supplier</label><select class="ds"><option value="">Select…</option><option>Food Mentors</option><option>Makro</option><option>Pilakouris</option><option>Atikouris</option><option>Morepack</option><option>Multipack</option><option>Europess</option><option>Other</option></select></div>
-      <div class="field"><label>Item</label><input type="text" class="di" placeholder="e.g. Mayo 5kg"></div>
-      <div class="row2"><div class="field"><label>Qty</label><input type="number" class="dq" step="0.01" min="0" placeholder="0"></div><div class="field"><label>Unit</label><select class="du"><option value="">Select…</option><option>kg</option><option>L</option><option>pc</option><option>bottle</option><option>pack</option><option>box</option></select></div></div>
-      <div class="row2"><div class="field"><label>Unit Cost €</label><input type="number" class="dc" step="0.01" min="0" placeholder="0.00"></div><div class="field"><label>Invoice #</label><input type="text" class="dv" placeholder="Invoice #"></div></div>
+
+  <div class="yn-wrap">
+    <div>
+      <div class="yn-label">Did a delivery arrive today?</div>
+      <div class="yn-sub">Toggle ON if yes</div>
     </div>
-    <div class="item-block">
-      <div class="item-title">ITEM 2</div>
-      <div class="field"><label>Supplier</label><select class="ds"><option value="">Select…</option><option>Food Mentors</option><option>Makro</option><option>Pilakouris</option><option>Atikouris</option><option>Morepack</option><option>Multipack</option><option>Europess</option><option>Other</option></select></div>
-      <div class="field"><label>Item</label><input type="text" class="di" placeholder="e.g. Ketchup"></div>
-      <div class="row2"><div class="field"><label>Qty</label><input type="number" class="dq" step="0.01" min="0" placeholder="0"></div><div class="field"><label>Unit</label><select class="du"><option value="">Select…</option><option>kg</option><option>L</option><option>pc</option><option>bottle</option><option>pack</option><option>box</option></select></div></div>
-      <div class="row2"><div class="field"><label>Unit Cost €</label><input type="number" class="dc" step="0.01" min="0" placeholder="0.00"></div><div class="field"><label>Invoice #</label><input type="text" class="dv" placeholder="Invoice #"></div></div>
-    </div>
-    <div class="item-block">
-      <div class="item-title">ITEM 3</div>
-      <div class="field"><label>Supplier</label><select class="ds"><option value="">Select…</option><option>Food Mentors</option><option>Makro</option><option>Pilakouris</option><option>Atikouris</option><option>Morepack</option><option>Multipack</option><option>Europess</option><option>Other</option></select></div>
-      <div class="field"><label>Item</label><input type="text" class="di" placeholder="e.g. Buns"></div>
-      <div class="row2"><div class="field"><label>Qty</label><input type="number" class="dq" step="0.01" min="0" placeholder="0"></div><div class="field"><label>Unit</label><select class="du"><option value="">Select…</option><option>kg</option><option>L</option><option>pc</option><option>bottle</option><option>pack</option><option>box</option></select></div></div>
-      <div class="row2"><div class="field"><label>Unit Cost €</label><input type="number" class="dc" step="0.01" min="0" placeholder="0.00"></div><div class="field"><label>Invoice #</label><input type="text" class="dv" placeholder="Invoice #"></div></div>
-    </div>
-    <div class="item-block">
-      <div class="item-title">ITEM 4</div>
-      <div class="field"><label>Supplier</label><select class="ds"><option value="">Select…</option><option>Food Mentors</option><option>Makro</option><option>Pilakouris</option><option>Atikouris</option><option>Morepack</option><option>Multipack</option><option>Europess</option><option>Other</option></select></div>
-      <div class="field"><label>Item</label><input type="text" class="di" placeholder="e.g. Sriracha"></div>
-      <div class="row2"><div class="field"><label>Qty</label><input type="number" class="dq" step="0.01" min="0" placeholder="0"></div><div class="field"><label>Unit</label><select class="du"><option value="">Select…</option><option>kg</option><option>L</option><option>pc</option><option>bottle</option><option>pack</option><option>box</option></select></div></div>
-      <div class="row2"><div class="field"><label>Unit Cost €</label><input type="number" class="dc" step="0.01" min="0" placeholder="0.00"></div><div class="field"><label>Invoice #</label><input type="text" class="dv" placeholder="Invoice #"></div></div>
-    </div>
+    <label class="toggle">
+      <input type="checkbox" id="del_toggle" onchange="toggleSection('del')">
+      <span class="toggle-slider"></span>
+    </label>
+  </div>
+
+  <div id="del_area" style="display:none;">
+    <div id="del_blocks"></div>
+    <button class="add-block-btn" onclick="addSupplierBlock()">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8.5" stroke="#999"/><path d="M9 5v8M5 9h8" stroke="#999" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Add another supplier
+    </button>
   </div>
 </div>
-<div class="divider"></div>
+
+<!-- ═══ SECTION C — CASH PURCHASES ══════════════════════ -->
 <div class="section">
-  <div class="section-label">SECTION C</div>
+  <div class="section-label">Section C</div>
   <div class="section-title">Cash Purchases</div>
-  <div class="desc" style="margin-bottom:16px;color:#666;">Leave blank if no cash spent today.</div>
-  <div id="cashContainer">
-    <div class="item-block">
-      <div class="item-title">PURCHASE 1</div>
-      <div class="row2"><div class="field"><label>Paid By</label><select class="cs"><option value="">Select…</option><option>Antonis</option><option>Stelios</option><option>Mahoon</option><option>Other</option></select></div><div class="field"><label>Category</label><select class="cc"><option value="">Select…</option><option>Food &amp; Veg</option><option>Gas</option><option>Drinks</option><option>Cleaning</option><option>Packaging</option><option>Other</option></select></div></div>
-      <div class="field"><label>Description</label><input type="text" class="cd" placeholder="What was purchased"></div>
-      <div class="row2"><div class="field"><label>Amount €</label><input type="number" class="ca" step="0.01" min="0" placeholder="0.00"></div><div class="field"><label>Receipt Ref</label><input type="text" class="cr" placeholder="Receipt #"></div></div>
+
+  <div class="yn-wrap">
+    <div>
+      <div class="yn-label">Any cash purchases today?</div>
+      <div class="yn-sub">Toggle ON if yes</div>
     </div>
-    <div class="item-block">
-      <div class="item-title">PURCHASE 2</div>
-      <div class="row2"><div class="field"><label>Paid By</label><select class="cs"><option value="">Select…</option><option>Antonis</option><option>Stelios</option><option>Mahoon</option><option>Other</option></select></div><div class="field"><label>Category</label><select class="cc"><option value="">Select…</option><option>Food &amp; Veg</option><option>Gas</option><option>Drinks</option><option>Cleaning</option><option>Packaging</option><option>Other</option></select></div></div>
-      <div class="field"><label>Description</label><input type="text" class="cd" placeholder="What was purchased"></div>
-      <div class="row2"><div class="field"><label>Amount €</label><input type="number" class="ca" step="0.01" min="0" placeholder="0.00"></div><div class="field"><label>Receipt Ref</label><input type="text" class="cr" placeholder="Receipt #"></div></div>
-    </div>
-    <div class="item-block">
-      <div class="item-title">PURCHASE 3</div>
-      <div class="row2"><div class="field"><label>Paid By</label><select class="cs"><option value="">Select…</option><option>Antonis</option><option>Stelios</option><option>Mahoon</option><option>Other</option></select></div><div class="field"><label>Category</label><select class="cc"><option value="">Select…</option><option>Food &amp; Veg</option><option>Gas</option><option>Drinks</option><option>Cleaning</option><option>Packaging</option><option>Other</option></select></div></div>
-      <div class="field"><label>Description</label><input type="text" class="cd" placeholder="What was purchased"></div>
-      <div class="row2"><div class="field"><label>Amount €</label><input type="number" class="ca" step="0.01" min="0" placeholder="0.00"></div><div class="field"><label>Receipt Ref</label><input type="text" class="cr" placeholder="Receipt #"></div></div>
-    </div>
+    <label class="toggle">
+      <input type="checkbox" id="cash_toggle" onchange="toggleSection('cash')">
+      <span class="toggle-slider"></span>
+    </label>
+  </div>
+
+  <div id="cash_area" style="display:none;">
+    <div id="cash_blocks"></div>
+    <button class="add-block-btn" onclick="addCashBlock()">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8.5" stroke="#999"/><path d="M9 5v8M5 9h8" stroke="#999" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Add another place
+    </button>
   </div>
 </div>
+
+<div class="info-banner" style="margin-top:32px;">
+  <strong>Submit once per night.</strong> Section A is required. B and C only if something happened today.
+</div>
+
 <div class="submit-wrap">
-  <div class="err" id="errMsg">Something went wrong. Please try again.</div>
-  <button type="submit" id="submitBtn">Submit</button>
+  <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">Submit</button>
 </div>
-</form>
+
+</div><!-- /formArea -->
+
+<div class="success-screen" id="successScreen">
+  <div class="s-icon">
+    <svg viewBox="0 0 32 32" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M6 16l7 7 13-13"/></svg>
+  </div>
+  <h2>Submitted</h2>
+  <p>Data received.<br>Constantinos will review on Monday.</p>
+  <button class="reset-btn" onclick="resetForm()">Submit Another Day</button>
 </div>
-<div class="success" id="successMsg">
-  <h2>✓ Submitted</h2>
-  <p>Daily Operations logged.<br>Check your email for confirmation.</p>
-</div>
+
+</div><!-- /container -->
+
 <script>
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyIVMONTeGtW2FQphNuCRIRkydiwT4BgiX1SzCrCCkoRZlBSOldgTby9xXmbOKglRS_cA/exec';
-document.getElementById('mainForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const btn = document.getElementById('submitBtn');
-  const err = document.getElementById('errMsg');
-  err.style.display = 'none';
-  btn.textContent = 'Submitting…'; btn.disabled = true;
+const SHEET_URL  = 'YOUR_APPS_SCRIPT_URL_HERE';
+const SHEET_NAME = 'Daily_Operations';
+
+// ── INGREDIENT LIST (name → unit, pulled from Operations Sheet 0) ──────
+const INGREDIENTS = [
+  // PROTEINS
+  {n:"Black Angus Patty",u:"pc"},{n:"Grill Chicken Patty",u:"pc"},{n:"Vegan Patty",u:"pc"},
+  {n:"Chicken Tender",u:"kg"},{n:"Chicken Finger",u:"kg"},{n:"Popcorn Chicken",u:"kg"},
+  {n:"Roasted Chicken",u:"kg"},{n:"Nuggets",u:"kg"},{n:"Chilly Cheese Nuggets",u:"kg"},
+  {n:"Mac n Cheese",u:"kg"},{n:"Egg",u:"pc"},{n:"Bacon Slice",u:"pc"},
+  // DAIRY
+  {n:"Cheese Slice",u:"kg"},{n:"Mozzarella",u:"kg"},{n:"Halloumi",u:"kg"},
+  {n:"Parmezan Grated",u:"kg"},{n:"Cottage Cheese",u:"kg"},
+  // BREAD
+  {n:"Burger Bun",u:"pc"},
+  // VEG & SALAD
+  {n:"Lettuce",u:"kg"},{n:"Tomato",u:"kg"},{n:"Cherry Tomatoes",u:"kg"},
+  {n:"Onion",u:"kg"},{n:"Rocket",u:"kg"},{n:"Mix Baby Salad",u:"kg"},
+  {n:"Shredded Carrot",u:"kg"},{n:"Pomegranate",u:"kg"},{n:"Pickles",u:"kg"},
+  {n:"Croutons",u:"kg"},{n:"Jalapenos",u:"kg"},{n:"Crispy Mushrooms",u:"kg"},
+  {n:"Cabbage",u:"kg"},
+  // FRIES
+  {n:"French Fries",u:"kg"},{n:"Sweet Fries",u:"kg"},
+  // SAUCES (BOUGHT)
+  {n:"Truffle Mayo",u:"L"},{n:"Notorious Jack Sauce",u:"L"},{n:"Bacon Jam",u:"L"},
+  {n:"Caesar Sauce",u:"L"},{n:"Balsamic Glaze",u:"L"},{n:"Signature Vegan Sauce",u:"L"},
+  // SAUCE INGREDIENTS
+  {n:"Mayonnaise",u:"kg"},{n:"Ketchup",u:"kg"},{n:"Heinz Mustard",u:"kg"},
+  {n:"Lion Mustard",u:"kg"},{n:"Pickle Relish",u:"kg"},{n:"Lime Juice",u:"L"},
+  {n:"Garlic Powder",u:"kg"},{n:"Onion Powder",u:"kg"},{n:"Smoked Paprika",u:"kg"},
+  {n:"Cayenne Pepper",u:"kg"},{n:"Black Pepper",u:"kg"},{n:"Salt",u:"kg"},
+  {n:"Sriracha",u:"kg"},{n:"Sweet Chilli Sauce",u:"kg"},{n:"Honey",u:"kg"},
+  {n:"Maple Syrup",u:"L"},{n:"Apple Vinegar",u:"L"},{n:"Truffle Oil",u:"L"},
+  {n:"Tabasco",u:"bottle"},{n:"Soy Sauce Kikkoman",u:"L"},{n:"Jack Daniels Whisky",u:"bottle"},
+  {n:"Chopped Onions",u:"kg"},{n:"Dark Brown Sugar",u:"kg"},{n:"Vegetable Oil",u:"L"},
+  // PACKAGING
+  {n:"Burger Box / Clamshell",u:"pack"},{n:"Salad Box",u:"pack"},
+  {n:"Fries Box / Sleeve",u:"pack"},{n:"Side Cup (coleslaw/sauce)",u:"pack"},
+  {n:"Sauce Pot / Dip Cup",u:"pack"},{n:"Paper Bag (small)",u:"pack"},
+  {n:"Paper Bag (large)",u:"pack"},{n:"Napkins",u:"pack"},
+  {n:"Wooden Fork / Cutlery",u:"pack"},{n:"Delivery Bag (insulated)",u:"pack"},
+  {n:"Stickers / Labels",u:"pack"},{n:"Greaseproof Paper",u:"pack"},
+  // OTHER SUPPLIES
+  {n:"Gloves",u:"box"},{n:"Cleaning Spray",u:"bottle"},{n:"Cleaning Cloths",u:"pack"},
+  {n:"Bin Bags",u:"pack"},{n:"Hand Soap",u:"bottle"},{n:"Other",u:""},
+];
+
+// ── SECTION TOGGLES ──────────────────────────────────────────────────────
+function toggleSection(sec) {
+  const on = document.getElementById(sec+'_toggle').checked;
+  const area = document.getElementById(sec+'_area');
+  area.style.display = on ? '' : 'none';
+  if (on && document.getElementById(sec+'_blocks').children.length === 0) {
+    sec === 'del' ? addSupplierBlock() : addCashBlock();
+  }
+}
+
+// ── AUTOCOMPLETE ─────────────────────────────────────────────────────────
+let activeDropdown = null;
+
+function buildDropdown(inputEl, unitEl) {
+  // Remove existing dropdown for this input
+  const existing = inputEl.parentElement.querySelector('.ac-dropdown');
+  if (existing) existing.remove();
+
+  const dd = document.createElement('div');
+  dd.className = 'ac-dropdown';
+  inputEl.parentElement.appendChild(dd);
+
+  inputEl.addEventListener('input', function() {
+    const q = this.value.toLowerCase().trim();
+    dd.innerHTML = '';
+    if (!q) { dd.classList.remove('open'); return; }
+    const matches = INGREDIENTS.filter(i => i.n.toLowerCase().includes(q)).slice(0, 8);
+    if (!matches.length) { dd.classList.remove('open'); return; }
+    matches.forEach(item => {
+      const opt = document.createElement('div');
+      opt.className = 'ac-option';
+      opt.innerHTML = item.n + '<span class="ac-unit">'+item.u+'</span>';
+      opt.addEventListener('mousedown', function(e) { e.preventDefault(); });
+      opt.addEventListener('click', function() {
+        inputEl.value = item.n;
+        if (unitEl) unitEl.textContent = item.u || '—';
+        dd.classList.remove('open');
+        dd.innerHTML = '';
+      });
+      dd.appendChild(opt);
+    });
+    dd.classList.add('open');
+    activeDropdown = dd;
+  });
+
+  inputEl.addEventListener('blur', function() {
+    setTimeout(() => { dd.classList.remove('open'); }, 150);
+  });
+
+  inputEl.addEventListener('focus', function() {
+    if (this.value.trim()) {
+      this.dispatchEvent(new Event('input'));
+    }
+  });
+}
+
+// ── SUPPLIER BLOCKS ──────────────────────────────────────────────────────
+let delBlockCount = 0;
+
+function addSupplierBlock() {
+  delBlockCount++;
+  const id = 'del_' + delBlockCount;
+  const block = document.createElement('div');
+  block.className = 'supplier-block';
+  block.id = id;
+  block.innerHTML = `
+    <div class="block-header">
+      <div>
+        <div class="block-header-label">Delivery ${delBlockCount}</div>
+        <div class="block-header-name" id="${id}_name">— Select supplier below —</div>
+      </div>
+      <button class="remove-btn" onclick="removeBlock('${id}')" title="Remove">×</button>
+    </div>
+    <div class="field">
+      <label>Supplier</label>
+      <select id="${id}_sup" onchange="updateBlockName('${id}')">
+        <option value="">Select…</option>
+        <option>Food Mentors</option><option>Attikouris</option><option>Pilakouris</option>
+        <option>Multipack</option><option>Morepack</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Invoice #</label>
+      <input type="text" id="${id}_inv" placeholder="Optional — from the delivery note">
+    </div>
+    <div class="item-headers">
+      <span>Ingredient / Item</span>
+      <span style="min-width:40px;text-align:center;">Unit</span>
+      <span style="min-width:60px;text-align:center;">Qty</span>
+      <span style="min-width:72px;">€/unit</span>
+    </div>
+    <div id="${id}_items"></div>
+    <button class="add-item-btn" onclick="addItem('${id}')">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="#CC0000"/><path d="M8 4v8M4 8h8" stroke="#CC0000" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Add item
+    </button>
+  `;
+  document.getElementById('del_blocks').appendChild(block);
+  addItem(id); // Add first item row automatically
+}
+
+function updateBlockName(id) {
+  const val = document.getElementById(id+'_sup').value;
+  document.getElementById(id+'_name').textContent = val || '— Select supplier below —';
+}
+
+function addItem(blockId) {
+  const container = document.getElementById(blockId + '_items');
+  const rowId = blockId + '_item_' + Date.now();
+  const row = document.createElement('div');
+  row.className = 'item-row';
+  row.id = rowId;
+  row.innerHTML = `
+    <div class="ac-wrap">
+      <input type="text" placeholder="Type to search ingredient…" id="${rowId}_name" autocomplete="off">
+    </div>
+    <div class="unit-cell" id="${rowId}_unit">—</div>
+    <div class="qty-cell">
+      <input type="number" id="${rowId}_qty" placeholder="Qty" step="0.01" min="0">
+    </div>
+    <div class="cost-cell">
+      <span class="csym">€</span>
+      <input type="number" id="${rowId}_cost" placeholder="0.00" step="0.01" min="0">
+    </div>
+  `;
+  container.appendChild(row);
+  // Wire autocomplete
+  const inp = document.getElementById(rowId + '_name');
+  const unt = document.getElementById(rowId + '_unit');
+  buildDropdown(inp, unt);
+}
+
+function removeBlock(id) {
+  const el = document.getElementById(id);
+  if (el) el.remove();
+}
+
+// ── CASH BLOCKS ──────────────────────────────────────────────────────────
+let cashBlockCount = 0;
+
+function addCashBlock() {
+  cashBlockCount++;
+  const id = 'cash_' + cashBlockCount;
+  const block = document.createElement('div');
+  block.className = 'cash-block';
+  block.id = id;
+  block.innerHTML = `
+    <div class="block-header">
+      <div>
+        <div class="block-header-label">Cash Purchase ${cashBlockCount}</div>
+        <div class="block-header-name" id="${id}_name">— Enter where below —</div>
+      </div>
+      <button class="remove-btn" onclick="removeBlock('${id}')" title="Remove">×</button>
+    </div>
+    <div class="field">
+      <label>Where Bought</label>
+      <input type="text" id="${id}_where" placeholder="e.g. Antonis, Lidl, local market…" oninput="document.getElementById('${id}_name').textContent=this.value||'— Enter where below —'">
+    </div>
+    <div class="field-row two">
+      <div class="field">
+        <label>Paid By</label>
+        <select id="${id}_paidby">
+          <option value="">Select…</option>
+          <option>Mahoon</option><option>Constantinos</option><option>Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Category</label>
+        <select id="${id}_cat">
+          <option value="">Select…</option>
+          <option>Food &amp; Veg</option><option>Gas</option><option>Drinks</option>
+          <option>Cleaning</option><option>Packaging</option><option>Services</option><option>Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="field has-currency">
+      <label>Total Amount Paid</label>
+      <span class="currency">€</span>
+      <input type="number" id="${id}_amount" placeholder="0.00" step="0.01" min="0">
+    </div>
+    <div class="field">
+      <label>What Was Bought</label>
+      <textarea id="${id}_desc" placeholder="e.g. lettuce x2 bags, rocket, tomatoes, cabbage, onions" rows="2"></textarea>
+    </div>
+    <div class="field">
+      <label>Receipt Ref</label>
+      <input type="text" id="${id}_ref" placeholder="Optional">
+    </div>
+  `;
+  document.getElementById('cash_blocks').appendChild(block);
+}
+
+// ── COLLECT DATA ─────────────────────────────────────────────────────────
+function collectData() {
+  const date = document.getElementById('date').value;
+  const svc  = document.getElementById('service').value;
+  if (!date) { alert('Please set the date.'); return null; }
+  if (!svc)  { alert('Please select the service type.'); return null; }
+
+  // Auto-calculate day name from date
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const day  = days[new Date(date + 'T12:00:00').getDay()];
+
+  // Deliveries
   const deliveries = [];
-  document.querySelectorAll('#delContainer .item-block').forEach(function(b) {
-    const s = b.querySelector('.ds').value;
-    if (s) deliveries.push({ supplier: s, item: b.querySelector('.di').value, qty: b.querySelector('.dq').value, unit: b.querySelector('.du').value, cost: b.querySelector('.dc').value, invoice: b.querySelector('.dv').value });
-  });
+  if (document.getElementById('del_toggle').checked) {
+    document.querySelectorAll('[id^="del_"][id$="_sup"]').forEach(supEl => {
+      const blockId = supEl.id.replace('_sup','');
+      const sup = supEl.value;
+      if (!sup) return;
+      const inv = document.getElementById(blockId+'_inv')?.value || '';
+      const items = [];
+      document.querySelectorAll('[id^="'+blockId+'_item_"]').forEach(row => {
+        const name = document.getElementById(row.id+'_name')?.value || '';
+        const unit = document.getElementById(row.id+'_unit')?.textContent || '';
+        const qty  = document.getElementById(row.id+'_qty')?.value || '';
+        const cost = document.getElementById(row.id+'_cost')?.value || '';
+        if (name) items.push({name, unit, qty, cost});
+      });
+      if (items.length) deliveries.push({supplier:sup, invoice:inv, items});
+    });
+  }
+
+  // Cash purchases
   const cashpurchases = [];
-  document.querySelectorAll('#cashContainer .item-block').forEach(function(b) {
-    const s = b.querySelector('.cs').value;
-    const a = b.querySelector('.ca').value;
-    if (s && a) cashpurchases.push({ supplier: s, category: b.querySelector('.cc').value, description: b.querySelector('.cd').value, amount: a, receipt: b.querySelector('.cr').value });
-  });
-  const data = { _sheet: 'Daily_Operations', _timestamp: new Date().toISOString(), date: document.getElementById('date').value, day: document.getElementById('day').value, service: document.getElementById('service').value, dinein: document.getElementById('dinein').value, wolt: document.getElementById('wolt').value || '0', foody: document.getElementById('foody').value || '0', lunchcov: document.getElementById('lunchcov').value || '0', dinnercov: document.getElementById('dinnercov').value || '0', salesnotes: document.getElementById('salesnotes').value, deliveries: deliveries, cashpurchases: cashpurchases };
+  if (document.getElementById('cash_toggle').checked) {
+    document.querySelectorAll('[id^="cash_"][id$="_where"]').forEach(whereEl => {
+      const blockId = whereEl.id.replace('_where','');
+      const where  = whereEl.value || '';
+      const paidby = document.getElementById(blockId+'_paidby')?.value || '';
+      const cat    = document.getElementById(blockId+'_cat')?.value || '';
+      const amount = document.getElementById(blockId+'_amount')?.value || '';
+      const desc   = document.getElementById(blockId+'_desc')?.value || '';
+      const ref    = document.getElementById(blockId+'_ref')?.value || '';
+      if (where || amount) cashpurchases.push({where, paidby, category:cat, amount, description:desc, receipt:ref});
+    });
+  }
+
+  return {
+    date, day,
+    service:    svc,
+    dinein:     document.getElementById('dinein').value    || 0,
+    lunchcov:   document.getElementById('lunchcov').value  || 0,
+    dinnercov:  document.getElementById('dinnercov').value || 0,
+    salesnotes: document.getElementById('salesnotes').value,
+    deliveries,
+    cashpurchases,
+  };
+}
+
+// ── SUBMIT ────────────────────────────────────────────────────────────────
+async function handleSubmit() {
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true; btn.textContent = 'Sending…';
+  const data = collectData();
+  if (!data) { btn.disabled=false; btn.textContent='Submit'; return; }
+  data._sheet = SHEET_NAME;
+  data._timestamp = new Date().toISOString();
   try {
-    const p = new URLSearchParams(); p.append('data', JSON.stringify(data));
-    await fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body: p });
-    document.getElementById('formArea').style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
-    window.scrollTo(0,0);
-  } catch(ex) { err.style.display = 'block'; btn.textContent = 'Submit'; btn.disabled = false; }
+    if (SHEET_URL === 'YOUR_APPS_SCRIPT_URL_HERE') { showSuccess(); return; }
+    const params = new URLSearchParams();
+    params.append('data', JSON.stringify(data));
+    await fetch(SHEET_URL, {method:'POST', mode:'no-cors', body:params});
+    showSuccess();
+  } catch(e) {
+    alert('Connection error. Please try again.');
+    btn.disabled=false; btn.textContent='Submit';
+  }
+}
+
+function showSuccess() {
+  document.getElementById('formArea').style.display = 'none';
+  document.getElementById('successScreen').style.display = 'block';
+  window.scrollTo(0,0);
+}
+
+function resetForm() {
+  document.getElementById('successScreen').style.display = 'none';
+  document.getElementById('formArea').style.display = 'block';
+  // Reset toggles
+  document.getElementById('del_toggle').checked = false;
+  document.getElementById('cash_toggle').checked = false;
+  document.getElementById('del_area').style.display = 'none';
+  document.getElementById('cash_area').style.display = 'none';
+  document.getElementById('del_blocks').innerHTML = '';
+  document.getElementById('cash_blocks').innerHTML = '';
+  delBlockCount = 0; cashBlockCount = 0;
+  // Reset Section A
+  ['date','service','dinein','lunchcov','dinnercov','salesnotes']
+    .forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = '';
+    });
+  window.scrollTo(0,0);
+}
+
+// Auto-fill today's date
+document.addEventListener('DOMContentLoaded', function() {
+  const t = new Date();
+  document.getElementById('date').value =
+    t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'-'+String(t.getDate()).padStart(2,'0');
 });
 </script>
 </body>
