@@ -255,7 +255,7 @@ body{font-family:'Poppins',sans-serif;background:var(--grey-05);color:var(--blac
 </div><!-- /container -->
 
 <script>
-const SHEET_URL  = 'YOUR_APPS_SCRIPT_URL_HERE';
+const SHEET_URL  = 'https://script.google.com/macros/s/AKfycbyIVMONTeGtW2FQphNuCRIRkydiwT4BgiX1SzCrCCkoRZlBSOldgTby9xXmbOKglRS_cA/exec';
 const SHEET_NAME = 'Daily_Operations';
 
 // ── INGREDIENT LIST (name → unit, pulled from Operations Sheet 0) ──────
@@ -568,7 +568,7 @@ async function handleSubmit() {
   data._sheet = SHEET_NAME;
   data._timestamp = new Date().toISOString();
   try {
-    if (SHEET_URL === 'YOUR_APPS_SCRIPT_URL_HERE') { showSuccess(); return; }
+    if (SHEET_URL === 'https://script.google.com/macros/s/AKfycbyIVMONTeGtW2FQphNuCRIRkydiwT4BgiX1SzCrCCkoRZlBSOldgTby9xXmbOKglRS_cA/exec') { showSuccess(); return; }
     const params = new URLSearchParams();
     params.append('data', JSON.stringify(data));
     await fetch(SHEET_URL, {method:'POST', mode:'no-cors', body:params});
