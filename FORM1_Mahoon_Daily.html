@@ -568,7 +568,7 @@ async function handleSubmit() {
   data._sheet = SHEET_NAME;
   data._timestamp = new Date().toISOString();
   try {
-    if (SHEET_URL === 'https://script.google.com/macros/s/AKfycbyIVMONTeGtW2FQphNuCRIRkydiwT4BgiX1SzCrCCkoRZlBSOldgTby9xXmbOKglRS_cA/exec') { showSuccess(); return; }
+    // URL connected — submit to Google Sheet
     const params = new URLSearchParams();
     params.append('data', JSON.stringify(data));
     await fetch(SHEET_URL, {method:'POST', mode:'no-cors', body:params});
